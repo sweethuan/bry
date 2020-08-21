@@ -1,0 +1,363 @@
+.bry_main {
+    width: 1080px;
+    padding: 40px 38px 50px 0;
+	box-sizing: border-box;
+	position: relative;
+}
+
+/* 几种间距 */
+.first_li_space {
+	margin-top: 40px;
+    margin-bottom: 26px;
+}
+.first_space {
+    margin-bottom: 54px;
+}
+
+.second_space {
+    margin-bottom: 50px;
+}
+
+.third_space {
+    margin-bottom: 85px;
+}
+/* 选项列表 */
+.bry_option_list{
+	width: 100%;
+}
+.bry_option_list>li{
+	float: left;
+	font-size: 16px;
+	margin-right: 40px;
+	cursor: pointer;
+}
+/* 第一类 */
+.bry_first_img {
+	margin-top: 14px;
+	float: left;
+    /* position: relative; */
+	width: 240px;
+	height: 80px;
+	font-size: 14px;
+	color: #333333;
+	text-align: center;
+}
+
+/* .bry_first_img>img {
+    width: 210px;
+    height: 80px;
+    border-radius: 8px;
+	
+} */
+/* .bry_first_img>p {
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    padding-top: 4px;
+    max-width: 202px;
+} */
+
+.bry_first_content {
+	float: right;
+    height: 114px;
+    width: 800px;
+    background: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+	box-sizing: border-box;
+    position: relative;
+}
+.bry_first_text {
+    font-size: 12px;
+    color: #333333;
+}
+.bry_first_time {
+	position: absolute;
+	text-align: right;
+    
+   /* background: url(../../../assets/icon/mechanism/answer_icon.png) no-repeat center center;
+    background-size: 16px 16px; */
+    bottom: 10px;
+    right: 20px;
+}
+.bry_first_time>img{
+	float: right;
+	width: 16px;
+	height: 16px;
+}
+.bry_first_time>span{
+	float: right;
+	font-size: 12px;
+	color: #666666;
+	margin-left: 6px;
+}
+.bry_first_change {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+}
+
+/* 第二类 */
+.bry_second {
+    position: relative;
+}
+
+.bry_second_audio {
+    width: 132px;
+    height: 163px;
+    border-radius: 8px;
+    background: #059fbf;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+.bry_audio_title {
+    font-size: 10px;
+    color: #fff;
+    line-height: 16px;
+    margin-left: 7px;
+    padding-left: 18px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    background: url(../../../assets/icon/mechanism/audio_tone.png) no-repeat left center;
+    background-size: 13px 15px;
+}
+
+.bry_audio_photo {
+    width: 114px;
+    height: 108px;
+    border-radius: 4px;
+    margin-left: 9px;
+    margin-bottom: 6px;
+}
+
+.bry_play {
+    font-size: 10px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+.bry_play>span {
+    line-height: 12px;
+    padding-left: 17px;
+    background: url(../../../assets/icon/mechanism/audio_num.png) no-repeat left center;
+    background-size: 13px 11px;
+    width: 6em;
+}
+.bry_play>button {
+    width: 12px;
+    height: 12px;
+    border: none;
+    background: url(../../../assets/icon/mechanism/audio_play.png) no-repeat center;
+    background-size: 100% 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+.bry_second_content {
+    height: 114px;
+    width: 818px;
+    background: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    position: relative;
+}
+.bry_second_text {
+    font-size: 12px;
+    color: #333333;
+}
+.bry_second_time {
+    font-size: 12px;
+    color: #666666;
+    padding-left: 22px;
+    background: url(../../../assets/icon/mechanism/answer_icon.png) no-repeat left center;
+    background-size: 16px 16px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.bry_second_change {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    bottom: 24px;
+}
+
+/* 第三类 */
+.bry_third {
+    position: relative;
+}
+
+.bry_third_info {
+    float: left;
+    width: 296px;
+    height: 96px;
+}
+
+.bry_third_info img {
+    width: 160px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+.bry_info_word {
+    width: 130px;
+    height: 100%;
+    position: relative;
+}
+
+.bry_info_word_title {
+    font-size: 14px;
+    color: #666666;
+}
+.bry_info_word_text {
+    font-size: 12px;
+    color: #999999;
+    line-height: 14px;
+}
+.bry_info_word_time {
+    font-size: 12px;
+    color: #999999;
+    width: 7em;
+    position: absolute;
+    bottom: 4px;
+}
+
+.bry_third_content {
+    width: 656px;
+    height: 94px;
+    background: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    position: relative;
+}
+.bry_third_text {
+    font-size: 12px;
+    color: #333333;
+}
+.bry_third_time {
+    font-size: 12px;
+    color: #666666;
+    padding-left: 22px;
+    background: url(../../../assets/icon/mechanism/answer_icon.png) no-repeat left center;
+    background-size: 16px 16px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.bry_third_change {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    bottom: -24px;
+}
+
+/* 第四类 */
+.bry_fourth {
+    position: relative;
+}
+
+.bry_fourth_baike {
+    width: 314px;
+    height: 94px;
+}
+.bry_fourth_baike_title {
+    font-size: 12px;
+    color: #333333;
+    padding-left: 16px;
+    background: url(../../../assets/icon/mechanism/baike.png) no-repeat left center;
+    background-size: 11px 11px;
+}
+.bry_fourth_baike_text {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1em;
+    line-height: 16px;
+    padding-top: 2px;
+}
+
+.bry_fourth_content {
+    width: 656px;
+    height: 94px;
+    background: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    position: relative;
+}
+.bry_fourth_text {
+    font-size: 12px;
+    color: #333333;
+}
+.bry_fourth_time {
+    font-size: 12px;
+    color: #666666;
+    padding-left: 22px;
+    background: url(../../../assets/icon/mechanism/answer_icon.png) no-repeat left center;
+    background-size: 16px 16px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.bry_fourth_change {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 0;
+    bottom: -24px;
+}
+
+/* 选中列表 */
+.bry_option_list_checked{
+	color: #059fbf;
+}
+
+/* 上一页下一页 */
+.bry_next_last{
+	position: absolute;
+	left: 810px;
+	bottom: 30px;
+}
+.bry_next_last>li{
+	float: left;
+	margin-left: 16px;
+	font-size: 14px;
+    color: #666666;
+    cursor: pointer;
+}

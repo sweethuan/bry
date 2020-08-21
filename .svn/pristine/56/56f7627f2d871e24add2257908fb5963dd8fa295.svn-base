@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>我的发布</title>
+
+	<link rel="stylesheet" href="../../static/css/common.css" />
+	<link rel="stylesheet" href="../../static/css/login_common.css" />
+	<link rel="stylesheet" href="../../static/css/consultation/con_upload_record.css" />
+	<link rel="stylesheet" type="text/css" href="../../static/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+	<script src="../../static/js/jquery.min.js"></script>
+	<script src="../../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/JavaScript" charset="UTF-8" src="../../static/js/header2.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div id="header">
+			<header-item></header-item>
+		</div>
+
+		<div class="bry_container">
+			<!-- 标题及退出登录 -->
+			<div class="bry_title_logout clearfix">
+				<p class="fl">{{comClass}}信息</p>
+			</div>
+
+			<!-- 内容区 -->
+			<div class="bry_inner clearfix">
+				<div class="bry_head_leftnav fl">
+					<!-- 头像与名字 -->
+					<div class="bry_people">
+						<div class="bry_people_pic">
+							<img :src="headImgPic==''?'../../assets/img/mechanism/headicon.jpg':headImgPic" />
+							<span>{{comClass}}</span>
+							<div class="show_uploadHead" @click="show_uploadHead()">
+								<span>更换头像</span>
+							</div>
+						</div>
+						<span>{{this.username}}</span>
+					</div>
+					<!-- 认证与充值 -->
+					<div class="bry_authentication_recharge">
+						<span v-if="!isAuth">待认证</span>
+						<span v-else>已认证</span>
+						<a href="con_recharge.html">会员充值</a>
+					</div>
+					<!-- 侧导航 -->
+					<ul class="bry_sidenav">
+						<li class="bry_space1">
+							<a href="con_basic_data.html">基本资料</a>
+						</li>
+						<li class="bry_space1">
+							<a :href="comHref">认证资料</a>
+						</li>
+						<li class="bry_space1">
+							<a href="con_browse.html">我的浏览</a>
+						</li>
+						<li class="bry_space1">
+							<a href="con_answer.html">我的答疑</a>
+						</li>
+						<li class="bry_space1">
+							<a href="con_comment.html">我的评论</a>
+						</li>
+						<li class="bry_space2">
+							<a href="con_forum.html">我的论坛</a>
+						</li>
+						<li class="bry_space2 bry_sidenav_sel">
+							<a href="con_upload.html">我的发布</a>
+						</li>
+						<li class="bry_space2">
+							<a href="con_message.html">我的消息</a>
+						</li>
+						<li class="bry_space2">
+							<a href="con_account.html">我的账户</a>
+						</li>
+							<li class="bry_space2" v-if="RoleId==2">
+								<a href="stu_study.html">我的学习</a>
+							</li>
+					</ul>
+				</div>
+
+				<div class="bry_main fr">
+					<!-- 最上面的导航 -->
+					<div class="bry_topnav">
+						<a href="con_upload_audio.html">添加音频</a>
+						<a class="bry_topnav_sel" href="con_upload_audio_record.html">查看记录</a>
+					</div>
+
+					<!-- 记录内容 -->
+					<ul class="bry_record_content">
+						<li>
+							<ul class="bry_record_content_title clearfix">
+								<li>
+									课时名称
+								</li>
+								<li>
+									上架时间
+								</li>
+								<li>
+									下架时间
+								</li>
+								<li>
+									价格
+								</li>
+								<li></li>
+							</ul>
+						</li>
+						<li v-for="(item,index) in publishData" :key="index">
+							<ul class="bry_record_content_part clearfix">
+								<li><span :class="item.isChecked?'bry_add_bgpic':''" @click="changeCheck(item)"></span>
+								</li>
+								<li class="one-txt-cut">
+									<a :href="'../bry_audio_info.html?id='+item.Id">{{item.Title}}</a>
+								</li>
+								<li>
+									{{item.CreateDate.split(" ")[0]}}
+								</li>
+								<li>{{item.EndDate.split("T")[0]}}</li>
+								<li v-if="item.TotalPrice==0">免费</li>
+								<li v-else>{{item.TotalPrice}}元</li>
+								<li>
+									<!-- <span>修改</span> -->
+									<span @click="alterMes(item.Id)">删除</span>
+								</li>
+							</ul>
+						</li>
+						<!-- <li>
+								<ul class="bry_record_content_part clearfix">
+									<li><span class="bry_add_bgpic"></span></li>
+									<li class="one-txt-cut">
+										<a href="">青少年性教育第六讲.mp4</a>
+									</li>
+									<li>
+										2020-01-18
+									</li>
+									<li>202-01-18</li>
+									<li>免费</li>
+									<li>
+										<span>修改</span>
+										<span>删除</span>
+									</li>
+								</ul>
+							</li> -->
+
+					</ul>
+
+					<!-- 全选和删除 -->
+					<ul class="bry_all_delete clearfix">
+						<li>
+							<span @click="selectAll">全选</span>
+						</li>
+						<li @click="alterMesAll">删除</li>
+					</ul>
+					<el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+						<span>确认删除选中数据？操作后无法恢复！请慎重操作</span>
+						<span slot="footer" class="dialog-footer">
+							<el-button @click="dialogVisible = false">取 消</el-button>
+							<el-button type="primary" @click="deleteAll">确 定</el-button>
+						</span>
+					</el-dialog>
+
+					<!-- 上一页下一页 -->
+					<ul class="bry_next_last clearfix">
+						<li @click="goHome">首页</li>
+						<li @click="prevClick">上一页&gt;</li>
+						<li @click="nextClick">下一页&lt;</li>
+						<li @click="goEnd">尾页</li>
+
+					</ul>
+				</div>
+
+			</div>
+
+			<!-- 修改头像弹出层 v-if="showHeadPic"2-->
+			<div class="uploadHead_div" v-if="showHeadPic">
+				<div class="uploadhead_pic">
+					<span>上传头像</span>
+					<div class="headimg_upload">
+						<div class="big_headpic">
+							
+							<img :src="showHeadPic1" alt="">
+							<span>推荐640*640像素，JPG/PNG,2MB以内，头像更改后保存刷新生效</span>
+						</div>
+						<div class="small_headpic">
+							<img :src="showHeadPic1" alt="">
+							<span>头像预览</span>
+							<a href="javascript:;" >
+								<span>上传头像</span>
+								<input type="file" @change="getFile3($event)" accept=".jpg, .png"  multiple="multiple" />
+							</a>
+							
+						</div>
+					</div>
+					
+					<div class="decide_part">
+						<button @click="closeUpload">取消</button>
+						<button @click="uploadHeadPic">保存</button>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+
+<script type="text/JavaScript" charset="UTF-8">
+		var vueobj = new Vue({
+			el: '#app',
+			data() {
+				return {
+					username: "",
+					userId: ""   ,
+					PageSize:10 ,  //每页请求多少条
+					currentPage:1	 , //当前页码
+					publishData:[] ,
+					price:0,
+					dialogVisible: false  , //element插件属性
+					deleteDataNum:[],
+					ColId:"4"   ,//分类id
+					total: ""   ,  //数据总条数
+					RoleId: '',     // 角色id
+					isAuth: '',  // 是否认证
+
+					headImgPic:"",//头像显示
+					showHeadPic1:"",  //显示图片路径
+					headPicUrl1:"",   //接受图片路径准备上传
+					showHeadPic:false, //修改图片弹出层bool值
+				}
+			},
+			created() {
+				this.userId = foowwLocalStorage.getLocal("urseId")
+				this.RoleId = foowwLocalStorage.getLocal("RoleId")
+				//ajax请求昵称
+				getAjax("get","Users/DetailDo",'{"UserId":"' + this.userId + '"}').then(res=>{
+					this.username=res.data.NickName
+					this.isAuth = res.data.IsAuth
+					this.headImgPic=res.data.HeadPhoto
+					console.log(res.data.NickName)
+				},err=>{
+					console.log(err)
+				})
+				// 
+				getAjax("get", "Articles/MyPublishDo", '{"PageSize":"' + this.PageSize + '","PageNum":"' + this.currentPage + '","ColId":"' + this.ColId + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log(res)
+					this.total=res.other
+					this.publishData = res.data.map(item => {
+						return {
+							...item,
+							isChecked: false
+						}
+					})
+				})
+			},
+			computed: {
+				comClass(){
+					return this.RoleId == 1 ? "个人" : this.RoleId == 2 ? "学生" : this.RoleId == 3 ? "讲师" : this.RoleId == 4 ? "医师" : this.RoleId == 5 ? "心里资讯师" : "机构"
+				},
+				comHref() {
+					return this.RoleId == 1 ? "con_auth_data.html" : this.RoleId == 2 ? "stu_auth_data.html" : this.RoleId == 3 ? "tea_auth_data.html" : this.RoleId == 4 ? "doc_auth_data.html" : this.RoleId == 5 ? "mind_auth_data.html" : "ind_auth_data.html"
+				}
+			},
+			methods:{
+
+				// 显示修改头像框5
+			show_uploadHead(){
+				console.log(0)
+				this.showHeadPic=true
+				console.log(this.showHeadPic)
+			},
+			//关闭修改头像框
+			closeUpload(){
+				this.showHeadPic=false
+				console.log(this.showHeadPic)
+			},
+            // 上传图片6
+			getFile3(event) {
+				var file = event.target.files; //获取图片的所有信息
+				console.log(file)
+				let that = this;
+				for (var i = 0; i < file.length; i++) {
+					// 上传类型判断
+					var imgName = file[i].name;
+					var idx = imgName.lastIndexOf(".");
+					console.log(idx)
+					if (idx != -1) {
+						var ext = imgName.substr(idx + 1).toUpperCase();//获取图片格式
+						console.log(ext)
+						ext = ext.toLowerCase();
+						if (
+							ext != "jpg" &&
+							ext != "png" &&
+							ext != "bmp" &&
+							ext != "gif"
+						) {
+							return this.$message({
+								message: '图片格式不支持~',
+								type: 'warning',
+								offset: 250
+							})
+						} else {
+							that.headPicUrl1 = file[i];
+							// console.log(that.imgArr)
+							
+						}
+					} else {}
+					//展示上传的图片
+					console.log("-------------------------")
+					let reader = new FileReader();
+					
+					reader.readAsDataURL(file[i]);
+					
+					reader.onload = function(e) {
+						that.showHeadPic1=this.result
+						// console.log("base64:"+that.imgArr)
+						console.log("base64:" +this.result)
+						// 将图片转码的base64传入通用类接口  返回的图片地址传给imgArr
+						ajax("post","Users/UploadPhotoByBase64Do",'{"base64":"' + this.result + '"}',"123456").then(res=>{
+
+							console.log(res.data)
+							that.headPicUrl1=res.data
+							console.log(that.headPicUrl1)
+						},err=>{
+							console.log(err)
+						})
+						
+					};
+				}
+			},
+			// 修改头像上传7
+			uploadHeadPic(){
+				if(this.headPicUrl1==""){
+					return this.$message({
+						message: '无图无法上传~',
+						type: 'warning',
+						offset: 250
+					})
+				}
+				
+				ajax("post","Users/SetHeadPhotoDo",'{"HeadPhoto":"' + this.headPicUrl1 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123456").then(res=>{
+					this.$message({
+						message: '上传头像成功!',
+						type: 'warning'
+					})
+					setTimeout(() => {
+						window.location.reload()
+					}, 2000);
+					
+				}, err=>{
+					console.log(err)
+					this.$message({
+						message: '上传头像失败!',
+						type: 'warning'
+					})
+				})
+			},
+
+				// 单选
+				changeCheck(item){
+					item.isChecked = !item.isChecked
+				},
+
+				// 更改单个选中
+				// changeChecked(item){
+				// 	item.isChecked = !item.isChecked
+				// }
+				// 全选
+				selectAll() {
+					/* var panduan=true
+					for(var i=0;i<this.publishData.length;i++){
+						console.log(0)
+						if(this.publishData[i].isChecked==false){
+							this.publishData[i].isChecked=!this.publishData[i].isChecked
+							panduan=false
+						}
+						if(panduan==true){
+							for(var j=0;j<this.publishData.length;j++){
+									this.publishData[i].isChecked=!this.publishData[i].isChecked
+							}
+						}
+					} */
+					this.price=this.price+1
+					if(this.publishData.every(item => {
+						return item.isChecked == true
+					})) {
+						this.publishData.map(item => {
+							return item.isChecked = false
+						})
+					}else {
+						this.publishData.map(item => {
+							return item.isChecked = true
+					})}
+				},
+				// 单个传入删除ID
+				alterMes(id) {
+					this.dialogVisible=true
+					this.deleteDataNum.push(id)
+					console.log(this.deleteDataNum)
+					// this.publishData.splice(this.publishData.indexOf(item), 1)
+				},
+				// 传入数组删除id
+				alterMesAll(){
+				
+					this.dialogVisible=true
+					for (let i = 0; i < this.publishData.length; i++) {
+						if(this.publishData[i].isChecked){
+							this.deleteDataNum.push(this.publishData[i].Id)
+							console.log(this.publishData[i].isChecked)
+						}
+						
+					}
+					console.log(this.deleteDataNum)
+				},
+				// 删除所有选中的
+				deleteAll() {
+					// this.publishData = this.publishData.filter(item => {
+					// 	return item.isChecked != true
+					// })
+					//  删除数据请求
+					
+					ajax("post","Articles/DeleteDo",'{"Ids":"' + this.deleteDataNum + '"}',"123456").then(res=>{
+					 console.log(res)
+					 this.dialogVisible=false
+					 	setTimeout(() => {
+							window.location.reload()
+						}, 1500);
+						return this.$message({
+									message: '删除成功',
+									type: 'warning',
+									offset: 250
+						})
+						
+					},err=>{
+				 		console.log("删除失败")
+			 		})
+				},
+				handleClose(done) {
+					
+        			this.$confirm('确认关闭？').then(_ => {
+						this.deleteDataNum=[]
+					console.log(this.deleteDataNum)
+           			 done();
+        		}).catch(_ => {
+
+				});
+			 },
+			 
+			 //  翻页
+			// 点击上一页
+			prevClick() {
+				if (this.currentPage <= 1) {
+					this.$message({
+						message: "已经是首页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage - 1
+				getAjax("get", "Articles/MyPublishDo", '{"PageSize":"' + this.PageSize + '","PageNum":"' + this.currentPage + '","ColId":"' + this.ColId + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log(res)
+					console.log(this.currentPage)
+					this.total=res.other
+					this.publishData = res.data.map(item => {
+						return {
+							...item,
+							isChecked: false
+						}
+					})
+				})
+			},
+			// 点击下一页
+			nextClick() {
+				if (this.currentPage >= Math.ceil(this.total / this.PageSize)) {
+					this.$message({
+						message: "已经是最后一页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage + 1
+				getAjax("get", "Articles/MyPublishDo", '{"PageSize":"' + this.PageSize + '","PageNum":"' + this.currentPage + '","ColId":"' + this.ColId + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log(res)
+					console.log(this.currentPage)
+					this.total=res.other
+					this.publishData = res.data.map(item => {
+						return {
+							...item,
+							isChecked: false
+						}
+					})
+				})
+			},
+			// 回首页
+			goHome() {
+				this.currentPage = 1
+				getAjax("get", "Articles/MyPublishDo", '{"PageSize":"' + this.PageSize + '","PageNum":"' + this.currentPage + '","ColId":"' + this.ColId + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log(res)
+					this.total=res.other
+					this.publishData = res.data.map(item => {
+						return {
+							...item,
+							isChecked: false
+						}
+					})
+				})
+			},
+			// 去尾页
+			goEnd() {
+				this.currentPage = Math.ceil(this.total / this.PageSize)
+				getAjax("get", "Articles/MyPublishDo", '{"PageSize":"' + this.PageSize + '","PageNum":"' + this.currentPage + '","ColId":"' + this.ColId + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log(res)
+					this.total=res.other
+					this.publishData = res.data.map(item => {
+						return {
+							...item,
+							isChecked: false
+						}
+					})
+				})
+			}
+			
+			
+			}
+		});
+	</script>
+
+</html>

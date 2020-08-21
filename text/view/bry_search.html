@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_search.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+		<title>搜索</title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item :keyword="KeyWord"></header-item>
+			</div>
+			<div class="search">
+				<div class="inner clearfix">
+					<!-- 左边 -->
+					<div class="search_left">
+						<div class="sl_title">
+							<span class="sl_title1">综合排序</span>
+							<span class="sl_title2">最新上传</span>
+						</div>
+						<ul class="sl_list" v-if="searchData.length">
+							<li class="sl_li clearfix" v-for="item in searchData" :key="item.Id">
+								<!-- 图片 -->
+								<div class="slLi_picture">
+									<img :src="item.ListPhoto" >
+								</div>
+								<!-- 内容 -->
+								<div class="slLi_content clearfix">
+									<div class="slLi_ctitle clearfix">
+										<span class="slLi_cspan1" ref="title" v-html="item.Title"></span>
+										<!-- <span class="slLi_cspan2">健康</span>
+										<span class="slLi_cspan1">教育</span> -->
+									</div>
+									<div class="slLi_label clearfix">
+										<span>{{item.CreateDate}}</span>
+										<!-- <span>少儿</span>
+										<span>中国</span> -->
+									</div>
+									<!-- 简介 -->
+									<div class="slLi_intro">
+										<div class="slLi_introL">
+											<span>简介:</span>
+											<span class="one-txt-cut" v-html="item.Details"></span>
+										</div>
+										<div class="slLi_introR">
+											<span @click="goDetails(item.ColId, item.Id)">详情 ></span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<!-- <li class="sl_li clearfix">
+								<div class="slLi_picture">
+									<img src="../assets/img/slLi_picture.png" >
+								</div>
+								<div class="slLi_content clearfix">
+									<div class="slLi_ctitle clearfix">
+										<span class="slLi_cspan1">儿童性</span>
+										<span class="slLi_cspan2">健康</span>
+										<span class="slLi_cspan1">教育</span>
+									</div>
+									<div class="slLi_label clearfix">
+										<span>2018</span>
+										<span>少儿</span>
+										<span>中国</span>
+									</div>
+									<div class="slLi_intro">
+										<div class="slLi_introL">
+											<span>简介:</span>
+											<span class="one-txt-cut">儿童生理卫生知识。</span>
+										</div>
+										<div class="slLi_introR">
+											<span>详情 ></span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="sl_li clearfix">
+								<div class="slLi_picture">
+									<img src="../assets/img/slLi_picture1.png" >
+								</div>
+								<div class="slLi_content clearfix">
+									<div class="slLi_ctitle clearfix">
+										<span class="slLi_cspan1">儿童性</span>
+										<span class="slLi_cspan2">健康</span>
+										<span class="slLi_cspan1">教育</span>
+									</div>
+									<div class="slLi_label clearfix">
+										<span>2018</span>
+										<span>少儿</span>
+										<span>中国</span>
+									</div>
+									<div class="slLi_intro">
+										<div class="slLi_introL">
+											<span>简介:</span>
+											<span class="one-txt-cut">儿童生理卫生知识。</span>
+										</div>
+										<div class="slLi_introR">
+											<span>详情 ></span>
+										</div>
+									</div>
+								</div>
+							</li> -->
+						</ul>
+						<div v-else class="tips">无相关搜索结果</div>
+					</div>
+					<!-- 右边 -->
+					<div class="search_right">
+						<div class="sR_tltle clearfix">
+							<div class="sR_t1">热门搜索</div>
+						</div>
+						<ul class="sR_list">
+							<li class="sR_li one-txt-cut" v-for="item,index in hotSearch" :key="index" @click="changeWords(item.Title)">
+								{{index + 1 }} &nbsp;&nbsp;{{item.Title}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="bry_information.html">资讯</a></li>
+							<li><a href="bry_Movies.html">视频</a></li>
+							<li><a href="bry_audioFrequency.html">音频</a></li>
+							<li><a href="bry_forum.html">论坛</a></li>
+							<li><a href="encyclopedias.html">百科</a></li>
+							<li><a href="book.html">电子书</a></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../assets/icon/footer/official_account.gif">
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../assets/icon/footer/phone_code.gif">
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+							<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data(){
+				return {
+					KeyWord: '', // 搜索关键字
+					searchData: [], // 搜索出的数据
+					hotSearch: [],   // 热门搜索
+				}
+			},
+			created() {
+				this.KeyWord = window.decodeURIComponent(window.location.href.split("?keywords=")[1])
+				// 热门搜索
+				getHotdata(10, 0).then(res => {
+					console.log("热门搜索", res)
+					this.hotSearch = res.data
+				})
+				// 按关键字搜索
+				getAjax("get", "Articles/SearchDo", '{"PageSize":"' + 10 + '","PageNum":"' + 1 + '","KeyWord":"' + this.KeyWord + '"}').then(res => {
+					console.log('搜索:',res)
+					this.searchData = res.data.map(item => {
+						return {
+							...item,
+							Title: item.Title.split(this.KeyWord).join('<span style="color: #fc9440;">' + this.KeyWord + '</span>'),
+							Details: item.Details.split(this.KeyWord).join('<span style="color: #fc9440;">' + this.KeyWord + '</span>')
+						}
+					})
+					
+				})
+			},
+			watch: {
+				KeyWord(){
+					// 按关键字搜索
+					getAjax("get", "Articles/SearchDo", '{"PageSize":"' + 10 + '","PageNum":"' + 1 + '","KeyWord":"' + this.KeyWord + '"}').then(res => {
+						console.log('搜索:',res)
+						this.searchData = res.data.map(item => {
+							return {
+								...item,
+								Title: item.Title.split(this.KeyWord).join('<span style="color: #fc9440;">' + this.KeyWord + '</span>'),
+								Details: item.Details.split(this.KeyWord).join('<span style="color: #fc9440;">' + this.KeyWord + '</span>')
+							}
+						})
+					})
+				}
+			},
+			methods: {
+				changeWords(Title) {
+					this.KeyWord = Title
+				},
+				goDetails(ColId, Id) {
+					switch (ColId) {
+						case 2:
+							window.location.href = "bry_information_info.html?inforId=" + Id
+							break
+						case 3:
+							window.location.href = 'bry_Movies_info.html?id=' + Id
+							break
+						case 4:
+							window.location.href = 'bry_audio_info.html?id=' + Id
+							break
+						case 5:
+							window.location.href = 'bry_forum_info.html?id=' + Id
+							break
+						case 6:
+							window.location.href = 'bry_encyc_info.html?id=' + Id
+							break
+						case 7:
+							window.location.href = 'bry_book_info.html?id=' + Id
+							break
+					}
+				},
+				goSearch(keywords){
+					// 按关键字搜索
+					getAjax("get", "Articles/SearchDo", '{"PageSize":"' + 10 + '","PageNum":"' + 1 + '","KeyWord":"' + keywords + '"}').then(res => {
+						console.log('搜索:',res)
+						this.searchData = res.data.map(item => {
+							return {
+								...item,
+								Title: item.Title.split(keywords).join('<span style="color: #fc9440;">' + keywords + '</span>'),
+								Details: item.Details.split(keywords).join('<span style="color: #fc9440;">' + keywords + '</span>')
+							}
+						})
+					})
+				}
+			}
+		})
+	</script>
+</html>

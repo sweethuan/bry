@@ -1,0 +1,459 @@
+/* 背景颜色 */
+body {
+	width: 100%;
+	background: #002830;
+}
+
+#pointPic{
+	width: 333px;
+	height: 475px;
+}
+
+/* 海报图片 */
+.bry_vidoBox_picture{
+	float: left;
+	width: 333px;
+	height: 100%;
+}
+.bry_vidoBox_picture img{
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.bry_vidoBox_picture img{
+	width: 100%;
+}
+.bry_vidoBox_picture .picture_button{
+	color: #7b93b3;
+}
+
+/* 焦点 */
+.bry_activity_focus {
+	height: 500px;
+	background: #e15f5f;
+}
+
+.focus_content {
+	width: 100%;
+	height: 100%;
+	padding: 12px 12px 14px 12px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.bry_activity_focus_img {
+	width: 333px;
+	height: 475px;
+	overflow: hidden;
+	float: left;
+}
+.bry_activity_focus_img .swiper-container{
+	width: 100%;
+}
+.bry_activity_focus_img .swiper-slide{
+	width: 100%;
+}
+.bry_open_focus_img img {
+	width: 100%;
+}
+
+
+/* 焦点列表 */
+/* .focus_list {
+	width: 230px;
+	height: 100%;
+	float: left;
+	margin-left: 3px;
+	background: #002830;
+}
+
+.focus_list_item {
+	width: 100%;
+	height: 77px;
+	background: #017289;
+	margin-bottom: 3px;
+	text-align: center;
+	font-size: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.focus_list_item p {
+	width: 230px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+	padding-top: 20px;
+	float: left;
+}
+
+.focus_list_item>p>span {
+	text-align: center;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.focus_list_item>span {
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.pink_gradation {
+	width: 254px;
+	background: url(../../assets/icon/pink_gradation.png) no-repeat;
+	background-size: 100% 100%;
+} */
+
+/* 选集 */
+.bry_vidoBox_FilmList{
+	float: left;
+	margin-left: 3px;
+	width: 221px;
+	height: 100%;
+}
+.bry_vidoBox_FilmLi{
+	width: 100%;
+	padding-top: 15px;
+	box-sizing: border-box;
+	height: calc(464px / 6);
+	background: #017289;
+	margin-bottom: 2px;
+	/* border-bottom: 2px solid #002830; */
+	cursor: pointer;
+}
+.bry_vidoBox_FilmLi>span{
+	display: block;
+	width: 221px;
+	text-align: center;
+	color: #FFFFFF;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.bry_vidoBox_FilmLi>span:nth-of-type(1){
+	font-size: 12px;
+}
+.bry_vidoBox_FilmLi>span:nth-of-type(2){
+	margin-top: 7px;
+	font-size: 14px;
+}
+/* .bry_vidoBox_FilmLi_type1{
+	z-index: 10;
+	width: 244px;
+	position: relative;
+	background: url(../../assets/icon/bry_vidoBox_FilmLi_type1.png);
+	overflow: visible;
+} */
+.pink_gradation {
+	z-index: 10;
+	width: 244px;
+	position: relative;
+	background: url(../../assets/icon/pink_gradation.png) no-repeat;
+	background-size: 100% 100%;
+	overflow: visible;
+} 
+
+/* 视频播放器盒子 */
+.bry_vidoBox_playsBox{
+	float: left;
+	margin-left: 3px;
+	width: 734px;
+	height: 100%;
+	cursor: pointer;
+}
+.bry_vidoBox_playsBox>img{
+	width: 100%;
+	height: 100%;
+}
+.bry_vidoBox_playsBox_down{
+	width: 100%;
+	height: 62px;
+}
+
+/* 视频 */
+/* .bry_activity_focus_video {
+	width: 724px;
+	height: 100%;
+	float: right;
+}
+
+.bry_inners {
+	padding: 30px 18px 70px 18px;
+	box-sizing: border-box;
+} */
+
+/* 推存视频 */
+.bry_activity_video_newest {
+	width: 100%;
+	padding-top: 30px ;
+	box-sizing: border-box;
+}
+
+.video_recommend_list_item {
+	font-size: 20px;
+	float: left;
+	padding:0 50px;
+	color: #02a0c0;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.color_pink {
+	color: #e15f5f;
+}
+
+/* 视频 */
+.recommend_video {
+	width: 100%;
+	height: 128px;
+	padding: 54px 0;
+}
+
+.recommend_video .swiper-container {
+	width: 100%;
+	height: 100%;
+	padding: 0 36px;
+	box-sizing: border-box;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.swiper-button-next {
+	color: #92854e;
+	position: absolute;
+	right: 0;
+}
+
+.swiper-button-prev {
+	color: #92854e;
+	position: absolute;
+	left: 0;
+}
+.recommend_video .swiper-slide{
+	width: 225px;
+	height: 145px;
+	margin-right: 32px
+}
+.swiper_div {
+	width: 225px;
+	height: 127px;
+	overflow: hidden;
+}
+.recommend_video .swiper_div img{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* 精选视频 */
+.bry_activity_featured_videos {
+	padding: 50px 19px;
+	box-sizing: border-box;
+} 
+/*
+.featured_videos_item {
+	width: 202px;
+	float: left;
+	margin: 0 14px 34px 0;
+	position: relative;
+}
+
+.featured_videos_item>a>div {
+	width: 202px;
+	height: 114px;
+	overflow: hidden;
+}
+
+.selected_item_text li {
+	padding-top: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+.selected_item_text span {
+	color: #02c6d5;
+}
+
+.selected_item_text img {
+	position: absolute;
+	left: 70px;
+	bottom: 4px;
+}
+
+.selected_item_spot {
+	padding-left: 14px;
+	background: url(../../assets/icon/spot.png) no-repeat left;
+}
+
+.featured_videos_item:nth-of-type(6n) {
+	margin-right: 0;
+} */
+
+
+.bry_screen_MoviesList{
+	margin-top: 17px;
+}
+.bry_screen_MoviesLi{
+	float: left;
+	width: 200px;
+	margin-left: calc(82px / 5);
+	padding-bottom: 48px;
+	position: relative;
+}
+.bry_Pay{
+	width: 49px;
+	height: 28px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../../assets/icon/bry_Pay.png) no-repeat;
+}
+.bry_screen_MoviesLi:nth-of-type(6n+1){
+	margin-left: 0;
+}
+.bry_screen_MoviesLi_picture{
+	width: 200px;
+	height: 114px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.bry_screen_MoviesLi_picture>img{
+	width: 100%;
+	height: 100%;
+}
+.bry_screen_MoviesLi_Name{
+	display: block;
+	width: 100%;
+	padding: 5px 0;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+.bry_screen_MoviesLi_lookNum{
+	width: -webkit-fit-content;
+	margin: 0 auto;
+}
+.bry_screen_MoviesLi_lookNum>img{
+	display: block;
+	float: left;
+}
+.bry_screen_MoviesLi_lookNum>span{
+	display: block;
+	float: left;
+	margin: -2px 0 0 8px;
+	font-size: 12px;
+	color: #02c6d5;
+}
+
+/* 翻页 */
+.bry_encyclopedias_page {
+	width: 1280px;
+	height: 24px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+	line-height: 32px;
+}
+
+.bry_encyclopedias_page_list {
+	float: right;
+}
+
+.bry_encyclopedias_page_list li,
+strong {
+	height: 24px;
+	float: left;
+	color: #02c6d5;
+	font-size: 14px;
+	margin-left: 16px;
+}
+
+.page_button {
+	height: 24px;
+	color: #02c6d5;
+	background: transparent;
+	border: none;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+.page_left_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_left_arrow.png) no-repeat center;
+}
+
+.page_right_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_right_arrow.png) no-repeat center;
+}
+
+.page-item {
+	width: 22px;
+	height: 24px;
+	color: #FFFFFF;
+	background: #017289;
+	border: none;
+	border-radius: 5px;
+}
+
+.page-item.active {
+	background: #c0831a;
+}
+
+.bry_encyclopedias_page_list input {
+	width: 24px;
+	height: 24px;
+	background: #02c6d5;
+	border-radius: 5px;
+	text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input,
+button {
+	outline: none;
+}

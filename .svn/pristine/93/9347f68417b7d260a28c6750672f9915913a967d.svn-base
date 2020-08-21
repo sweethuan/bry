@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_book_info.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css"/>
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入网络请求 -->
+		<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		<div id="header">
+			<header-item></header-item>
+		</div>
+		
+		<div class="bry_book_content">
+			<div class="inner clearfix">
+				<div class="bry_book_path"><a href="index.html">首页</a>  >>  <a href="book.html">电子书</a>  >>  {{indexData1.Title}}</div>
+				<div class="fl">
+					<!--<div class="bry_book_imgs">
+						<img src="../assets/img/bry_book_info/bry_book_info_ebook.gif" >
+					</div>
+					<div class="bry_book_choice clearfix">
+						 <div class="bry_book_fs fl">
+							<span>字号</span>
+							<span>放大A<sup>+</sup></span>
+							<span><sup>缩小</sup>A<sup>-</sup></span>
+						</div>
+					</div> -->
+					<div class="bry_book_article" v-if="indexData1.CreateDate">
+						<div class="bry_book_article_title">{{indexData1.Title}}</div>
+						<div class="bry_book_article_msg">
+							<span>作者：{{indexData1.Author}}</span>
+							<span>来源：{{indexData1.Source?indexData1.Source:"彼若鱼"}}</span>
+							<span>更新日期：{{indexData1.CreateDate.split("T")[0]}}</span>
+							<span>浏览次数：{{indexData1.QueryCount}}</span>
+						</div>
+						<p>{{indexData1.Contents}}</p>
+						<div class="bry_book_share">
+							<div>分享到:
+								
+								<img src="../assets/icon/bry_encyc/bry_encyc_qqzone.png" >
+								<span>QQ空间</span>
+								
+							</div>
+							<div class="clearfix">
+								<div @click="goComment"><img src="../assets/icon/bry_encyc/bry_encyc_comment.png" >评论</div>
+								<div :class="indexData1.Collection?'active':''" @click="changeCollect"><img src="../assets/icon/bry_encyc/bry_encyc_collection.png" >收藏</div>
+								<div><img src="../assets/icon/bry_encyc/bry_encyc_share.png" >分享</div>
+							</div>
+						</div>
+					</div>
+					<!-- 评论区 -->
+					<div class="bry_video_comment">
+						<div class="bry_video_comment_title">
+							评论
+						</div>
+						<div class="bry_video_text">
+							<textarea placeholder="发表评论" v-model="contents"></textarea>
+							<div class="bry_video_text_posts clearfix">
+								<button class="fr" @click="release">发布</button>
+							</div>
+						</div>
+					</div>
+					<!-- 精彩评论区 -->
+					<div class="bry_video_marve" v-show="commentList.length">
+						<div class="bry_video_marve_title">
+							精彩评论 ({{commentList.length}})
+						</div>
+						<ul>
+							<li class="bry_video_marveitem clearfix" v-for="item,index in commentList">
+								<img class="fl" src="../assets/img/bry_video_info/bry_video_headpic.gif">
+								<div class="fl">
+									<div class="bry_video_marve_name">
+										<span>{{item.NickName}}</span>
+										<span>{{item.CreateDate}}</span>
+									</div>
+									<div class="bry_video_marve_comme">
+										<span>{{item.Contents}}</span>
+										<div class="fr">
+											<span @click="replyComment(item,index)">评论</span>
+											<span :class="{active:item.IsAgree}" @click="agreeComment(item.Id)">点赞</span>
+										</div>
+									</div>
+					
+									<div v-show="item.Reply.length">
+										<div class="bry_video_marvereply" v-for="it in item.Reply">
+											<div>{{it.NickName}}: {{it.Contents}}</div>
+											<div class="bry_video_marvereply_time">
+												<span>{{it.CreateDate}}</span>
+												<!-- <div class="fr">
+												<span>评论</span>
+												<span>点赞</span>
+											</div> -->
+											</div>
+										</div>
+									</div>
+									<div class="bry_publish_reply" v-show="item.isShow">
+										<textarea placeholder="请输入回复内容" v-model="item.replyContent"></textarea>
+										<button type="button" @click="replyCom(item)">回复</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="bry_book_class fr">
+					<ul>
+						<li class="bry_book_fr_title">最新上传</li>
+						<li v-for="item in mostNewData"><a class="clearfix" :href="'bry_book_info.html?id=' + item.Id"><p class="title one-txt-cut">◆ {{item.Title}}</p><div class="fr"><img src="../assets/icon/bry_encyc/bry_encyc_see.png" >{{item.QueryCount}}</div></a></li>
+					</ul>
+					<ul>
+						<li class="bry_book_fr_title">人气榜</li>
+						<li v-for="item in mostHotData"><a class="clearfix" :href="'bry_book_info.html?id=' + item.Id"><p class="title one-txt-cut">◆ {{item.Title}}</p><div class="fr"><img src="../assets/icon/bry_encyc/bry_encyc_see.png" >{{item.QueryCount}}</div></a></li>
+					</ul>
+					<ul>
+						<li class="bry_book_fr_title">精选书籍</li>
+						<li v-for="item in booksData"><a class="clearfix" :href="'bry_book_info.html?id=' + item.Id"><p class="title one-txt-cut">◆ {{item.Title}}</p><div class="fr"><img src="../assets/icon/bry_encyc/bry_encyc_see.png" >{{item.QueryCount}}</div></a></li>
+					</ul>
+					<ul>
+						<li class="bry_book_fr_title">大咖专辑</li>
+						<li v-for="item in albumData"><a class="clearfix" :href="'bry_book_info.html?id=' + item.Id"><p class="title one-txt-cut">◆ {{item.Title}}</p><div class="fr"><img src="../assets/icon/bry_encyc/bry_encyc_see.png" >{{item.QueryCount}}</div></a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif" >
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif" >
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+						<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png" >渝公安备 50019002501739	</div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					inforId: "",
+					indexData1: [], //当前文章数据
+					mostNewData: [], //最新板块数据
+					mostHotData: [], //人气板块数据
+					booksData: [], //精选书籍板块数据
+					albumData:[],  //大咖专辑数据
+					contents: "", //评论的内容
+					commentList: [], //评论列表
+					UserId: '',
+					isAuth: ''  // 是否认证
+				}
+			},
+			created() {
+				this.UserId = foowwLocalStorage.getLocal("urseId")
+				this.inforId = window.location.href.split("?id=")[1]
+				// 获取基本资料
+				getAjax("get", "Users/DetailDo", '{"UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}').then(res => {
+					this.isAuth = res.data.IsAuth
+				})
+				// 当前详情页请求
+				getAjax("get", "Articles/DetailDo", '{"Id":"' + this.inforId + '","UserId":"' + this.UserId + '"}', ).then(res => {
+					this.indexData1 = res.data
+					console.log("当前文章数据:", res)
+				}, err => {
+					console.log(err)
+				})
+				// 获取评论
+				getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+					'","ArticleId":"' + this.inforId +
+					'","UserId":"' + this.UserId + '"}').then(res => {
+					console.log("评价", res)
+					this.commentList = res.data.map(item => {
+						return {
+							...item,
+							isShow: false,
+							replyContent: ''
+						}
+					})
+				})
+				// 请求最新板块的数据
+				getNewestdata(10, 7).then(res => {
+					console.log("最新",res)
+					this.mostNewData = res.data
+				}, rej => {
+					console.log(rej)
+				})
+				// 请求人气榜数据
+				getHotdata(10, 7).then(res => {
+					console.log("人气榜",res)
+					this.mostHotData = res.data
+				}, rej => {
+					console.log(rej)
+				})
+				// 精选书籍
+				getMoviesdata(10, 47).then(res => {
+					console.log("精选书籍",res)
+					this.booksData = res.data
+				})
+				// 大咖专辑
+				getMoviesdata(10, 48).then(res => {
+					console.log("大咖专辑",res)
+					this.albumData = res.data
+				})
+			},
+			methods: {
+				// 去登陆
+				goLogin() {
+					if (window.location.href.indexOf("_reg") == -1 && !foowwLocalStorage.getLocal("urseId")) {
+						this.$message({
+							message: '您还没有登录,请先登录~',
+							type: 'warning',
+							offset: 250
+						})
+						setTimeout(_ => {
+							window.location.href = "./login_reg_main.html"
+						}, 1000)
+						return false
+					}else if(!this.isAuth) {
+						this.$message({
+							message: '您还没有认证,请先认证~',
+							type: 'warning',
+							offset: 250
+						})
+						setTimeout(_ => {
+							window.location.href = "../view/consultation/con_auth_data.html"
+						}, 1000)
+						return false
+					}
+					return true
+				},
+				// 去评论
+				goComment() {
+					$('html,body').animate({
+						scrollTop: $(".bry_video_text").offset().top - 166
+					}, 500)
+					$(".bry_video_text").children(":first").focus()
+				},
+				// 收藏状态
+				async changeCollect() {
+					if(!this.goLogin()){
+						return
+					} 
+					await ajax("post", "UserCollection/AddDo", '{"DataId":"' + this.inforId + '","Kind":"' + "1" + '","UserId":"' +
+						this.UserId + '"}', "123456")
+					// 当前详情页请求
+					getAjax("get", "Articles/DetailDo", '{"Id":"' + this.inforId + '","UserId":"' + this.UserId + '"}', ).then(res => {
+				
+						this.indexData1 = res.data
+						this.collectBoolean = res.data.Collect
+						console.log("当前文章数据:", this.indexData1)
+					}, err => {
+						console.log(err)
+					})
+				},
+				// 发表评价
+				async release() {
+					if(!this.goLogin()){
+						return
+					} 
+					if (!this.contents.trim()) return
+					await ajax("post", "ArticleComment/PublishDo", '{"ArticleId":"' + this.inforId + '","UserId":"' + this.UserId +
+						'","Contents":"' + this.contents + '"}')
+					this.contents = ''
+					// 获取评论
+					getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.inforId +
+						'","UserId":"' + this.UserId + '"}').then(res => {
+						console.log("评价", res)
+						this.commentList = res.data.map(item => {
+							return {
+								...item,
+								isShow: false,
+								replyContent: ''
+							}
+						})
+					})
+				},
+				// 点击展开回复列表
+				replyComment(item, index) {
+					if(!this.goLogin()){
+						return
+					} 
+					item.isShow = !item.isShow
+					this.$nextTick(() => {
+						$('html,body').animate({
+							scrollTop: $(".bry_publish_reply").eq(index).offset().top - 100
+						}, 500)
+						$(".bry_publish_reply").eq(index).children(":first").focus()
+					})
+				},
+				// 回复评价
+				async replyCom(item) {
+					if (!item.replyContent.trim()) {
+						return this.$message({
+							message: "请输入回复内容~",
+							type: 'warning',
+							offset: 250
+						})
+					}
+					// 回复评价的请求
+					await ajax("post", "ArticleComment/ReplyDo", '{"ArticleId":"' + this.inforId + '","UserId":"' + this.UserId +
+						'","Contents":"' + item.replyContent + '","ParentId":"' + item.Id + '"}', "123456")
+				
+					// 回复后刷新评价
+					getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.inforId +
+						'","UserId":"' + this.UserId + '"}').then(res => {
+						console.log("评价", res)
+						this.commentList = res.data.map(item => {
+							return {
+								...item,
+								isShow: false,
+								replyContent: ''
+							}
+						})
+					})
+				},
+				// 点赞评论
+				async agreeComment(CommentId) {
+					if(!this.goLogin()){
+						return
+					} 
+					await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+						'","Flag":"' + 1 + '"}', "123456")
+					// 重新请求评价列表
+					getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.inforId +
+						'","UserId":"' + this.UserId + '"}').then(res => {
+						console.log("评价", res)
+						this.commentList = res.data.map(item => {
+							return {
+								...item,
+								isShow: false,
+								replyContent: ''
+							}
+						})
+					})
+				}
+			}
+		})
+	</script>
+</html>

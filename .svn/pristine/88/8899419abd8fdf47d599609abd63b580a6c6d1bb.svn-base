@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人注册</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/industry_register.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/person_register.css" />
+		<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/vue.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+		<script src="../static/js/register.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app3">
+			<!-- 头部 -->
+			<div id="header">
+				<header-item></header-item>
+			</div>
+			<!-- 个人注册 -->
+			<div class="bry_industry inner">
+				<div class="bry_industry_tit ">
+					<div class="kind">普通用户</div>
+					<div class="tit_center">郑重承诺：本平台将严格保守个人隐私。请放心！</div>
+					<div class="gologin">
+						<span>已有账号?</span>
+						<a href="login_reg_main.html">立即登录</a>
+					</div>
+				</div>
+				<!-- 内容区 -->
+				<div class="bry_industry_con clearfix">
+					<div class="bry_industry_con_le fl">
+						<div class="bry_industry_le_ji">
+							<span>基本资料</span><span>*</span><span>观看、学习、了解完善选项</span>
+						</div>
+						<div class="bry_industry_le_input">
+							<register roleid="1"></register>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer">
+				<div class="bry_footer">
+					<div class="inner">
+						<div class="bry_footer_nav">
+							<ul class="clearfix">
+								<li><a href="index.html">首页</a></li>
+								<li><a href="bry_information.html">资讯</a></li>
+								<li><a href="bry_Movies.html">视频</a></li>
+								<li><a href="bry_audioFrequency.html">音频</a></li>
+								<li><a href="bry_forum.html">论坛</a></li>
+								<li><a href="encyclopedias.html">百科</a></li>
+								<li><a href="book.html">电子书</a></li>
+								<li><a href="about.html">关于我们</a></li>
+							</ul>
+						</div>
+						<div class="bry_copy_msg clearfix">
+							<div class="fl">
+								<img src="../assets/icon/footer/official_account.gif">
+								<div class="tc">关注公众号</div>
+							</div>
+							<div class="fl">
+								<img src="../assets/icon/footer/phone_code.gif">
+								<div class="tc">手机网站</div>
+							</div>
+							<div class="bry_copyright fl">
+								<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+								<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+								<div>All Rights Reserved, Copyright 2019-2020</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app3 = new Vue({
+			el: '#app3',
+			
+		})
+	</script>
+</html>

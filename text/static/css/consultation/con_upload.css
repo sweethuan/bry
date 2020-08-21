@@ -1,0 +1,184 @@
+.bry_main {
+    width: 1088px;
+    position: relative;
+    padding-top: 54px;
+}
+
+/* 导航栏 */
+.bry_topnav {
+    padding-left: 14px;
+    padding-bottom: 16px;
+}
+
+.bry_topnav>li {
+    float: left;
+}
+.bry_topnav button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+	outline: none;
+	font-weight: 800;
+}
+.bry_nav_space {
+    padding-right: 50px;
+}
+.bry_nav_sel {
+    color: #059fbf !important;
+}
+
+/* 排序二字 */
+.bry_topnav_sort {
+    font-size: 14px;
+    color: #333333;
+    position: absolute;
+    right: 52px;
+    top: 62px;
+}
+
+/* 列表 */
+.bry_list {
+    width: 100%;
+    height: 508px;
+    background: #fff;
+    font-size: 12px;
+    color: #666666;
+}
+
+.bry_list>ul>li {
+    padding: 12px 0;
+    padding-left: 8px;
+    line-height: 24px;
+}
+.bry_list>ul>li:nth-of-type(1) {
+    padding-top: 16px;
+}
+
+.bry_list_1 input {
+    vertical-align: text-bottom;
+}
+.bry_list_1 {
+    width: 390px;
+    padding-right: 74px;
+}
+
+.bry_list_2 {
+    display: block;
+    width: 160px;
+}
+
+.bry_list_3 {
+    display: block;
+    width: 126px;
+}
+
+.bry_list_4 button {
+    border: none;
+    background: none;
+    font-size: 12px;
+    color: #666666;
+    outline: none;
+    cursor: pointer;
+}
+.bry_list_4_shu {
+    padding-right: 1em;
+}
+.bry_list_4>li {
+    float: left;
+    position: relative;
+}
+.bry_list_4_shu::after {
+    content: "";
+    display: block;
+    height: 14px;
+    border-right: 1px solid #666666;
+    position: absolute;
+    right: 0.5em;
+    top: 5px;
+}
+
+.bry_list_5 {
+    width: 86px;
+    height: 24px;
+    border: 1px solid #059fbf;
+    border-radius: 6px;
+    text-align: center;
+    margin-left: 30px;
+    outline: none;
+}
+
+/* 功能及页码 */
+.bry_func {
+	padding-top: 22px;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+
+.bry_func_left>li {
+    float: left;
+    margin-right: 14px;
+}
+.bry_func_left button {
+    font-size: 14px;
+    color: #333333;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    height: 24px;
+}
+.bry_func_left span {
+    font-size: 14px;
+    color: #333333;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    height: 24px;
+    margin-right: 20px;
+}
+.bry_func_right{
+    margin-right: 100px
+}
+.bry_func_right>button {
+    height: 24px;
+    border: none;
+    font-size: 14px;
+    color: #666666;
+    outline: none;
+	cursor: pointer;
+	background: transparent;
+}
+.bry_func_right>button:nth-of-type(1) {
+    margin-right: 16px;
+}
+.bry_func_right>button:nth-of-type(2) {
+    margin-right: 20px;
+}
+.bry_func_right>button:nth-of-type(3) {
+    width: 86px;
+    background: #059fbf;
+    border-radius: 4px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+/* 添加按钮 */
+.bry_addbtn {
+	width: 442px;
+	height: 34px;
+	line-height: 34px;
+	font-size: 20px;
+	color: white;
+	background: #059fbf;
+	border: none;
+	border-radius: 30px;
+	text-indent: 10px;
+	letter-spacing: 10px;
+	margin-left: 256px;
+	margin-top: 56px;
+	outline: none;
+	cursor: pointer;
+}

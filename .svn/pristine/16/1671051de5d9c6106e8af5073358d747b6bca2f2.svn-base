@@ -1,0 +1,511 @@
+.bry_video_content {
+	background-color: #002830;
+	padding-bottom: 30px;
+}
+
+.bry_video_list {
+	background-color: #001317;
+	height: 843px;
+	overflow: hidden;
+}
+
+.bry_video_list>.fl {
+	position: relative;
+	width: 1000px;
+}
+
+.share_box{
+	width: 500px;
+	position: absolute;
+	top: 640px;
+	right: 0px;
+	font-size: 16px;
+	color: #FFFFFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.share_box img{
+	margin: 5px 5px;
+	cursor: pointer;
+}
+.share_box span{
+	cursor: pointer;
+}
+.bry_video_list .bry_video_play {
+	position: relative;
+	height: 620px;
+	background-color: #000000;
+}
+.bry_video_list .bry_video_play .video-player,
+#vjs_video_3 {
+	height: 100%;
+}
+
+/* 支付弹出层 */
+.bry_video_playmask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  padding: 150px 25%; 
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,.3);
+	z-index: 99;
+}
+#J_prismPlayer:-webkit-full-screen + .bry_video_playmask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 150px 25%; 
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,.3);
+	z-index: 99;
+}
+.bry_video_playmask > div:first-child {
+	font-size: 24px;
+	color: #ff6000;
+	text-indent: 2em;
+}
+.bry_video_playmask > div:nth-child(2) {
+	font-size: 18px;
+	color: #fff;
+}
+.bry_video_playmask > div:nth-child(3) {
+	font-size: 24px;
+	color: #fff;
+}
+.bry_video_playmask .bry_video_pay {
+	padding: 8px 0 0;
+	color: #fff;
+}
+.bry_video_playmask .bry_video_pay .txt {
+	font-size: 14px;
+	text-align: center;
+}
+.bry_video_playmask .bry_video_pay .imgs {
+	width: 176px;
+	height: 176px;
+	margin-bottom: 6px;
+}
+.bry_video_playmask > div b {
+	color: #ff6000;
+	margin-left: 18px;
+}
+
+.bry_video_payclass {
+	background-color: #fff;
+	margin-left: 30px;
+	color: #333;
+	padding: 15px 35px;
+}
+.bry_video_payitem ~ .bry_video_payitem {
+	margin-top: 26px;
+}
+.bry_video_payclass .fl img {
+	width: 36px;
+	height: 36px;
+	margin-right: 15px;
+	margin-top: 10px;
+}
+.bry_video_recomlist {
+	overflow-y: scroll;
+}
+
+/*滚动条整体样式*/
+.bry_video_recomlist::-webkit-scrollbar {
+	width: 10px;
+	height: 1px;
+}
+
+/*滚动条滑块*/
+.bry_video_recomlist::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background: #004957;
+}
+
+/*滚动条轨道*/
+.bry_video_recomlist::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	background: transparent;
+}
+
+.bry_video_antho {
+	padding: 20px 0 20px 44px;
+}
+
+.bry_video_antho button {
+	width: 24px;
+	height: 24px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #017289;
+	border: none;
+	outline: none;
+	margin-right: 16px;
+	cursor: pointer;
+}
+
+.bry_video_drama_name {
+	padding-left: 44px;
+	font-size: 18px;
+	color: #fff;
+}
+
+.bry_video_lable {
+	padding-left: 44px;
+}
+.bry_video_lable > div {
+	display: inline-block;
+}
+
+.bry_video_lable span {
+	font-size: 12px;
+	color: #a3a7a7;
+}
+
+.bry_video_lable span:first-child {
+	padding-left: 26px;
+	padding-right: 20px;
+	background: url(../../assets/icon/bry_video_info/bry_video_see.png) no-repeat left;
+}
+
+.bry_video_lable span:nth-child(2) {
+	padding-right: 18px;
+	margin-right: 86px;
+	background: url(../../assets/icon/bry_video_info/bry_video_lower.png) no-repeat right;
+}
+
+.bry_video_lable button {
+	width: 54px;
+	height: 20px;
+	background-color: #00282f;
+	font-size: 12px;
+	color: #017289;
+	margin-right: 12px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+}
+
+.bry_video_intro {
+	padding: 20px 30px 20px 150px;
+	font-size: 12px;
+	color: #fff;
+}
+
+.bry_video_list>.fr {
+	width: 300px;
+	color: #fff;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.bry_video_list .bry_video_name {
+	font-size: 14px;
+	padding: 14px 0 4px;
+}
+
+.bry_video_recomlist {
+	overflow-y: scroll;
+}
+
+/*滚动条整体样式*/
+.bry_video_recomlist::-webkit-scrollbar {
+	width: 10px;
+	height: 1px;
+}
+
+/*滚动条滑块*/
+.bry_video_recomlist::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background: #6e4369;
+}
+
+/*滚动条轨道*/
+.bry_video_recomlist::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	background: transparent;
+}
+
+.bry_video_list .bry_video_total {
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+
+.bry_video_list li {
+	margin-bottom: 40px;
+}
+
+.bry_video_list li img {
+	width: 130px;
+	height: 72px;
+	margin-right: 12px;
+	border-radius: 7px;
+}
+
+.bry_video_choice_name {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.bry_video_choice_total {
+	margin-bottom: 10px;
+}
+
+.bry_video_hotplay {
+	font-size: 18px;
+}
+
+.bry_video_recom {
+	padding: 30px;
+	font-size: 20px;
+	color: #fff;
+}
+
+.bry_video_recom>div:first-child {
+	margin-bottom: 28px;
+}
+
+.bry_video_swiper1 {
+	position: relative;
+}
+
+.swiper-container {
+	width: 1160px;
+}
+
+.swiper-slide img {
+	width: 226px;
+	height: 126px;
+	border-radius: 8px;
+}
+
+.bry_video_comment_title,
+.bry_video_marve_title {
+	font-size: 20px;
+	color: #fff;
+	padding-left: 44px;
+}
+
+.bry_video_comment_title sub,
+.bry_video_marve_title sub {
+	font-size: 14px;
+	color: #a3abad;
+	padding-left: 18px;
+	vertical-align: baseline;
+}
+
+.bry_video_text {
+	width: 1180px;
+	height: 250px;
+	box-sizing: border-box;
+	margin: 20px auto 28px;
+	border-radius: 7px;
+	background-color: #efefef;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, .4) inset;
+	overflow: hidden;
+	padding-bottom: 12px;
+}
+
+.bry_video_text textarea {
+	width: 100%;
+	height: 200px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 14px;
+	color: #017289;
+	vertical-align: middle;
+}
+
+.bry_video_text textarea::placeholder {
+	font-size: 14px;
+	color: #017289;
+}
+
+.bry_video_text_posts {
+	padding: 0px 26px 0px 60px;
+}
+
+.bry_video_text_posts span {
+	display: inline-block;
+	transform: translateY(18px);
+	font-size: 14px;
+	color: #017289;
+}
+
+.bry_video_text_posts span:first-child {
+	padding-left: 28px;
+	padding-right: 20px;
+	background: url(../../assets/icon/bry_video_info/bry_video_expre.png) no-repeat left;
+	background-size: 19px 19px;
+}
+
+.bry_video_text_posts span:nth-child(2) {
+	padding-left: 26px;
+	background: url(../../assets/icon/bry_video_info/bry_video_window.png) no-repeat left;
+	background-size: 19px 19px;
+}
+
+.bry_video_text_posts button {
+	width: 112px;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	background-color: #017289;
+	font-size: 24px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.bry_video_marve ul {
+	padding: 0 70px;
+}
+
+.bry_video_marveitem {
+	margin: 22px 0;
+}
+
+.bry_video_marve img.fl {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.bry_video_marveitem>div.fl {
+	width: 1120px;
+}
+
+.bry_video_marve_name {
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.bry_video_marve_name span {
+	margin-right: 118px;
+}
+
+.bry_video_marve_comme {
+	line-height: 22px;
+}
+
+.bry_video_marve_comme>span {
+	font-size: 12px;
+	color: #02c6d5;
+}
+
+.bry_video_marve_comme .fr {
+	padding-right: 40px;
+}
+
+.bry_video_marve_comme .fr span {
+	font-size: 16px;
+	color: #fff;
+	margin-left: 20px;
+	padding-left: 24px;
+	cursor: pointer;
+}
+
+.bry_video_marve_comme .fr span:first-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_msg.png) no-repeat left;
+}
+
+.bry_video_marve_comme .fr span:last-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_good.png) no-repeat left;
+}
+.bry_video_marve_comme .fr span.active {
+	background: url(../../assets/icon/bry_video_info/bry_video_goodagree.png) no-repeat left;
+	color: #ff9602;
+}
+
+.bry_video_marvereply {
+	background-color: #017289;
+	border-radius: 6px;
+	color: #02c6d5;
+	font-size: 12px;
+	margin: 8px 0;
+	padding: 16px 44px 16px 20px;
+}
+
+.bry_video_marvereply_time {
+	margin-top: 40px;
+	padding-left: 60px;
+}
+
+.bry_video_marvereply_time .fr span {
+	font-size: 16px;
+	margin-left: 20px;
+	padding-left: 24px;
+	cursor: pointer;
+}
+
+.bry_video_marvereply_time .fr span:first-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_msg1.png) no-repeat left;
+}
+
+.bry_video_marvereply_time .fr span:last-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_good1.png) no-repeat left;
+}
+.bry_publish_reply {
+	position: relative;
+	height: 150px;
+	background-color: #017289;
+	border-radius: 4px;
+	padding: 10px 14px;
+	box-sizing: border-box;
+}
+.bry_publish_reply textarea {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	color: #02c6d5;
+}
+.bry_publish_reply textarea::placeholder {
+	color: #02c6d5;
+}
+.bry_publish_reply button {
+	position: absolute;
+	bottom: 15px;
+	right: 50px;
+	width: 100px;
+	height: 36px;
+	border-radius: 4px;
+	color: #02c6d5;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: #002830;
+}
+.bry_video_mero {
+	line-height: 50px;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+	background-color: #017289;
+	border-radius: 5px;
+	margin: 40px 70px 0;
+	cursor: pointer;
+}
+
+.bry_video_mero img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 8px;
+}
+
+
+

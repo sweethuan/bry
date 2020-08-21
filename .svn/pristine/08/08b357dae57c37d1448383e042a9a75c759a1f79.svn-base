@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/login_reg_main.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/vue.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+		<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入网络请求 -->
+		<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+		<div id="app">
+			<!-- 头部 -->
+			<div id="header">
+				<header-item></header-item>
+			</div>
+			<!-- 内容区 -->
+			<div class="bry_login_main inner">
+				<div class="bry_login_top">
+					<div class="bry_login_box" v-show=!showFindPsd>
+						<div class="bry_box_tit">
+							用户登录
+						</div>
+						<div class="bry_box_con">
+							<div class="bry_box_input">
+								<div class="bry_user"><input type="text" ref="mobile" autocomplete="off" v-model="mobile" placeholder="邮箱/手机号"></div>
+								<div class="bry_password"><input type="password" v-model="psd" ref="psd" placeholder="密码"></div>
+							</div>
+							<div class="bry_box_forget clearfix">
+								<span class="fl"><input type="checkbox" ref="remenmber" v-model="isSelect" /><a>记住账号</a></span>
+								<span class="fr"  ><a href="#" @click="findPsd">找回账号或密码</a></span>
+							</div>
+							<!-- 登录按钮 -->
+							<div class="bry_login_btn">
+								<button type="button" @click="login">登 录</button>
+							</div>
+							<!-- 第三方登录 -->
+							<div class="bry_box_thirdpart clearfix">
+								<div class="bry_box_QQ fl">
+									<a href="#">
+										<figure>
+											<img src="../assets/icon/qq.png">
+											<figcaption>QQ登录</figcaption>
+										</figure>
+									</a>
+								</div>
+								<div class="bry_box_Weixin fr">
+									<a href="#">
+										<figure>
+											<img src="../assets/icon/weixin.png">
+											<figcaption>微信登录</figcaption>
+										</figure>
+									</a>
+								</div>
+							</div>
+							<!-- select -->
+							<!-- <div class="bry_box_select">
+							<input type="checkbox" name="" id="" value="" />
+							勾选代表你同意<a href="#">《注册声明》</a><a href="#">《版权声明》</a><a href="#">《隐私声明 》</a>
+						</div> -->
+
+						</div>
+					</div>
+				</div>
+
+				<!--找回密码弹出层 -->
+				<div class="findpsd" v-show="showFindPsd" @click.self="closePop()">
+					<div class="findPsdCont">
+						<div class="findPsdTop">
+							找回密码
+						</div>
+						<div class="findPsdTitle">
+							<p ><span :class="psdStep?'findpsdActive add':''">1</span>账号验证</p>
+							<p ><span :class="!psdStep?'findpsdActive add':''">2</span>重置密码</p>
+						</div>
+					
+						<div class="inputData" :class="nextStepVal?'dn':'db'">
+							
+							<div class="inputData1">
+								<img src="../assets/icon/findPsdPic1.png" alt="">
+								<input type="text" placeholder="请输入手机号码或邮箱" v-model="userNum">
+							</div>
+							<div class="inputData2">
+								<img src="../assets/icon/findPsdPic2.png" alt="">
+								<input type="text" placeholder="请输入验证码"    v-model="testCode">
+								<button :class="disabled?'notActive':''" :disabled="disabled" @click="getCode" v-html="timer">获取验证码</button>
+							</div>
+						</div>
+						<!-- 重置密码 -->
+						<div class="resetPsd "  :class="nextStepVal?'db':'dn'" >
+							<div class="inputData1">
+								<img src="../assets/icon/findPsdPic3.png" alt="">
+								<input :type="openPsd1?'password':'text'" placeholder="请输入新密码" v-model="resetPsd1" >
+								<img src="../assets/icon/close-eye1.png" alt="" v-if="openPsd1" @click="openPassd1">
+								<img src="../assets/icon/open-eye1.png" alt="" v-else   @click="openPassd1">
+
+							</div>
+							<div class="inputData1">
+								<img src="../assets/icon/findPsdPic3.png" alt="">
+								<input :type="openPsd2?'password':'text'" placeholder="请再输入一次新密码" v-model="resetPsd2" >
+								<img src="../assets/icon/close-eye1.png" alt="" v-if="openPsd2"   @click="openPassd2">
+								<img src="../assets/icon/open-eye1.png" alt="" v-else   @click="openPassd2">
+							</div>
+						</div>
+						<button @click="nextStep()" v-show="!nextStepVal">下一步</button>
+						<button @click="resetPsd" v-show="nextStepVal">完成</button>
+					</div>
+				</div>
+				<!-- 用户注册 -->
+				<div class="bry_user_register inner">
+					<div class="bry_user_register_tit">
+						用户注册
+					</div>
+					<ul class="bry_user_register_con">
+						<li><a href="person_register.html">
+								<img src="../assets/icon/pic3.png">
+								<span>个人</span>
+								<p>给个人提供评论、论坛交流、咨询讲师、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+						<li><a href="student_register.html">
+								<img src="../assets/icon/pic6.png">
+								<span>学生</span>
+								<p>给学生提供学习、评论、论坛交流、咨询讲师、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+						<li><a href="teacher_register.html">
+								<img src="../assets/icon/pic5.png">
+								<span>教师</span>
+								<p>给老师提供上传音/视频课程和专业著作、<br>
+									学生考评统计、评论、论坛交流、咨询、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+						<li><a href="doctor_register.html">
+								<img src="../assets/icon/pic4.png">
+								<span>医生</span>
+								<p>给医生提供上传音/视频和专业著作及学术成果、<br>
+									评论、论坛交流、咨询、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+						<li><a href="mind_register.html">
+								<img src="../assets/icon/pic8.png">
+								<span>心理咨询师</span>
+								<p>给心理咨询师提供上传音/视频和专业著作、<br>
+									评论、论坛交流、咨询、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+						<li><a href="industry_register.html">
+								<img src="../assets/icon/pic7.png">
+								<span>行业机构</span>
+								<p>给行业机构提供上传音/视频和专业著作及研究成果、<br>
+									评论、论坛交流、咨询、<br>
+									提问、解答疑问、回复信息等权益。</p>
+							</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="bry_footer">
+					<div class="inner">
+						<div class="bry_footer_nav">
+							<ul class="clearfix">
+								<li><a href="index.html">首页</a></li>
+								<li><a href="bry_information.html">资讯</a></li>
+								<li><a href="bry_Movies.html">视频</a></li>
+								<li><a href="bry_audioFrequency.html">音频</a></li>
+								<li><a href="bry_forum.html">论坛</a></li>
+								<li><a href="encyclopedias.html">百科</a></li>
+								<li><a href="book.html">电子书</a></li>
+								<li><a href="about.html">关于我们</a></li>
+							</ul>
+						</div>
+						<div class="bry_copy_msg clearfix">
+							<div class="fl">
+								<img src="../assets/icon/footer/official_account.gif">
+								<div class="tc">关注公众号</div>
+							</div>
+							<div class="fl">
+								<img src="../assets/icon/footer/phone_code.gif">
+								<div class="tc">手机网站</div>
+							</div>
+							<div class="bry_copyright fl">
+								<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+								<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+								<div>All Rights Reserved, Copyright 2019-2020</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					mobile: '',
+					psd: '',
+					userNum:""   ,//  电话号码或者邮箱
+					testCode:""  ,//验证码
+					resetPsd1:"",   //重置密码1
+					resetPsd2:"",   //重置密码2
+					isSelect: false,
+					showFindPsd:false, //找回密码弹窗状态值
+					psdStep:true,  //找回密码进度值
+					nextStepVal:false   ,//是否进行下一步的值判断()
+					disabled:true   , //是否禁用获取验证码
+					timer:"发送验证码"  ,          //倒计时
+					emailTel:0   ,//手机号为1  邮箱号为2  都不是为0 判断手机或邮箱
+					openPsd1:true   ,//重置密码1是否可见
+					openPsd2:true   ,//重置密码1是否可见
+					nextStepVal:false,  //是否进行下一步
+					getCodeSit:false,  //获取验证码情况
+					inputCodeSit:false,  //输入验证码情况
+				}
+			},
+			created() {
+				// 取出本地数据给data里的赋值
+				foowwLocalStorage.getLocal("mobile") ? this.mobile = foowwLocalStorage.getLocal("mobile") : null
+				foowwLocalStorage.getLocal("psd") ? this.psd = foowwLocalStorage.getLocal("psd") : null
+				foowwLocalStorage.getLocal("isSelect") ? this.isSelect = foowwLocalStorage.getLocal("isSelect") : null
+			},
+			watch:{
+				// 自定义设置手机邮箱的验证规则
+				userNum:function(newVal){
+					var mobleReg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
+					var emailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
+					// console.log(mobleReg.test(this.userNum))
+					if(mobleReg.test(this.userNum)){
+						this.disabled=false
+						console.log("手机号")
+						this.emailTel=1
+
+					}
+					else if(emailReg.test(this.userNum)){
+						this.disabled=false
+						console.log("邮箱号")
+						this.emailTel=2
+					}
+					else{
+						this.disabled=true
+						this.emailTel=0
+					}
+				},
+				testCode:function(){
+					if(this.testCode.length==6){
+						this.inputCodeSit=true
+					}
+				}
+
+				
+			},
+			methods: {
+				// 显示
+				findPsd(){
+					// alert("找回账号密码")
+					var reg = RegExp(/@/);
+					this.showFindPsd=true
+					// console.log(0)
+					
+				},
+
+				// 关闭弹窗
+				closePop(num){
+					this.showFindPsd=false
+				},
+				//定时器
+				setTime(){
+					if(this.timer==0){
+						this.disabled=false
+						this.timer="重新发送"
+					}
+					else{
+						setTimeout(() => {
+							this.timer=this.timer-1
+							this.setTime()
+						}, 1000);
+					}
+				},
+				// 获取验证码
+				getCode(){
+					this.disabled=true
+					console.log("获取验证码")
+					if(this.emailTel==1){
+						//手机验证码接口
+						ajax("post","Users/SendSMSDo", '{"Mobile":"' + this.userNum + '"}',"123456").then(res=>{
+							console.log("手机验证码",res)
+							this.getCodeSit=true
+
+						},err=>{
+							console.log(err)
+						})
+					}
+					else if(this.emailTel==2){
+						//邮箱验证码接口
+						ajax("post","Users/SendEmailDo", '{"Email":"' + this.userNum + '"}',"123456").then(res=>{
+							console.log("邮箱验证码",res)
+							this.getCodeSit=true
+
+						},err=>{
+							console.log(err)
+						})
+					}
+					this.setTime()
+					this.timer=60
+					
+				},
+				// 是否进行下一步的判断
+				nextStep(){
+					
+					// 默认值是false  不进行下一步  为true执行下一步
+					if(this.getCodeSit&&this.inputCodeSit){
+						this.nextStepVal=true
+						this.psdStep=false
+					}
+					
+					
+					
+				},
+
+				// 重置密码可见
+				openPassd1(){
+					this.openPsd1=!this.openPsd1
+				},
+				openPassd2(){
+					this.openPsd2=!this.openPsd2
+				},	
+				// 重置密码
+				resetPsd(){
+					if(this.resetPsd1==this.resetPsd2){
+						ajax("post","Users/ForgetPwdDo",'{"Mobile":"' + this.userNum + '","LoginPwd":"' + this.resetPsd1 + '","MobileCheckCode":"' + this.testCode + '"}',"123456").then(res=>{
+							console.log("重置密码")
+							console.log(res)
+							if(res.info=="手机号不存在"){
+								setTimeout(() => {
+									window.location.reload()
+								}, 2000);
+									return this.$message({
+									message: '手机号不存在，请先注册~',
+									type: 'warning',
+									offset: 250
+								})
+							}
+							else if(res.info=="验证码不正确"){
+								setTimeout(() => {
+									window.location.reload()
+								}, 2000);
+								return this.$message({
+									message: '验证码有误~',
+									type: 'warning',
+									offset: 250
+								})
+							}
+							else{
+								setTimeout(() => {
+									window.location.reload()
+								}, 2000);
+								return this.$message({
+									message: '密码重置成功~',
+									type: 'warning',
+									offset: 250
+								})
+							}
+							
+						},err=>{
+							console.log(err)
+							// return this.$message({
+							// 		message: '验证码有误~',
+							// 		type: 'warning',
+							// 		offset: 250
+							// })
+						})
+					}
+					else{
+						return this.$message({
+								message: '两次密码不一致',
+								type: 'warning',
+								offset: 250
+							})
+					}
+					
+					// setTimeout(() => {
+					// 	window.location.reload()
+					// }, 2000);
+					
+				},
+				async login() {
+					// 如果手机号或密码没输入提示用户
+					if (!this.mobile || !this.psd) {
+						this.$message({
+							message: "请输入手机号和密码",
+							type: 'warning'
+						})
+						return
+					}
+					//发送登录请求
+					let result = await ajax("post", "Users/LoginDo", '{"Mobile":"' + this.mobile + '","LoginPwd":"' + this.psd +
+						'"}', "123456")
+					console.log(result)
+					//返回状态码为-1弹出错误提示	
+					if (result.status == -1) {
+						this.$message.error(result.info)
+						return
+					}
+					// 把用户Id存于本地, 有效期7天
+					foowwLocalStorage.setLocal('urseId', result.data.Id, new Date().getTime() + 604800000)
+					// 把角色Id存于本地, 有效期7天
+					foowwLocalStorage.setLocal('RoleId', result.data.RoleId, new Date().getTime() + 604800000)
+					// 如果用户勾选了记住账户, 把相应的信息存于本地; 或者删除本地相应数据
+					if (this.$refs.remenmber.checked) {
+						foowwLocalStorage.setLocal('mobile', this.mobile, new Date().getTime() + 604800000)
+						foowwLocalStorage.setLocal('psd', this.psd, new Date().getTime() + 604800000)
+						foowwLocalStorage.setLocal('isSelect', this.isSelect, new Date().getTime() + 604800000)
+					} else {
+						window.localStorage.removeItem("mobile")
+						window.localStorage.removeItem("psd")
+						window.localStorage.removeItem("isSelect")
+					}
+					//登录成功, 跳转到首页
+					window.location.href = "index.html"
+				}
+			}
+		});
+	</script>
+</html>

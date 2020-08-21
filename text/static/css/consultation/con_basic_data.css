@@ -1,0 +1,157 @@
+.bry_main {
+    width: 1050px;
+}
+
+/* 标题 */
+.bry_datatitle {
+    font-size: 14px;
+    color: #333333;
+    padding-left: 80px;
+    padding-top: 35px;
+}
+.bry_main .bry_title_1 {
+    font-size: 16px;
+    color: #059fbf;
+    padding-right: 23px;
+    background: url(../../../assets/icon/star.png) no-repeat right 10px center;
+    background-size: 9px 11px;
+}
+
+/* 资料选项 */
+input {
+    outline: none;
+}
+
+.bry_basicdata {
+    font-size: 14px;
+    color: #333333;
+    padding-left: 170px;
+    padding-top: 30px;
+    width: 320px;
+}
+
+.bry_basicdata>li {
+    width: 320px;
+    /* float: left; */
+    height: 100px;
+    margin-right: 80px;
+}
+.bry_basicdata>li>div>span{
+	display: inline-block;
+	width: 80px;
+}
+.bry_basicdata .bry_title_2 {
+    padding-right: 20px;
+    background: url(../../../assets/icon/star.png) no-repeat right 10px center;
+    background-size: 9px 11px;
+    margin-top: 10px;
+	box-sizing: border-box;
+}
+
+.bry_input {
+    width: 240px;
+    height: 42px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.bry_input>input {
+    font-size: 14px;
+    color: #666666;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding-left: 1em;
+    width: 194px;
+}
+.bry_input>button {
+    border: none;
+    background: white;
+    font-size: 14px;
+    color: #059fbf;
+    cursor: pointer;
+    outline: none;
+}
+.bry_input>.show {
+    background: url(../../../assets/icon/pass_show.png) no-repeat center;
+    width: 23px;
+    height: 100%;
+    margin-right: 12px;
+}
+.bry_input>.hide {
+    background: url(../../../assets/icon/pass_hide.png) no-repeat center;
+    width: 23px;
+    height: 100%;
+    margin-right: 12px;
+}
+
+.bry_addtext {
+    font-size: 12px;
+    color: #999999;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 64px;
+    padding-top: 3px;
+}
+
+/* 版权声明 */
+.bry_rule {
+    color: #333333;
+    font-size: 13px;
+    /* text-align: center; */
+    position: relative;
+	width: 100%;
+	padding-left: 210px;
+	box-sizing: border-box;
+}
+.bry_rule a {
+    color: #333333;
+}
+.bry_rule input{
+    vertical-align: middle;
+}
+.bry_rule span {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 6px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+.el-form-item__error {
+    white-space: nowrap;
+}
+.bry_rule button {
+    height: 14px;
+    width: 17px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 4px;
+    outline: none;
+}
+.bry_rule .cb-default {
+    background: url(../../../assets/icon/not_sel.png) no-repeat left bottom;
+}
+.bry_rule .cb-sel {
+    background: url(../../../assets/icon/sel.png) no-repeat left bottom;
+}
+
+/* 保存按钮 */
+.bry_save {
+    padding: 20px 0 0 246px;
+	box-sizing: border-box;
+}
+.bry_save button {
+    width: 240px;
+    height: 42px;
+    border-radius: 5px;
+    background: #059fbf;
+    border: none;
+    font-size: 20px;
+    color: white;
+    outline: none;
+	
+}

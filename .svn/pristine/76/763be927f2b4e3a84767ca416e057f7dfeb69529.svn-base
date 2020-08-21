@@ -1,0 +1,353 @@
+html,body{
+	background-color: #05a0bf;
+	min-width: 1320px;
+}
+.inner{
+	width: 1320px;
+	margin: 0 auto;
+}
+.bry_login_main{
+	height: 900px;
+}
+.bry_login_top{
+	position: relative;
+	height: 404px;
+	padding-top: 40px;
+	box-sizing: border-box;
+}
+.bry_login_box{
+	position: absolute;
+	left: 50%;
+	transform: translate(-342px);
+	width: 684px;
+	height: 300px;
+	border-radius: 7px;
+	background-color: #efefef;
+}
+.bry_box_tit{
+	height: 64px;
+	font-size:20px ;
+	color: #9a9a9a;
+	padding: 20px 0 0 60px;
+	box-sizing: border-box;
+	background: url(../../assets/icon/login.png)20px center no-repeat;
+}
+.bry_box_con{
+	position: absolute;
+	left: 50%;
+	width: 492px;
+	transform: translate(-246px);
+}
+.bry_box_input{
+	height: 100px;
+	box-sizing: border-box;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+}
+.bry_user{
+	height: 50px;
+	padding-left: 56px;
+	background: url(../../assets/icon/user.png) no-repeat 24px center;
+	border-bottom: 1px solid #059fbf;
+}
+.bry_user>input{
+	height: 50px;
+	line-height: 50px;
+	width: 80%;
+	font-size: 14px;
+	color: #999;
+	background-color: transparent;
+	outline: none;
+}
+.bry_password{
+	height: 50px;
+	padding-left: 56px;
+	background: url(../../assets/icon/passowrd.png) no-repeat 24px center;
+}
+.bry_password>input{
+	height: 50px;
+	line-height: 50px;
+	width: 80%;
+	font-size: 14px;
+	color: #999;
+	background-color: transparent;
+	outline: none;
+}
+.bry_box_forget{
+	height: 24px;
+	line-height: 24px;
+	padding: 4px 20px;
+	font-size: 14px;
+}
+.bry_box_forget a{
+	color: #333;
+	vertical-align: middle;
+}
+.bry_box_forget input{
+	vertical-align: middle;
+	margin-right: 4px;
+}
+/* 第三方登录 */
+.bry_box_thirdpart{
+	height: 170px;
+	padding: 26px 92px 35px 92px ;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 18px;
+}
+.bry_box_thirdpart img{
+	width: 88px;
+	height: 88px;
+	padding-bottom: 14px;
+}
+.bry_box_thirdpart a{
+	color: #333;
+}
+.bry_box_select{
+	height: 24px;
+	font-size: 14px ;
+	color: #333;
+	padding-left: 76px;
+	padding-bottom: 28px;
+}
+.bry_box_select a{
+	color: #059fbf;
+}
+.bry_login_btn{
+	margin-top: 12px;
+}
+.bry_login_btn button{
+	width: 100%;
+	height: 48px;
+	border-radius: 7px;
+	color: #fff;
+	font-size: 24px;
+	background-color: #059fbf;
+	text-align: center;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+/* 用户注册 */
+.bry_user_register_tit{
+	height: 36px;
+	padding-left: 96px;
+	font-size: 20px;
+	color: #fff;
+	background: url(../../assets/icon/login_pic.png) 50px no-repeat;
+	background-size: 36px 36px;
+}
+.bry_user_register_con{
+	padding: 28px 50px 0 50px ;
+	box-sizing: border-box;
+}
+.bry_user_register_con>li{
+	float: left;
+	width: 354px;
+	height: 148px;
+	padding-top: 26px;
+	border-radius: 7px;
+	text-align: center;
+	background-color: #efefef;
+	margin-right: 40px;
+	margin-bottom: 30px;
+}
+.bry_user_register_con a{
+	font-size: 24px;
+	color: #333;
+}
+.bry_user_register_con a img{
+	display: inline-block;
+	width:46px ;
+	height: 46px;
+	vertical-align: middle;
+}
+.bry_user_register_con p{
+	font-size: 12px;
+	color: #333;
+	padding-top: 17px;
+}
+
+
+
+/* 找回密码弹出层 */
+.findpsd{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(2,79,95,0.5);
+	
+	z-index: 10;
+}
+/* 找回密码内容区 */
+.findPsdCont{
+	width: 650px;
+	height: 480px;
+	background: #efefef;
+	position: fixed;
+	top: 200px;
+	left: 50%;
+	transform:translate(-50%) ;
+	border-radius: 7px;
+	padding: 30px 76px;
+	box-sizing: border-box;
+}
+.findPsdTop{
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color: #333333;
+}
+.findPsdTitle{
+	width: 100%;
+	border-bottom: 2px solid #999999;
+	padding: 0 114px;
+	box-sizing: border-box;
+	margin-top: 38px;
+}
+.findPsdTitle>p{
+	position: relative;
+}
+.findPsdTitle>p:first-child{
+	display: inline-block;
+}
+.findPsdTitle>p:last-child{
+	display: inline-block;
+	margin-left: 110px;
+}
+.findpsd p span{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	align-items: center;
+	background: #999999;
+	color: #ffffff;
+	border-radius: 50%;
+	font-size: 12px;
+	margin-right: 5px;
+}
+.findpsdActive{
+	background:#059fbf !important;
+}
+/* 伪类分割线 */
+.add::after{
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 17px;
+	content: "";
+	width: 80px;
+	height: 4px;
+	background: #059fbf;
+}
+
+.inputData{
+	width: 100%;
+	margin-top: 50px;
+}
+.inputData1{
+	width: 100%;
+	height: 56px;
+	border-radius: 5px;
+	border: 1px solid #059fbf;
+	padding-left:  20px;
+	box-sizing: border-box;
+	line-height: 56px;
+}
+.inputData1>img:nth-of-type(1){
+	width: 24px;
+	height: 24px;
+	float: left;
+	margin-top: 16px;
+	
+}
+.inputData1>img:nth-of-type(2){
+	width: 24px;
+	height: 14px;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+	
+}
+.inputData1>input{
+	width: 70%;
+	height: 24px;
+	padding-left: 15px;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: #efefef;
+	
+	
+}
+.inputData2{
+	width: 100%;
+	height: 56px;
+	border-radius: 5px;
+	border: 1px solid #059fbf;
+	padding-left:  20px;
+	box-sizing: border-box;
+	line-height: 56px;
+	
+}
+
+.inputData2>img:nth-of-type(1){
+	width: 24px;
+	height: 24px;
+	float: left;
+	margin-top: 16px;
+	
+}
+.inputData2>img:nth-of-type(2){
+	width: 24px;
+	height: 14px;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+	
+}
+.inputData2>input{
+	width: 65%;
+	height: 24px;
+	padding-left: 15px;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	background: #efefef;
+	
+	
+}
+.inputData2>button{
+	width: 130px;
+	height: 100%;
+	background: #05a0bf;
+	float: right;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: #ffffff;
+}
+/* 重置密码 */
+.resetPsd{
+	width: 100%;
+	margin-top: 50px;
+}
+/* 点击下一步 */
+.findPsdCont>button{
+	width: 100%;
+	height: 52px;
+	background: #059fbf;
+	color: #ffffff;
+	font-size: 18px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	margin-top: 88px;
+}
+.notActive{
+	background: #999999 !important;
+}

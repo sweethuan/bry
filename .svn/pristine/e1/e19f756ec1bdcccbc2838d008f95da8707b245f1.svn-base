@@ -1,0 +1,109 @@
+.bry_main {
+    width: 1078px;
+    padding-top: 54px;
+    padding-right: 28px;
+	box-sizing: border-box;
+}
+
+/* 几种间距 */
+.space1 {
+    margin-bottom: 30px;
+}
+
+.vedio_space {
+    margin-right: 10px;
+}
+.audio_space {
+    margin-right: 24px;
+}
+.info_space {
+    margin-right: 80px;
+}
+.baike_space {
+    margin-bottom: 14px;
+}
+.forum_space {
+    margin-right: 146px;
+    margin-bottom: 18px;
+}
+
+/* 相同的title */
+.bry_comtitle {
+    padding-bottom: 16px;
+}
+.bry_comtitle>span {
+    font-size: 14px;
+    color: #059fbf;
+}
+.bry_comtitle>button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 选项列表 */
+.bry_option_list{
+	width: 100%;
+}
+.bry_option_list>li{
+	float: left;
+	font-size: 16px;
+	margin-right: 40px;
+	cursor: pointer;
+}
+
+/* 选项内容 */
+.bry_option_content{
+	width: 600px;
+	margin: 20px 0 0 32px;
+}
+.bry_option_content>li{
+	width: 100%;
+	padding-left: 16px;
+	margin-top: 16px;
+	font-size: 12px;
+	box-sizing: border-box;
+	background: url(../../../assets/icon/title-pic1.png) no-repeat left  center;
+	background-size: 14px 14px;
+}
+.bry_option_content>li>a{
+	display: inline-block;
+	padding-bottom: 2px;
+	width: 100%;
+	border-bottom: 1px dashed #666666;
+	box-sizing: border-box;
+	color: #666666;
+}
+.bry_option_content>li>a>span:first-child{
+	float: left;
+	width: 460px;
+	overflow: hidden;
+}
+.bry_option_content>li>a>span:last-child{
+	float: right;
+	width: 120px;
+}
+/* 上一页下一页 */
+.bry_next_last{
+	position: absolute;
+	left: 990px;
+	bottom: 200px;
+}
+.bry_next_last>li{
+	float: left;
+	margin-left: 16px;
+	font-size: 14px;
+	color: #333333;
+	cursor: pointer;
+}
+/* 选中列表 */
+.bry_option_list_checked{
+	color: #059fbf;
+}
+
+

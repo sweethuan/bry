@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>我的消息</title>
+
+		<link rel="stylesheet" type="text/css" href="../../static/other/layui/css/layui.css" />
+		<link rel="stylesheet" href="../../static/css/common.css" />
+		<link rel="stylesheet" href="../../static/css/login_common.css" />
+		<link rel="stylesheet" href="../../static/css/consultation/con_message.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+		<script src="../../static/js/jquery.min.js"></script>
+		<script src="../../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/JavaScript" charset="UTF-8" src="../../static/js/header2.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+
+			<div class="bry_container">
+				<!-- 标题及退出登录 -->
+				<div class="bry_title_logout clearfix">
+					<p class="fl">{{comClass}}信息</p>
+					<!-- <a class="fr">已登录<a href="">退出</a></p> -->
+				</div>
+				<!-- 内容区 -->
+				<div class="bry_inner clearfix">
+					<div class="bry_head_leftnav fl">
+						<!-- 头像与名字 -->
+						<div class="bry_people">
+							<div class="bry_people_pic">
+								<img src="../..//assets/img/mechanism/headicon.jpg" />
+								<span>{{comClass}}</span>
+							</div>
+							<span>{{username}}</span>
+						</div>
+						<!-- 认证与充值 -->
+						<div class="bry_authentication_recharge">
+							<span v-if="!isAuth">待认证</span>
+							<span v-else>已认证</span>
+							<a href="con_recharge.html">会员充值</a>
+						</div>
+						<!-- 侧导航 -->
+						<ul class="bry_sidenav">
+							<li class="bry_space1">
+								<a href="con_basic_data.html">基本资料</a>
+							</li>
+							<li class="bry_space1">
+								<a :href="RoleId == 2 ? 'stu_auth_data.html' : 'con_auth_data.html'">认证资料</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_browse.html">我的浏览</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_answer.html">我的答疑</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_comment.html">我的评论</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_forum.html">我的论坛</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_upload.html">我的发布</a>
+							</li>
+							<li class="bry_space2 bry_sidenav_sel">
+								<a href="con_message.html">我的消息</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_account.html">我的账户</a>
+							</li>
+							<li class="bry_space2" v-if="RoleId==2">
+								<a href="stu_study.html">我的学习</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bry_main fl">
+						<!-- <table id="demo" lay-filter="test"></table> -->
+						<!-- 选项列表 -->
+						<ul class="bry_option_list clearfix">
+							<li :class="{bry_option_list_checked:currentIndex == index}" v-for="(item, index) in topNav"
+								@click="changeIndex(index)">{{item}}</li>
+						</ul>
+						<ul class="bry_content clearfix">
+							<li class="bry_content_item">
+								<span>bulu</span>
+								<span>评论了发布的内容</span>
+								<span class="fr">2020-10-20</span>
+							</li>
+							<li class="bry_content_item">
+								<span>bulu</span>
+								<span>评论了发布的内容</span>
+								<span class="fr">2020-10-20</span>
+							</li>
+							<li class="bry_content_item">
+								<span>bulu</span>
+								<span>评论了发布的内容</span>
+								<span class="fr">2020-10-20</span>
+							</li>
+							<li class="bry_content_item">
+								<span>bulu</span>
+								<span>评论了发布的内容</span>
+								<span class="fr">2020-10-20</span>
+							</li>
+						</ul>
+						<ul class="bry_next_last fr clearfix" >
+							<li >首页</li>
+							<li >上一页&gt;</li>
+							<li >下一页&lt;</li>
+							<li >尾页</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="../index.html">首页</a></li>
+							<li><a href="../bry_lecturer.html">讲师</a></li>
+							<li><a href="../bry_information.html">资讯</a></li>
+							<li><a href="../bry_Movies.html">视频</a></li>
+							<li><a href="../bry_audioFrequency.html">音频</a></li>
+							<li><a href="../bry_forum.html">论坛</a></li>
+							<li><a href="../encyclopedias.html">百科</a></li>
+							<li><a href="../book.html">电子书</a></li>
+							<li><a href="../about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../../assets/icon/footer/official_account.gif" />
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../../assets/icon/footer/phone_code.gif" />
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>
+								重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有
+							</div>
+							<div>
+								渝ICP备005665656号<img src="../../assets/icon/footer/keep_on_record.png" />渝公安备 50019002501739
+							</div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/JavaScript" charset="UTF-8">
+		var vueobj = new Vue({
+			el: '#app',
+			data() {
+				return {
+					RoleId: '',     // 角色id
+					username: '',
+					UserId: '',
+					isAuth: '',  // 是否认证
+					topNav: ["消息中心", "系统推送"],
+					currentIndex: 0
+				}
+			},
+			created() {
+				this.UserId = foowwLocalStorage.getLocal("urseId")
+				this.RoleId = foowwLocalStorage.getLocal("RoleId")
+				//ajax请求昵称
+				getAjax("get","Users/DetailDo",'{"UserId":"' + this.UserId + '"}').then(res=>{
+					this.username=res.data.NickName
+					this.isAuth = res.data.IsAuth
+				},err=>{
+					console.log(err)
+				})
+				// 请求我的消息
+				getAjax("get", "UserMessages/MySysMessageDo", '{"PageSize":"' + 10 + '","PageNum":"' + 1 + '","UserId":"' + this.UserId + '"}').then(res => {
+					console.log(res)
+				}, rej => {
+					console.log(rej)
+				})
+				
+			},
+			computed: {
+				comClass(){
+					return this.RoleId == 1 ? "个人" : this.RoleId == 2 ? "学生" : this.RoleId == 3 ? "讲师" : this.RoleId == 4 ? "医师" : this.RoleId == 5 ? "心里资讯师" : "机构"
+				}
+			},
+			methods: {
+				changeIndex(index) {
+					if(this.currentIndex===index) return
+					this.currentIndex = index
+				}
+			}	
+		});
+	</script>
+</html>

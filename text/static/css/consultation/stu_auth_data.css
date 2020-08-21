@@ -1,0 +1,522 @@
+.bry_main {
+    width: 920px;
+}
+
+/* 标题 */
+.bry_datatitle {
+    font-size: 14px;
+    color: #333333;
+    padding-left: 50px;
+    padding-top: 35px;
+    padding-bottom: 34px;
+}
+.bry_main .bry_title_1 {
+    font-size: 16px;
+    color: #059fbf;
+    padding-right: 23px;
+    background: url(../../../assets/icon/star.png) no-repeat right 10px center;
+    background-size: 9px 11px;
+}
+.bry_main .bry_title_2 {
+    font-size: 12px;
+    color: #666666;
+}
+/* 地区选择 */
+.distp{
+	 height: 100%;
+}
+.distp>select{
+	width: auto;
+	padding: 0.2%;
+	height: 42px;
+	border-radius: 6px;
+	border: 1px solid #05A0BF;
+	outline: none;
+}
+/* 资料选项 */
+.bry_left {
+    width: 450px;
+    padding-top: 32px;
+    padding-bottom: 14px;
+}
+
+.bry_right {
+    width: 445px;
+    padding-top: 32px;
+    padding-bottom: 14px;
+}
+
+.bry_left_title {
+    text-align: right;
+    display: inline-block;
+    width: 210px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333333;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.bry_right_title {
+    text-align: center;
+    display: inline-block;
+    width: 50px;
+    margin-top: 35px;
+    font-size: 14px;
+    color: #333333;
+    box-sizing: border-box;
+    margin-left: 200px;
+}
+.bry_star {
+    padding-right: 23px;
+    background: url(../../../assets/icon/star.png) no-repeat right 10px center;
+    background-size: 9px 11px;
+}
+
+/* 几种间距 */
+.bry_main .space1 {
+    margin-bottom: 34px;
+}
+
+/* 第一种资料框 */
+.bry_input_1 {
+    font-size: 14px;
+    width: 180px;
+    height: 42px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+.bry_input_1 input {
+    background: none;
+    line-height: 40px;
+    text-indent: 1em;
+    outline: none;
+    width: 170px;
+    color: #999999;
+}
+/* 性别 */
+.bry_sex {
+    font-size: 14px;
+    color: #333333;
+    line-height: 40px;
+    padding-left: 210px;
+	box-sizing: border-box;
+	margin-top: 25px;
+}
+.bry_sex input {
+    display: none;
+}
+.bry_sex label {
+    padding-left: 20px;
+    background: url(../../../assets/icon/lecturer/auth_notsel.png) no-repeat left center;
+    background-size: 17px 17px;
+    cursor: pointer;
+    margin-right: 16px;
+}
+.bry_sex .sel_sex {
+    background: url(../../../assets/icon/lecturer/auth_sel.png) no-repeat left center;
+    background-size: 17px 17px;
+    cursor: pointer;
+}
+/* 年龄 */
+.bry_input_age {
+	margin-top: 25px;
+    font-size: 14px;
+    width: 156px;
+    height: 42px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+.bry_input_age input {
+    background: none;
+    line-height: 40px;
+    padding-left: 8px;
+    outline: none;
+    width: 100%;
+    color: #999999;
+}
+.bry_input_age button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #999999;
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 第二种资料框 */
+.bry_input_2 {
+    width: 100px;
+    height: 42px;
+    color: #999999;
+	/* background: #ffffff; */
+    padding-right: 10px;
+}
+.bry_input_2 select {
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    border-radius: 5px;
+    background: #ffffff;
+    text-indent: 1em;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url("../../../assets/icon/mechanism/down_list.png") no-repeat right 8px center;
+}
+
+/* 第三种资料框 */
+.bry_input_3 {
+    font-size: 14px;
+    width: 240px;
+    height: 42px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+.bry_input_3 input {
+    background: none;
+    line-height: 40px;
+    text-indent: 1em;
+    outline: none;
+    width: 100%;
+    color: #999999;
+}
+.bry_input_3 button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    cursor: pointer;
+    outline: none;
+}
+/* 第四种资料框 */
+.bry_left_title4{
+	margin-top: 20px;
+}
+.bry_input_4{
+	width: 240px;
+	height: 42px;
+	color: #999999;
+	background: #ffffff;
+	border-radius: 5px;
+	/* padding-right: 10px; */
+}
+.bry_input_4 select {
+    outline: none;
+	color: #999999;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid #059fbf;
+    border-radius: 5px;
+    background: #ffffff;
+    text-indent: 1em;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url("../../../assets/icon/mechanism/down_list.png") no-repeat right 8px center;
+}
+
+.bry_input_4~p{
+	width: 250px;
+	margin-left: 12px;
+	font-size: 12px;
+	color: #666666;
+}
+.bry_input_4~p>span{
+	display: block;
+}
+.bry_input_4 input{
+	border-radius: 5%;
+	
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+/* 执照 */
+.bry_license {
+    padding-left: 211px;
+    width: 340px;
+    height: 132px;
+    margin-top: 12px;
+    position: relative;
+}
+.bry_license .bry_photo {
+    width: 145px;
+    height: 99px;
+    border: 1px solid #059fbf;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+	background-color: #fff;
+}
+.bry_license .bry_photo img {
+    height: 100%;
+	width: 100%;
+}
+.bry_license span {
+    font-size: 12px;
+    color: #666;
+}
+.bry_li_delete {
+    width: 64px;
+    height: 24px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background: #059fbf;
+    font-size: 14px;
+    position: absolute;
+    left: 216px;
+    bottom: 0;
+    outline: none;
+    cursor: pointer;
+	text-align: center;
+}
+.bry_li_edit {
+    width: 64px;
+    height: 24px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background: #999999;
+    font-size: 14px;
+    position: absolute;
+    left: 291px;
+    bottom: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 确认函 */
+.bry_conletter {
+    width: 700px;
+    padding-top: 24px;
+	box-sizing: border-box;
+    position: relative;
+}
+
+.bry_con_download {
+    font-size: 14px;
+    color: #333;
+}
+.bry_con_download a {
+    color: #059fbf;
+}
+
+.bry_con_photo {
+    width: 114px;
+    height: 131px;
+    border: 1px solid #059fbf;
+    margin-top: 12px;
+    margin-left: 210px;
+    border-radius: 5px;
+    background: #ffffff;
+    overflow: hidden;
+}
+.bry_con_photo >img {
+	width: 100%;
+	height: 100%;
+}
+
+.bry_con_delete {
+    width: 64px;
+    height: 24px;
+	line-height: 24px;
+	text-align: center;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background: #059fbf;
+    font-size: 14px;
+    position: absolute;
+	left: 340px;
+    top: 80px;
+    cursor: pointer;
+}
+.uploadIG{
+	width: 64px;
+	height: 24px;
+	opacity: 0;
+	position: absolute;
+	left: -18px;
+	top: -1px;
+	font-size: 0;
+	cursor: pointer;
+}
+.upload{
+	position: relative;
+	cursor: pointer;
+}
+
+.bry_con_edit {
+    width: 64px;
+    height: 24px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background: #999999;
+    font-size: 14px;
+    position: absolute;
+    left: 340px;
+    top: 116px;
+    outline: none;
+    cursor: pointer;
+}
+.bry_con_tip {
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    left: 340px;
+    top: 144px;
+}
+
+/* 版权声明 */
+.bry_rule {
+    color: #333333;
+    font-size: 13px;
+    /* text-align: center; */
+    position: relative;
+    margin: 24px 0 0 150px;
+}
+.bry_rule a {
+    color: #333333;
+}
+.bry_rule span {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 20px;
+}
+.bry_rule button {
+    height: 14px;
+    width: 17px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 4px;
+    outline: none;
+}
+.bry_rule .cb-default {
+    background: url(../../../assets/icon/not_sel.png) no-repeat left bottom;
+}
+.bry_rule .cb-sel {
+    background: url(../../../assets/icon/sel.png) no-repeat left bottom;
+}
+
+/* 保存按钮 */
+.bry_save {
+    margin-left: 200px;
+    margin-top: 20px;
+    padding: 20px 0;
+	box-sizing: border-box;
+}
+.bry_save button {
+    width: 260px;
+    height: 46px;
+    border-radius: 5px;
+    background: #059fbf;
+    border: none;
+    font-size: 20px;
+    color: white;
+    outline: none;
+	cursor: pointer;
+}
+
+/* 弹出层 */
+.bry_layer{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 940px;
+	height: 310px;
+	margin-top: -155px;
+	margin-left: -470px;
+	border: 2px solid #1ca7c4;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.8);
+	padding: 40px 100px 0 62px;
+	box-sizing: border-box;
+}
+/* 弹出层关闭 */
+.close{
+	display: none;
+}
+.showlaywer{
+	display: block;
+}
+/* 去掉number的箭头 */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.bry_success_pic{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	/* float: left; */
+}
+.bry_success_pic>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.bry_success_word{
+	width: 700px;
+	/* float: left; */
+	margin-left: 20px;
+}
+.bry_success_word>span{
+	display: block;
+	color: #333333;
+}
+.bry_success_word>span:first-child{
+	font-size: 18px;
+	font-weight: bold;
+}
+.bry_success_word>span:last-child{
+	font-size: 14px;
+}
+.input_border{
+	border: 1px solid #059fbf;
+	border-radius: 5px;
+	outline: none;
+}
+.license2{
+	width: 560px;
+}
+.delete2{
+	left: 392px;
+}
+.edit2{
+	left: 468px;
+}
+.photo2{
+	margin-left: 20px;
+}

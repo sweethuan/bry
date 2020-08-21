@@ -1,0 +1,23 @@
+
+
+.bry_video_antho button {
+    background-color: #6e4369;
+    vertical-align: middle;
+    cursor: pointer;
+    
+}
+.bry_video_lable span {
+	color: #6e4369;
+}
+.bry_video_lable span:first-child {
+    background: url(../../assets/icon/bry_video_info/bry_video_see1.png) no-repeat left;
+}
+.bry_video_lable button {
+    background-color: #6e4369;
+    color: #001317;
+}
+.bry_video_text_posts button {
+    background-color: #dc5da2;
+}
+
+

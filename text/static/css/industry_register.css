@@ -1,0 +1,430 @@
+html,body{
+	background-color: #05a0bf;
+	min-width: 1320px;
+}
+.inner{
+	width: 1320px;
+	margin: 0 auto;
+}
+.bry_industry{
+	padding-bottom: 50px;
+}
+.bry_industry_tit{
+	position: relative;
+	height: 86px;
+	padding: 30px 0 16px 40px;
+	box-sizing: border-box;
+	font-size: 14px;
+	color: #fff;
+	background: url(../../assets/icon/industry.png) no-repeat left ;
+	background-size: 27px 27px;
+}
+
+
+.bry_industry_tit a{
+	color: #ffd132;
+}
+.gologin{
+	position: absolute;
+	right: 0;
+	top: 30px;
+}
+.kind{
+	position: absolute;
+	left: 34px;
+	top: 30px;
+	font-size: 20px;
+}
+/* 标题中间承诺 */
+.tit_center{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+}
+.bry_industry_con{
+	background-color: #EFEFEF;
+	border-radius: 7px;
+	padding: 24px 108px 46px 46px;
+	box-sizing: border-box;
+}
+.bry_industry_con_le{
+	width: 834px;
+}
+.bry_industry_le_ji{
+	height: 20px;
+	margin-bottom: 30px;
+}
+.bry_industry_le_ji>span:nth-child(1){
+	font-size: 16px;
+	color: #059fbf;
+}
+.bry_industry_le_ji>span:nth-child(2){
+	font-size: 16px;
+	color: #ff5e09;
+	margin-right: 15px;
+}
+.bry_industry_le_ji>span:nth-child(3){
+	font-size: 14px;
+	color: #333;
+}
+.bry_industry_le_input{
+	font-size: 14px;
+	color: #333;
+}
+.star>span:nth-of-type(2){
+	color: #ff5e09;
+	margin-right: 10px;
+}
+.bry_input_top{
+	margin-bottom: 56px;
+}
+.bry_input_top_user{
+	padding-bottom: 56px;
+}
+.bry_input_top_zhang{
+	padding-bottom: 56px;
+}
+.name{
+	position: relative;
+	height: 40px;
+}
+.name>span:nth-of-type(1){
+	display: inline-block;
+	width: 80px;
+	text-align: end;
+}
+.name>input{
+	height: 40px;
+	width: 240px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	outline: none;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+/* 地区 */
+.bry_age{
+	display: inline-block;
+}
+.bry_age>input{
+	width: 154px;
+	height: 40px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	padding-left: 8px;
+	box-sizing: border-box;
+	outline: none;
+	margin-left: 10px;
+	margin-right: 8px;
+}
+.bry_age2{
+	padding-left: 126px;
+	padding-bottom: 26px;
+	position: relative;
+}
+.bry_age_pass{
+	display: block;
+	position: absolute;
+	color: #999;
+	width: 30px;
+	height: 20px;
+	top: 10px;
+	right: 16px;
+}
+.bry_sex{
+	height: 20px;
+	padding-left: 128px;
+	padding-bottom: 22px;
+}
+.bry_sex>input{
+	margin-left: 10px;
+	margin-right: 4px;
+}
+.reage>input{
+	width: 54px;
+}
+.reage>select{
+	width: 64px;
+	height: 40px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	padding-left: 0px;
+	box-sizing: border-box;
+	outline: none;
+	margin-left: 14px;
+}
+.reage{
+	margin-right: 40px;
+}
+
+.bry_input_top_user p{
+	font-size: 12px;
+	color: #999;
+	padding-left: 96px;
+}
+.quren{
+	padding-right: 10px;
+	box-sizing: border-box;
+	color: #999;
+} 
+
+
+.pass1{
+	padding-bottom: 56px;
+}
+.pass2{
+	padding-bottom: 56px;
+}
+/* 密码隐藏与展示 */
+.bry_eyes button{
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+.bry_eyes >.hide{
+	position: absolute;
+	width: 23px;
+	height: 16px;
+	top: 12px;
+	left: 304px;
+	background: url(../../assets/icon/pass_hide.png) no-repeat  center;
+	background-size: cover;
+}
+.bry_eyes >.show{
+	position: absolute;
+	width: 23px;
+	height: 16px;
+	top: 12px;
+	left: 304px;
+	background: url(../../assets/icon/pass_show.png) no-repeat  center;
+	background-size: cover;
+}
+.bry_input_bot{
+	margin-bottom: 30px;
+}
+.bry_industry_select{
+	padding-left: 30px;
+}
+.bry_industry_select a {
+	color: #059fbf;
+}
+.bry_login_btn{
+	padding: 10px 0 60px 150px;
+	box-sizing: border-box;
+	height: 110px;
+}
+.bry_login_btn button{
+	width: 134px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	border-radius: 7px;
+	background-color: #059fbf;
+	outline: none;
+	border: none;
+}
+/* 上传按钮 */
+.bry_submit{
+	width: 180px;
+	position: relative;
+	height: 22px;
+	padding-bottom: 10px;
+}
+.goleft{
+	margin-left: 128px;
+}
+.bry_submit button{
+	position: absolute;
+	left: 50%;
+	transform: translate(-32px);
+	width: 64px;
+	height: 22px;
+	line-height: 22px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	border-radius: 7px;
+	background-color: #059fbf;
+	outline: none;
+	border: none;
+}
+
+/* 认证资料 */
+.small{
+	font-size: 12px;
+	color: #999;
+}
+.bry_industry_le_top{
+	font-size: 14px;
+	color: #333;
+}
+.bry_industry_name{
+	padding-bottom: 46px;
+}
+.bry_industry_name_doc{
+	padding-bottom: 24px;
+}
+.bry_industry_le_top{
+	height: 222px;
+	box-sizing: border-box;	
+}
+.bry_industry_top_rig span{
+	vertical-align: top;
+}
+.bry_industry_top_rig textarea{
+	height: 192px;
+	width: 330px;
+	border: 1px solid #059fbf;
+	box-sizing: border-box;
+	border-radius: 7px;
+	resize: none;
+	font-size: 14px;
+	color: #333;
+	outline: none;
+	padding: 4px;
+}
+.bry_industry_top_rig{
+	padding-left: 56px;
+	padding-bottom: 64px;
+}
+.bry_industry_nation{
+	padding-left: 82px;
+	padding-bottom: 42px;
+}
+.bry_industry_le_bot{
+	width: 350px;
+	height: 100px;
+	margin-left: 128px;
+	box-sizing: border-box;
+	margin-top: 20px;
+	margin-bottom: 14px;
+}
+.bry_bot_textarea{
+	display: inline-block;
+	width: 180px;
+	height: 100px;
+	border: 1px solid #059fbf;
+	box-sizing: border-box;
+	border-radius: 7px;
+	resize: none;
+	font-size: 14px;
+	color: #333;
+	outline: none;
+	padding: 4px;
+}
+.bot2{
+	height: 128px;
+}
+.textarea2{
+	width: 110px;
+	height: 128px;
+}
+.bry_industry_le_bot div{
+	display: inline-block;
+	width: 140px;
+	/* height: 52px; */
+	vertical-align: top;
+}
+.bry_span_num{
+	width: 200px;
+	height: 50px;
+	padding: 20px 0 0 10px;
+}
+/* 确认函 */
+.bry_industry_ok{
+	padding-left: 40px;
+	font-size: 14px;
+	color: #333;
+}
+.bry_industry_ok a{
+	color:#059fbf ;
+}
+.bry_submit p{
+	padding-top: 40px;
+}
+.rebtn{
+	padding-right: 60px;
+	padding-top: 10px;
+}
+.rebtn button {
+	width: 64px;
+	height: 22px;
+	line-height: 22px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	border-radius: 7px;
+	background-color: #059fbf;
+	outline: none;
+	border: none;
+}
+
+/* 上传头像 */
+.bry_industry_con_rig{
+	width: 170px;
+}
+.bry_industry_rig_yuan{
+	height: 160px;
+	padding: 0 30px;
+	box-sizing: border-box;
+	text-align: center;
+	color: #333;
+	font-size: 14px;
+}
+.bry_industry_rig_pic{
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	background-color: #059fbf;
+	color: #fff;
+	text-align: center;
+	font-size: 10px;
+	margin-bottom: 14px;
+	cursor: pointer;
+}
+.bry_industry_rig_pic span{
+	display: block;
+}
+.bry_industry_rig_pic span:nth-child(1){
+	padding-top: 30px;
+}
+.bry_industry_rig_detail>li{
+	margin-bottom: 22px;
+	font-size: 14px;
+	color: #333;
+}
+/* 版权声明 */
+.bry_rule {
+    color: #333333;
+    font-size: 13px;
+    /* text-align: center; */
+    position: relative;
+   margin-left: 50px;
+	 margin-top: 30px;
+}
+.bry_rule a {
+    color: #333333;
+}
+.bry_rule span {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+		vertical-align: bottom;
+}
+.bry_rule button {
+    height: 14px;
+    width: 17px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 4px;
+    outline: none;
+}
+.bry_rule .cb-default {
+    background: url(../../assets/icon/not_sel.png) no-repeat left bottom;
+}
+.bry_rule .cb-sel {
+    background: url(../../assets/icon/sel.png) no-repeat left bottom;
+}

@@ -1,0 +1,211 @@
+.bry_main {
+	width: 1078px;
+	padding: 104px 68px 50px 0;
+	box-sizing: border-box;
+	position: relative;
+}
+
+/* 最上面的导航 */
+.bry_topnav>a {
+	font-size: 18px;
+	color: #333333;
+	margin-right: 20px;
+}
+
+.bry_topnav .bry_topnav_sel {
+	color: #059fbf;
+}
+
+/* 几种间距 */
+.space1 {
+	margin-bottom: 30px;
+}
+
+.vedio_space {
+	margin-right: 10px;
+}
+
+.audio_space {
+	margin-right: 24px;
+}
+
+.info_space {
+	margin-right: 80px;
+}
+
+.baike_space {
+	margin-bottom: 14px;
+}
+
+.forum_space {
+	margin-right: 146px;
+	margin-bottom: 18px;
+}
+
+/* 相同的title */
+.bry_comtitle {
+	padding-bottom: 16px;
+}
+
+.bry_comtitle>span {
+	font-size: 14px;
+	color: #059fbf;
+}
+
+.bry_comtitle>button {
+	border: none;
+	background: none;
+	font-size: 14px;
+	color: #059fbf;
+	padding-left: 18px;
+	background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+	cursor: pointer;
+	outline: none;
+}
+
+/* 选项列表 */
+.bry_option_list {
+	width: 100%;
+}
+
+.bry_option_list>li {
+	float: left;
+	font-size: 16px;
+	margin-right: 40px;
+}
+
+/* 选中列表 */
+.bry_option_list_checked {
+	color: #059fbf;
+}
+
+/* 记录内容 */
+.bry_record_content {
+	width: 100%;
+	margin: 20px 0 0 0px;
+}
+
+.bry_record_content>li {
+	margin-top: 10px;
+}
+
+.bry_record_content_title {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.bry_record_content_title>li {
+	float: left;
+	border-radius: 4px;
+	margin-right: 5px;
+	background: #059fbf;
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+	height: 22px;
+	width: 50px;
+}
+
+.bry_record_content_title>li:nth-child(-n+2) {
+	width: 270px;
+}
+
+.bry_record_content_title>li:nth-child(3) {
+	width: 120px;
+}
+
+.bry_record_content_title>li:nth-child(n+4) {
+	width: 100px;
+}
+
+/* 记录内容部分 */
+.bry_record_content_part {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.bry_record_content_part>li {
+	float: left;
+	border-radius: 4px;
+	font-size: 12px;
+	color: #666666;
+	background: #fff;
+	text-align: center;
+	height: 22px;
+	line-height: 22px;
+	margin-right: 5px;
+}
+
+.bry_record_content_part>li:nth-child(1) {
+	width: 270px;
+	padding: 0 16px;
+	text-align: left;
+	box-sizing: border-box;
+}
+
+.bry_record_content_part>li:nth-child(1) a {
+	color: #666666;
+}
+
+.bry_record_content_part>li:nth-child(2) {
+	width: 270px;
+
+}
+
+.bry_record_content_part>li:nth-child(3) {
+	width: 120px;
+
+}
+
+.bry_record_content_part>li:nth-child(n+4) {
+	width: 100px;
+}
+.bry_prev_amou {
+	float: right;
+	margin-right: 20px;
+	padding-top: 12px;
+}
+.bry_prev_amou>div {
+	float: left;
+	text-align: center;
+	margin-right: 5px;
+}
+.bry_prev_amou>div:nth-child(2) {
+	width: 120px;
+	border-radius: 4px;
+	background-color: #059fbf;
+	color: #fff;
+}
+.bry_prev_amou>div:nth-child(n+3) {
+	width: 100px;
+	border-radius: 4px;
+	background-color: #059fbf;
+	color: #fff;
+}
+
+/* 加勾背景图 */
+.bry_add_bgpic {
+	background: url(../../../assets/icon/gou-pic1.png) no-repeat center;
+	background-size: 12px 12px;
+}
+
+/* 上一页下一页 */
+.bry_next_last {
+	position: absolute;
+	right: 86px;
+	bottom: 10px;
+	height: 22px;
+}
+
+.bry_next_last>li {
+	float: left;
+	margin-right: 10px;
+	font-size: 14px;
+	color: #333333;
+	cursor: pointer;
+}
+
+.bry_next_last>li>a {
+	margin-left: 40px;
+	color: #059fbf;
+}

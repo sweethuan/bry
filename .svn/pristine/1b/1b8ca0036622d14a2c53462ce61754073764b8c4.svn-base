@@ -1,0 +1,426 @@
+.bry_main {
+	width: 1088px;
+	position: relative;
+	padding-top: 54px;
+}
+
+/* 最上面的导航 */
+.bry_topnav>a {
+	font-size: 18px;
+	color: #333333;
+	margin-right: 20px;
+}
+
+.bry_topnav .bry_topnav_sel {
+	color: #059fbf;
+}
+
+/* 共通的部分 */
+.bry_comwid {
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 92px;
+	position: relative;
+}
+
+.bry_comtitle {
+	position: absolute;
+	right: 1002px;
+	top: 9px;
+	font-size: 14px;
+	color: #333333;
+}
+
+.bry_comtitle_star::before {
+	display: block;
+	position: absolute;
+	left: -10px;
+	top: 0;
+	content: "*";
+	color: red;
+}
+
+/* 视频分类 */
+.bry_classi {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 7px;
+	margin-top: 16px;
+}
+
+.bry_classi ul>li {
+	float: left;
+	padding-right: 30px;
+}
+
+.bry_classi ul>li>label {
+	vertical-align: middle;
+}
+
+.bry_classi ul>li input {
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+/* 视频名称 */
+.bry_name {
+	margin-top: 20px;
+	padding-top: 4px;
+}
+
+.bry_name>input {
+	width: 490px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	outline: none;
+	padding: 0 10px;
+}
+
+/* 是否收费 */
+.bry_payno {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #333333;
+}
+
+.bry_payno>label {
+	margin-right: 50px;
+}
+
+.bry_payno>label>input {
+	vertical-align: middle;
+	margin-right: 4px;
+}
+
+.bry_payno>input {
+	width: 126px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 2px;
+	text-align: center;
+}
+
+/* 视频封面 */
+/* .bry_cover {
+	margin-top: 10px;
+	position: relative;
+}
+
+.bry_cover_img {
+	width: 186px;
+	height: 110px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	background: white;
+	margin-top: 8px;
+}
+
+.bry_cover_info {
+	font-size: 12px;
+	color: #666666;
+	padding-top: 10px;
+	padding-left: 16px;
+	position: relative;
+}
+
+.bry_cover_info>p {
+	padding-bottom: 3px;
+}
+
+.bry_cover_btn {
+	position: absolute;
+	bottom: -38px;
+}
+.bry_cover_btn>button {
+	width: 72px;
+	height: 22px;
+	background: #999999;
+	color: white;
+	font-size: 12px;
+	border: none;
+	border-radius: 4px;
+	margin-right: 18px;
+	outline: none;
+	cursor: pointer;
+} */
+
+/* 视频封面 */
+.bry_cover {
+	margin-top: 10px;
+	position: relative;
+}
+
+.bry_cover_img {
+	width: 186px;
+	height: 110px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	background: white;
+	margin-top: 8px;
+}
+
+.bry_cover_img>img {
+	width: 100%;
+	height: 100%;
+}
+
+.bry_cover_info {
+	font-size: 12px;
+	color: #666666;
+	padding-top: 10px;
+	padding-left: 16px;
+	position: relative;
+}
+
+.bry_cover_info>p {
+	padding-bottom: 3px;
+}
+
+.bry_cover_btn {
+	position: absolute;
+	bottom: -42px;
+}
+
+
+/* .bry_cover_btn>button {
+	width: 72px;
+	height: 22px;
+	background: #999999;
+	color: white;
+	font-size: 12px;
+	border: none;
+	border-radius: 4px;
+	margin-right: 18px;
+	outline: none;
+	cursor: pointer;
+} */
+.upload_img {
+	position: relative;
+	display: block;
+	width: 72px;
+	height: 20px;
+	background: #999999;
+	color: white;
+	font-size: 12px;
+	border: none;
+	border-radius: 4px;
+	text-align: center;
+	outline: none;
+	cursor: pointer;
+	margin: 10px 0 5px 0;
+}
+
+.input_file {
+	width: 72px;
+	height: 24px;
+	opacity: 0;
+	position: absolute;
+	left: 0px;
+	top: -1px;
+	font-size: 0;
+	cursor: pointer;
+}
+
+.del_img {
+
+	width: 72px;
+	height: 20px;
+	background: #999999;
+	color: white;
+	font-size: 12px;
+	border: none;
+	border-radius: 4px;
+	margin-right: 18px;
+	outline: none;
+	cursor: pointer;
+}
+
+/* 视频标签 */
+.bry_label {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 7px;
+	margin-top: 16px;
+}
+
+.bry_label ul>li {
+	float: left;
+	padding-right: 30px;
+}
+
+.bry_label ul>li>label {
+	vertical-align: middle;
+}
+
+.bry_label ul>li input {
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+/* 上架时间 */
+.bry_upper {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 2px;
+	margin-top: 14px;
+}
+
+.bry_upper>select {
+	width: 186px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	outline: none;
+	padding-left: 5px;
+}
+
+/* 下架时间 */
+.bry_lower {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 2px;
+	margin-top: 14px;
+}
+
+.bry_lower>select {
+	width: 186px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	outline: none;
+	padding-left: 5px;
+}
+
+/* 上传视频 */
+.bry_upvedio {
+	height: 85px;
+	padding: 2px 0 0px 90px;
+	margin-top: 14px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.bry_upvedio>button {
+	width: 186px;
+	height: 36px;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	border: none;
+	background: #059fbf;
+	color: white;
+	font-size: 14px;
+}
+
+.bry_upvedio>span:nth-of-type(2)>span {
+	font-size: 12px;
+	color: #333333;
+	padding-left: 10px;
+}
+
+.bry_upvedio .bry_cover_btn>a {
+	position: absolute;
+	left: 0;
+	top: -138px;
+	width: 186px;
+	height: 36px;
+	line-height: 36px;
+	background: #059fbf;
+
+}
+
+.bry_upvedio .bry_cover_btn>button {
+	position: absolute;
+	left: 0;
+	top: -78px;
+	width: 186px;
+	height: 36px;
+	line-height: 36px;
+	background: #059fbf;
+
+}
+
+.bry_upvedio .bry_cover_btn>a>input {
+	width: 100%;
+	height: 100%;
+
+}
+
+/* 是否推送 */
+
+
+.bry_mycheck {
+	position: relative;
+	padding-left: 16px;
+	vertical-align: bottom;
+}
+
+.bry_mycheck>button {
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	width: 15px;
+	height: 16px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.bry_mycheck>span {
+	height: 16px;
+}
+
+.bry_mycheck>.check {
+	background: url(../../../assets/icon/lecturer/classhour_sel.png) no-repeat left 1px bottom;
+}
+
+.bry_mycheck>.notcheck {
+	background: url(../../../assets/icon/lecturer/classhour_not.png) no-repeat left 1px bottom;
+}
+
+.bry_pushno>label:nth-of-type(1) {
+	margin-right: 20px;
+}
+
+.bry_pushno>label:nth-of-type(2) {
+	margin-right: 6px;
+}
+
+.bry_pushno_info {
+	font-size: 12px;
+	color: #999999;
+}
+
+/* 保存按钮 */
+.bry_save {
+	width: 444px;
+	height: 38px;
+	border-radius: 5px;
+	border: none;
+	background: #059fbf;
+	letter-spacing: 1em;
+	text-indent: 1em;
+	font-size: 18px;
+	color: white;
+	margin-top: 6px;
+	margin-left: 280px;
+	outline: none;
+	cursor: pointer;
+}
+
+.mask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}

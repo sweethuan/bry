@@ -1,0 +1,352 @@
+.bry_forum_content {
+	background-color: #059fbf;
+	padding-bottom: 34px;
+}
+
+.bry_forum_path {
+	font-size: 14px;
+	color: #fff;
+	padding: 28px 20px;
+	background: url(../../assets/icon/bry_encyc/bry_encyc_home.png) no-repeat left;
+}
+.bry_forum_path a{
+	color: #fff;
+}
+.bry_forum_path a:hover{
+	color: #fff;
+}
+
+.bry_forum_content>.inner {
+	padding: 0 18px;
+	box-sizing: border-box;
+}
+
+.bry_forum_posts button {
+	width: 100px;
+	height: 46px;
+	border: none;
+	outline: none;
+	background-color: #fc9440;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.bry_forum_posts span {
+	font-size: 14px;
+	color: #fff;
+	margin-right: 8px;
+}
+
+.bry_forum_posts img {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.bry_forum_details {
+	margin-bottom: 20px;
+}
+
+.bry_forum_details>.fl {
+	text-align: center;
+	margin-top: 22px;
+	color: #fff;
+	font-size: 14px;
+}
+
+.bry_forum_details>.fl>img {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	margin-bottom: 4px;
+}
+
+.bry_forum_details>.fl>span {
+	font-size: 12px;
+}
+
+.bry_forum_details>.fr {
+	width: 1144px;
+}
+
+.bry_forum_title {
+	font-size: 12px;
+	color: #fff;
+}
+.bry_forum_title img,
+.bry_forum_login img {
+	display: inline-block;
+}
+.bry_forum_title>.fl {
+	padding-left: 20px;
+	background: url(../../assets/icon/bry_forum_info/bry_forum_posts.png) no-repeat left;
+}
+
+.bry_forum_title>.fr span {
+	margin-right: 10px;
+}
+
+.bry_forum_title>.fr input {
+	margin-right: 10px;
+	width: 22px;
+	height: 20px;
+	border-radius: 5px;
+	padding: 0 8px;
+}
+
+.bry_forum_postcont {
+	background-color: #efefef;
+	margin-top: 8px;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, .5) inset;
+	border-radius: 5px;
+	padding: 16px;
+	box-sizing: border-box;
+}
+
+.bry_forum_postcont > p > * {
+	position: inherit!important;
+}
+
+.bry_forum_postcont > p {
+	font-size: 12px;
+	color: #333;
+	line-height: 22px;
+	
+}
+.bry_forum_louzhu {
+	min-height: 180px;
+}
+
+.bry_forum_postcont>img {
+	margin: 12px 50px;
+}
+
+.bry_forum_login {
+	width: 400px;
+	padding: 8px 40px;
+	background-color: #ffffff;
+	border: 1px solid #059fbf;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin: 40px 0 10px;
+}
+
+.bry_forum_login .bry_forum_tips {
+	margin-bottom: 12px;
+	font-size: 14px;
+	color: #333;
+}
+
+.bry_forum_login .fl,
+.bry_forum_login .fr {
+	width: 110px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.bry_forum_login div:nth-of-type(2) {
+	background-color: #059fbf;
+	cursor: pointer;
+}
+
+.bry_forum_login div:last-child {
+	background-color: #00cb55;
+	float: right;
+	cursor: pointer;
+}
+
+.bry_forum_login img {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.bry_encyc_share {
+	text-align: center;
+	font-size: 12px;
+	color: #666;
+}
+.bry_encyc_share span {
+	cursor: pointer;
+}
+.bry_encyc_share img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 6px;
+	cursor: pointer;
+}
+
+.bry_encyc_share>.clearfix>div {
+	display: inline-block;
+	width: 58px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #059fbf;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #fff;
+	margin: 12px 8px 0;
+	cursor: pointer;
+}
+
+.bry_encyc_share>.clearfix>div.active {
+	background-color: #fc9440;
+}
+
+.bry_encyc_share>.clearfix img {
+	vertical-align: text-bottom;
+	margin: 0px 4px 0 0;
+}
+
+.bry_encyc_share span.fr {
+	font-size: 14px;
+	color: #059fbf;
+	cursor: pointer;
+}
+
+.bry_forum_details~.bry_forum_details .bry_encyc_share .clearfix {
+	margin-top: 58px;
+}
+
+/* 回复评论box */
+.bry_reply_comBox{
+	width: 100%;
+	
+	background: #059fbf;
+	border-radius: 10px;
+	
+	margin-top: 10px;
+	font-size: 0;
+	
+}
+.bry_reply_comList{
+	padding: 10px 10px 0 10px;
+	box-sizing: border-box;
+}
+.bry_reply_mes{
+	width: 100%;
+	text-align: left;
+	
+	
+}
+.bry_reply_mes>span{
+	font-size: 16px;
+	margin-right: 20px;
+	
+}
+
+.bry_reply_comList>span{
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 16px;
+	color: #ffffff !important;
+	
+}
+/* 回复评论发布 */
+.bry_publish_reply{
+	width: 100%;
+	height: 150px;
+	background: transparent;
+	position: relative;
+	
+}
+.bry_publish_reply>textarea{
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px 40px 10px;
+	box-sizing: border-box;
+	font-size: 14px;
+	outline: none;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+/* 回复按钮 */
+.bry_publish_reply>button{
+	position: absolute;
+	bottom: 10px;
+	right: 50px;
+	z-index: 0;
+	width: 100px;
+	height: 46px;
+	font-size: 20px;
+	border-radius: 4px;
+	outline: none;
+	border: none;
+	background: #059fbf;
+	color: #ffffff;
+	
+}
+
+
+
+.bry_forum_reply {
+	margin-top: 12px;
+	
+}
+
+.bry_forum_reply >.fl div {
+    background-color: #fc9440;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    padding: 6px 24px;
+    border-radius: 5px;
+}
+
+.bry_forum_reply >.fr {
+	width: 1144px;
+}
+.bry_forum_senior {
+	font-size: 14px;
+	color: #666;
+	height: 46px;
+	line-height: 46px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	background-color: #efefef;
+	border-radius: 6px 6px 0 0;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, .4) inset;
+}
+.bry_forum_senior img {
+	display: inline-block;
+	vertical-align: middle;
+}
+.bry_forum_area {
+	position: relative;
+	height: 320px;
+	background-color: #efefef;
+	border-radius: 0 0 6px 6px;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, .3) inset;
+	overflow: hidden;
+	
+}
+.bry_forum_area textarea {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	outline: none;
+	padding: 12px 16px;
+	box-sizing: border-box;
+}
+.bry_forum_area .bry_forum_login {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+.bry_forum_reply .fr > button {
+	background-color: #fc9440;
+	font-size: 20px;
+	color: #fff;
+	border: none;
+	margin-top: 16px;
+	padding: 12px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}

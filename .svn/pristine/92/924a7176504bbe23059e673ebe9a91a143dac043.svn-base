@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>我的账户</title>
+
+		<link rel="stylesheet" href="../../static/css/common.css" />
+		<link rel="stylesheet" href="../../static/css/login_common.css" />
+		<link rel="stylesheet" href="../../static/css/consultation/con_account.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+		<script src="../../static/js/jquery.min.js"></script>
+		<script src="../../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/JavaScript" charset="UTF-8" src="../../static/js/header2.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+
+			<div class="bry_container">
+				<!-- 标题及退出登录 -->
+				<div class="bry_title_logout clearfix">
+					<p class="fl">{{comClass}}信息</p>
+					<!-- <a class="fr">已登录<a href="">退出</a></p> -->
+				</div>
+				<!-- 内容区 -->
+				<div class="bry_inner clearfix">
+					<div class="bry_head_leftnav fl">
+						<!-- 头像与名字 -->
+						<div class="bry_people">
+							<div class="bry_people_pic">
+								<img src="../..//assets/img/mechanism/headicon.jpg" />
+								<span>{{comClass}}</span>
+							</div>
+							<span>{{username}}</span>
+						</div>
+						<!-- 认证与充值 -->
+						<div class="bry_authentication_recharge">
+							<span>待认证</span>
+							<a href="con_recharge.html">会员充值</a>
+						</div>
+						<!-- 侧导航 -->
+						<ul class="bry_sidenav">
+							<li class="bry_space1">
+								<a href="con_basic_data.html">基本资料</a>
+							</li>
+							<li class="bry_space1">
+								<a :href="RoleId == 2 ? 'stu_auth_data.html' : 'con_auth_data.html'">认证资料</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_browse.html">我的浏览</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_answer.html">我的答疑</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_comment.html">我的评论</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_forum.html">我的论坛</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_upload.html">我的发布</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_message.html">我的消息</a>
+							</li>
+							<li class="bry_space2 bry_sidenav_sel">
+								<a href="con_account.html">我的账户</a>
+							</li>
+							<li class="bry_space2" v-if="RoleId==2">
+								<a href="stu_study.html">我的学习</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bry_main fl">
+						<!-- 我的账户 -->
+						<div class="bry_tit1">
+							<span>我的账户</span>
+							<span>余额:</span>
+							<span>{{128}}</span>
+							<span>元</span>
+						</div>
+						<div class="bry_prev_cont myyue">
+							<ul class="bry_prev_cont_clasname clearfix yue">
+								<li>序号</li>
+								<li>时间</li>
+								<li>方式</li>
+								<li>统计</li>
+								<li>备注</li>
+							</ul>
+							<ul class="clearfix yue" v-for="(item,index) in indexData1" :key="index">
+								<li>{{index+1+PageSize1*(PageNum1-1)}}</li>
+								<li>{{item.CreateDate}}</li>
+								<li>{{item.Details}}</li>
+								<li>{{item.DoMoney}}</li>
+								<li></li>
+							</ul>
+
+							<!-- <ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul>
+							<ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul>
+							<ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul>
+							<ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul>
+							<ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul>
+							<ul class="clearfix yue">
+								<li>01</li>
+								<li>2020-01-20 04:28:35</li>
+								<li>微信扫码充值</li>
+								<li>+100</li>
+								<li></li>
+							</ul> -->
+							<div class="next">
+								<span @click="goHome">首页</span>
+								<span @click="prevClick">上一页&lt;</span>
+								<span @click="nextClick">下一页&gt;</span>
+								<span @click="goEnd">尾页</span>
+							</div>
+						</div>
+						<!-- 我的收益 -->
+						<div class="bry_tit">
+							<span>我的收益</span>
+							<span>{{18000}}</span>
+							<span>元,总收益:</span>
+							<span>{{2000}}</span>
+							<span>元,平台提留10%:</span>
+							<span>{{200}}</span>
+							<span>元</span>
+							<button type="button" class="tixian" onclick="window.location.href ='con_account_withdraw.html'">
+								提现
+							</button>
+						</div>
+						<div class="bry_prev_cont">
+							<ul class="bry_prev_cont_clasname clearfix">
+								<li>公开课程</li>
+								<li>上传时间</li>
+								<li>购买次数</li>
+								<li>购买人数</li>
+								<li>单价(元)</li>
+								<li>小计(元)</li>
+								<li>平台比例</li>
+								<li>平台费(元)</li>
+								<li>实收(元)</li>
+							</ul>
+							<ul class="clearfix" v-for="(item,index) in indexData2" :key="index">
+								<li style="text-align:center">{{item.Title}}</li>
+								<li>{{item.CreateDate}}</li>
+								<li>{{item.BuyCount}}</li>
+								<li>{{item.BuyPerson}}</li>
+								<li>{{item.Price}}</li>
+								<li>{{item.TotalPrice}}</li>
+								<li>{{item.PlatformPercent}}</li>
+								<li>{{item.PlatformFee}}</li>
+								<li>{{item.ActualAmount}}</li>
+							</ul>
+
+						</div>
+						<div class="bry_prev_amou">
+							<div>本页合计</div>
+							<div class="bry_prev_cont_buynum">{{countBuyCount}}(次)</div>
+							<div class="bry_prev_cont_buypers">{{countBuyPerson}}(人)</div>
+							<div class="bry_prev_cont_mono"></div>
+							<div class="bry_prev_cont_uploexpe">{{countMoney1}}</div>
+							<div class="bry_prev_cont_subt"></div>
+							<div class="bry_prev_cont_platscal">{{countMoney2}}</div>
+							<div class="bry_prev_cont_real">{{countMoney3}}</div>
+							<ul class="next2">
+								<li @click="goHome2">首页</li>
+								<li @click="prevClick2">上一页&lt;</li>
+								<li @click="nextClick2">下一页&gt;</li>
+								<li @click="goEnd2">尾页</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="../index.html">首页</a></li>
+							<li><a href="../bry_lecturer.html">讲师</a></li>
+							<li><a href="../bry_information.html">资讯</a></li>
+							<li><a href="../bry_Movies.html">视频</a></li>
+							<li><a href="../bry_audioFrequency.html">音频</a></li>
+							<li><a href="../bry_forum.html">论坛</a></li>
+							<li><a href="../encyclopedias.html">百科</a></li>
+							<li><a href="../book.html">电子书</a></li>
+							<li><a href="../about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../../assets/icon/footer/official_account.gif" />
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../../assets/icon/footer/phone_code.gif" />
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>
+								重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有
+							</div>
+							<div>
+								渝ICP备005665656号<img src="../../assets/icon/footer/keep_on_record.png" />渝公安备 50019002501739
+							</div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/JavaScript" charset="UTF-8">
+		var vueobj = new Vue({
+			el: '#app',
+			data(){
+				return{
+					username:""  ,//用户昵称
+					PageSize1:8,  //第一个表格的每页数据条数
+					PageNum1:1,	  //第一个表格的当前页码		
+					PageSize2:8,  //第二个表格的每页数据条数
+					PageNum2:1,  //第二个表格的当前页码
+					indexData1:[] ,//页面表格1
+					indexData2:[] ,//页面表格2
+					countBuyCount:0 ,//当前页面合计次数
+					countBuyPerson:0 ,//当前页面合计人数
+					countMoney1:0 ,//当前页面合计总价
+					countMoney2:0 ,//当前页面合计平台费
+					countMoney3:0 ,//当前页面合计实收费
+					RoleId: '',     // 角色id
+					total1:"",//表格1总数
+					total2:"",//表格2总数
+
+
+				};
+			},
+			created() {
+				this.RoleId = foowwLocalStorage.getLocal("RoleId")
+				this.askAjax()
+				
+			},
+			computed: {
+				comClass(){
+					return this.RoleId == 1 ? "个人" : this.RoleId == 2 ? "学生" : this.RoleId == 3 ? "讲师" : this.RoleId == 4 ? "医师" : this.RoleId == 5 ? "心里资讯师" : "机构"
+				}
+			},
+			methods:{
+				askAjax(){
+					let that=this
+				
+					getAjax("get","Users/DetailDo",'{"UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}').then(res=>{
+						that.username=res.data.NickName
+						console.log(res.data.NickName)
+					},err=>{
+						console.log(err)
+					})
+					// 请求表格1的数据
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+that.PageSize1+'","PageNum":"'+that.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+						console.log("请求表格1的数据:",res,that.PageSize1,that.PageNum1)
+						that.indexData1=res.data
+						that.total1=res.other
+					},err=>{
+						console.log(err)
+					})
+					// 请求表格2的数据
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				},
+				
+				// 当前页数改变时会触发表格1
+				handleCurrentChange(page) {
+					this.PageNum1 = page
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+this.PageSize1+'","PageNum":"'+this.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+							console.log("请求表格1的数据:",res,this.PageSize1,this.PageNum1)
+							this.indexData1=res.data
+							this.total1=res.other
+						},err=>{
+							console.log(err)
+					})
+				},
+				// 点击上一页表格1
+				prevClick() {
+					if (this.PageNum1 <= 1) {
+						this.$message({
+							message: "已经是首页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.PageNum1 = this.PageNum1 - 1
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+this.PageSize1+'","PageNum":"'+this.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+							console.log("请求表格1的数据:",res,this.PageSize1,this.PageNum1)
+							this.indexData1=res.data
+							this.total1=res.other
+						},err=>{
+							console.log(err)
+					})
+				},
+				// 点击下一页表格1
+				nextClick() {
+					if (this.PageNum1 >= Math.ceil(this.total1 / this.PageSize1)) {
+						this.$message({
+							message: "已经是最后一页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.PageNum1 = this.PageNum1 + 1
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+this.PageSize1+'","PageNum":"'+this.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+							console.log("请求表格1的数据:",res,this.PageSize1,this.PageNum1)
+							this.indexData1=res.data
+							this.total1=res.other
+						},err=>{
+							console.log(err)
+					})
+				},
+				// 回首页表格1
+				goHome() {
+					this.PageNum1 = 1
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+this.PageSize1+'","PageNum":"'+this.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+							console.log("请求表格1的数据:",res,this.PageSize1,this.PageNum1)
+							this.indexData1=res.data
+							this.total1=res.other
+						},err=>{
+							console.log(err)
+					})
+				},
+				// 去尾页表格1
+				goEnd() {
+					this.PageNum1 = Math.ceil(this.total1 / this.PageSize1)
+					getAjax("get", "UserAccountRecord/ListDo",'{"PageSize":"'+this.PageSize1+'","PageNum":"'+this.PageNum1+'","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',"123").then(res=>{
+							console.log("请求表格1的数据:",res,this.PageSize1,this.PageNum1)
+							this.indexData1=res.data
+							this.total1=res.other
+						},err=>{
+							console.log(err)
+					})
+				},
+
+				//总价计零
+				returnZero() {
+					let that =this
+					that.countBuyCount=0
+					that.countBuyPerson=0
+					that.countMoney1=0
+					that.countMoney2=0
+					that.countMoney3=0
+				},
+				// 当前页数改变时会触发表格2
+				handleCurrentChange2(page) {
+					
+					let that=this
+					that.returnZero()
+					that.PageNum2 = page
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				
+				},
+				// 点击上一页表格2
+				prevClick2() {
+					
+					let that=this
+					that.returnZero()
+					if (that.PageNum2 <= 1) {
+						this.$message({
+							message: "已经是首页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					that.PageNum2 = that.PageNum2 - 1
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 点击下一页表格2
+				nextClick2() {
+					
+					let that=this
+					that.returnZero()
+					if (that.PageNum2 >= Math.ceil(that.total2 / that.PageSize2)) {
+						this.$message({
+							message: "已经是最后一页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					that.PageNum1 = that.PageNum1 + 1
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 回首页表格2
+				goHome2() {
+					
+					let that=this
+					that.returnZero()
+					that.PageNum2 = 1
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 去尾页表格2
+				goEnd2() {
+					
+					let that=this
+					that.returnZero()
+					that.PageNum2 = Math.ceil(that.total2 / that.PageSize2)
+					getAjax("get", "Articles/MyPublishPayDo",'{"PageSize":"' + that.PageSize2 + '","PageNum":"'+ that.PageNum2 + '","UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}',).then(res=>{
+						console.log("请求表格2的数据:",res.data)
+						that.indexData2=res.data
+						that.total2=res.other
+						for (var  i = 0; i < that.indexData2.length; i++) {
+							that.countBuyCount=that.countBuyCount+that.indexData2[i].BuyCount
+							that.countBuyPerson=that.countBuyPerson+that.indexData2[i].BuyPerson
+							that.countMoney1=that.countMoney1+that.indexData2[i].TotalPrice
+							that.countMoney2=that.countMoney2+that.indexData2[i].PlatformFee
+							that.countMoney3=that.countMoney3+that.indexData2[i].ActualAmount
+					}
+						
+					},err=>{
+						console.log(err)
+					})
+				}
+			}
+		});
+	</script>
+</html>

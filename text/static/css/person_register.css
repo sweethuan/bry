@@ -1,0 +1,160 @@
+/* 去掉input=number 的箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+
+}
+
+/*  去掉input=number 的箭头*/
+.bry_age {
+	display: inline-block;
+}
+
+.bry_age>input {
+	width: 154px;
+	height: 40px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	padding-left: 8px;
+	box-sizing: border-box;
+	outline: none;
+	margin-left: 4px;
+	margin-right: 8px;
+}
+
+.reage>input {
+	width: 54px;
+}
+
+.reage>select {
+	width: 64px;
+	height: 40px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	padding-left: 0px;
+	box-sizing: border-box;
+	outline: none;
+	margin-left: 14px;
+}
+
+.reage {
+	margin-right: 40px;
+}
+
+.bry_industry_top_rig {
+	font-size: 14px;
+	color: #333;
+}
+
+.bry_industry_top_rig>input {
+	margin-left: 14px;
+}
+
+.bry_industry_top_rig>span {
+	margin-left: 4px;
+	vertical-align: baseline;
+}
+
+.bry_industry_le_top {
+	height: 150px;
+	margin-bottom: 20px;
+}
+
+.bry_industry_num {
+	position: relative;
+}
+
+.bry_span_num {
+	width: 200px;
+	height: 50px;
+	padding: 20px 0 0 10px;
+}
+
+.bry_span2 {
+	position: absolute;
+	width: 420px;
+	height: 40px;
+	top: 0px;
+	padding: 0;
+	right: -420px;
+}
+/* 背景显示正面和背面 */
+.bry_bg1{
+	background: url(../../assets/icon/facade.png) no-repeat  center;
+	background-size: 100% 100%;
+	background-color: #fff;
+}
+.bry_bg2{
+	background: url(../../assets/icon/back.png) no-repeat  center;
+	background-size: 100% 100%;
+	background-color: #fff;
+}
+.renew {
+	width: 380px;
+}
+
+.renew>textarea {
+	text-align: center;
+}
+
+.renew>textarea:nth-of-type(2) {
+	margin-left: 20px;
+}
+
+.renew>textarea::-webkit-input-placeholder {
+	line-height: 100px;
+	text-align: center;
+}
+
+.goleft {
+	display: inline-block;
+	margin-left: 70px;
+}
+.goleft2{
+	display: inline-block;
+	margin-left: 128px;
+}
+.bry_school_class{
+	padding-left: 40px;
+	padding-bottom: 32px;
+}
+.name2{
+	position: relative;
+	width: 300px;
+	height: 40px;
+}
+.name2>span:nth-of-type(1){
+	display: inline-block;
+	width: 24%;
+	text-align: end;
+}
+.name2>input{
+	height: 40px;
+	width: 154px;
+	border: 1px solid #059fbf;
+	border-radius: 7px;
+	outline: none;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+.el-form-item__content {
+	width: 260px !important;
+}
+.el-input__suffix {
+	right: 15px!important;
+}
+.el-form-item__error {
+	 white-space: nowrap !important; 
+}
+.el-form-item__label::after {
+	content: '*';
+	color: #F56C6C;
+	margin-left: 4px;
+}
+.el-form-item__label::before {
+	content: ''!important;
+}

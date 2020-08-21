@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_forum_info.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 导入富文本编辑器相关 -->
+		<link rel="stylesheet" href="../static/other/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../static/other/summernote-0.8.16-dist/summernote.min.css" />
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/summernote-0.8.16-dist/summernote.min.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/summernote-0.8.16-dist/lang/summernote-zh-CN.min.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+	</head>
+	<body>
+		<div id="app" ref="DOM">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+			<div class="bry_forum_content">
+				<div class="inner">
+					<div class="bry_forum_path"><a href="index.html">首页</a> >> <a href="bry_forum.html">论坛</a> >> {{ detalisData.Title }}</div>
+					<!-- <div class="bry_forum_posts">
+						<button>发 贴</button>
+
+					</div> -->
+					<div class="bry_forum_details clearfix">
+						<div class="fl">
+							<img v-if="detalisData.HeadPhoto" :src="detalisData.HeadPhoto">
+							<img v-else src="../assets/img/bry_forum_info/bry_forum_info_headpic.gif">
+							<div>{{ detalisData.Author }}</div>
+							<span>观看: {{ detalisData.QueryCount }}</span>
+							<span>回复: {{ replyList.length }}</span>
+						</div>
+						<div class="fr">
+							<div class="bry_forum_title clearfix">
+								<div class="fl">发表于 {{ getTime }}</div>
+								<div class="fr">
+									<span>楼主</span>
+								</div>
+							</div>
+							<div class="bry_forum_postcont">
+								<p class="bry_forum_louzhu" v-html="Object.keys(this.detalisData).length != 0 ? htmlDecode(detalisData.Contents) : null"></p>
+
+								<div class="bry_encyc_share clearfix">
+									<div @click="share()">分享到:
+										<!-- <img src="../assets/icon/bry_encyc/bry_encyc_qq.png">
+										<span>QQ好友和群</span> -->
+										<img src="../assets/icon/bry_encyc/bry_encyc_qqzone.png">
+										<span>QQ空间</span>
+										<!-- <img src="../assets/icon/bry_encyc/bry_encyc_txblog.png">
+										<span>腾讯微博</span>
+										<img src="../assets/icon/bry_encyc/bry_encyc_wechat.png">
+										<span>微信朋友</span> -->
+									</div>
+									<div class="clearfix">
+										<div @click="goReply"><img src="../assets/icon/bry_encyc/bry_encyc_comment.png">回复</div>
+										<div @click="collect" :class="{active: detalisData.Collection}"><img src="../assets/icon/bry_encyc/bry_encyc_collection.png">收藏</div>
+										<div @click="share()"><img src="../assets/icon/bry_encyc/bry_encyc_share.png">分享</div>
+										<div @click="agreeArticle(detalisData.Agree, detalisData.Disagree,1)" :class="{active: detalisData.Agree}"><img
+											 src="../assets/icon/bry_forum_info/bry_forum_bear.png">支持</div>
+										<div @click="agreeArticle(detalisData.Agree, detalisData.Disagree,2)" :class="{active: detalisData.Disagree}"><img
+											 src="../assets/icon/bry_forum_info/bry_forum_oppose.png">反对</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="bry_forum_details clearfix" v-for="(item, i) in replyList" :key="i">
+						<div class="fl">
+							<img v-if="item.HeadPhoto" :src="item.HeadPhoto">
+							<img v-else src="../assets/img/bry_forum_info/bry_forum_info_headpic.gif">
+							<div>{{ item.NickName }}</div>
+							<span>观看: {{ item.BrowseCount }}</span>
+							<span>回复: {{ item.Reply.length }}</span>
+						</div>
+						<div class="fr">
+							<div class="bry_forum_title clearfix">
+								<div class="fl">回复于 {{item.CreateDate}}</div>
+								<div class="fr" v-if="i == 0">
+									<span>沙发</span>
+								</div>
+							</div>
+							<div class="bry_forum_postcont ">
+								<p v-html="htmlDecode(item.Contents)"></p>
+								<div class="bry_encyc_share clearfix">
+									<div class="clearfix">
+										<div @click="replyComment(item)"><img src="../assets/icon/bry_encyc/bry_encyc_comment.png">回复</div>
+										<div @click="bear(item.Id, item.IsAgree, item.Disagree, 1)" :class="{active: item.IsAgree}"><img src="../assets/icon/bry_forum_info/bry_forum_bear.png">支持</div>
+										<div @click="bear(item.Id, item.IsAgree, item.Disagree, 2)" :class="{active: item.Disagree}"><img src="../assets/icon/bry_forum_info/bry_forum_oppose.png">反对</div>
+									</div>
+									<div v-show="item.isShow" class="bry_reply_comBox">
+										<div class="bry_reply_comList" v-for="reply in item.Reply">
+											<div class="bry_reply_mes">
+												<span>昵称:{{reply.NickName}}</span>
+												<span>回复于:{{reply.CreateDate}}</span>
+											</div>
+											<span>{{reply.Contents}}</span>
+										</div>
+
+										<div class="bry_publish_reply">
+											<textarea placeholder="请输入回复内容" v-model="item.replyContent"></textarea>
+											<button type="button" @click="replyCom(item)">回复</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="bry_forum_posts">
+						<button>发 贴</button>
+					</div> -->
+
+					<div class="bry_forum_reply clearfix">
+						<div class="fl">
+							<div>发表回复</div>
+							<!-- <img src="../assets/icon/header/login.png"> -->
+						</div>
+						<div class="fr">
+							<div id="summernote1"></div>
+							<button @click="postReply">回复</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="bry_information.html">资讯</a></li>
+							<li><a href="bry_Movies.html">视频</a></li>
+							<li><a href="bry_audioFrequency.html">音频</a></li>
+							<li><a href="bry_forum.html">论坛</a></li>
+							<li><a href="encyclopedias.html">百科</a></li>
+							<li><a href="book.html">电子书</a></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../assets/icon/footer/official_account.gif">
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../assets/icon/footer/phone_code.gif">
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+							<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					detalisData: {},
+					ArticleId: '', // 文章id
+					UserId: '',
+					Contents: '', // 富文本内容
+					replyList: [], // 回复列表
+					isAuth: ''  // 是否认证
+				}
+			},
+			created() {
+
+				this.UserId = foowwLocalStorage.getLocal("urseId")
+				this.ArticleId = window.location.href.split("?id=")[1]
+				// 获取基本资料
+				getAjax("get", "Users/DetailDo", '{"UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}').then(res => {
+					this.isAuth = res.data.IsAuth
+				})
+				// 获取文章详情
+				getAjax("get", "Articles/DetailDo", '{"Id":"' + this.ArticleId + '","UserId":"' + this.UserId + '"}').then(res => {
+					this.detalisData = res.data
+					console.log("文章详情:", res)
+				}).catch(err => {
+					//console.log(err)
+					this.$message({
+						message: "请求失败~"
+					})
+				})
+				// 获取评价
+				getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 + '","ArticleId":"' + this.ArticleId +
+					'","UserId":"' + this.UserId + '"}').then(res => {
+					this.replyList = res.data.map(item => {
+						return {
+							...item,
+							isShow: false,
+							replyContent: ''
+						}
+					}).reverse()
+
+					console.log("文章评价:", this.replyList)
+				})
+			},
+			computed: {
+				getTime() {
+					return Object.keys(this.detalisData).length != 0 ? this.detalisData.CreateDate.replace("T", " ") : null
+				}
+			},
+			mounted() {
+				$('#summernote1').summernote({
+					lang: 'zh-CN',
+					placeholder: '请输入内容',
+					height: 470,
+					disableDragAndDrop: true,
+					shortcuts: false,
+					tabDisable: false,
+					toolbar: [
+						['font', ['bold', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+						['fontname', ['fontsize']],
+						['color', ['forecolor', 'backcolor']],
+						['misc', ['undo', 'redo', 'help']]
+					]
+				})
+			},
+			methods: {
+				// 去登陆
+				goLogin() {
+					if (window.location.href.indexOf("_reg") == -1 && !foowwLocalStorage.getLocal("urseId")) {
+						this.$message({
+							message: '您还没有登录,请先登录~',
+							type: 'warning',
+							offset: 250
+						})
+						setTimeout(_ => {
+							window.location.href = "./login_reg_main.html"
+						}, 1000)
+						return false
+					}else if(!this.isAuth) {
+						this.$message({
+							message: '您还没有认证,请先认证~',
+							type: 'warning',
+							offset: 250
+						})
+						setTimeout(_ => {
+							window.location.href = "../view/consultation/con_auth_data.html"
+						}, 1000)
+						return false
+					}
+					return true
+				},
+				// 编码
+				htmlEncode(str) {
+					var s = "";
+					if (str.length == 0) return "";
+					s = str.replace(/&/g, "&amp;");
+					s = s.replace(/</g, "&lt;");
+					s = s.replace(/>/g, "&gt;");
+					s = s.replace(/ /g, "&nbsp;");
+					s = s.replace(/\'/g, "&#39;");
+					s = s.replace(/\"/g, "&quot;");
+					return s;
+				},
+				// 分享
+				share(){
+					var url = window.location.href
+					
+					console.log(url)
+					var title = "欢迎来彼若鱼，全国独家专业性教育平台"
+					window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url="+encodeURIComponent(url)+ "&title=" + title+"&desc=" +title)
+				},
+				// 解码
+				htmlDecode(str) {
+					var s = "";
+					if (str.length == 0) return "";
+					s = str.replace(/&amp;/g, "&");
+					s = s.replace(/&lt;/g, "<");
+					s = s.replace(/&gt;/g, ">");
+					s = s.replace(/&nbsp;/g, " ");
+					s = s.replace(/&#39;/g, "\'");
+					s = s.replace(/&quot;/g, "\"");
+					return s;
+				},
+				// 回复帖子
+				async postReply() {
+					if(!this.goLogin()){
+						return
+					} 
+					//将富文本标签中的内容传递给Contents
+					this.Contents = this.htmlEncode($('#summernote1').summernote('code'))
+					//当没有内容时提示请输入内容~ $('#summernote1').summernote('isEmpty') || 
+					if ($($('#summernote1').summernote('code')).text().trim() == '') {
+						this.$message({
+							message: "请输入内容~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					// 回帖的网络请求
+					await ajax("post", "ArticleComment/PublishDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this.UserId +
+						'","Contents":"' + this.Contents + '"}')
+					// 发帖后刷新评价
+					var result = await getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.ArticleId +
+						'","UserId":"' + this.UserId + '"}')
+
+					this.replyList = result.data.map(item => {
+						return {
+							...item,
+							isShow: false,
+							replyContent: ''
+						}
+					}).reverse()
+					console.log(this.replyList)
+
+					// 重置Contents
+					$('#summernote1').summernote('code', '');
+
+				},
+				// 回复滚动到底部
+				goReply() {
+					$('html,body').animate({
+						scrollTop: document.body.scrollHeight
+					}, 800)
+					$('#summernote1').summernote('focus')
+				},
+				// 收藏帖子  
+				async collect() {
+					if(!this.goLogin()){
+						return
+					} 
+					await ajax("post", "UserCollection/AddDo", '{"DataId":"' + this.ArticleId + '","Kind":"' + "1" + '","UserId":"' +
+						this.UserId + '"}', "123456")
+					// 刷新数据
+					var result = await getAjax("get", "Articles/DetailDo", '{"Id":"' + this.ArticleId + '","UserId":"' + this.UserId +
+						'"}')
+					this.detalisData = result.data
+				},
+				// 点赞帖子
+				async agreeArticle(agree, disagree, num) {
+					if(!this.goLogin()){
+						return
+					} 
+					if (num == 1) {
+						await ajax("post", "ArticleComment/AgreeContentDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this.UserId +
+							'","Flag":"' + 1 + '"}', "123456")
+						if (!agree && disagree) {
+							await ajax("post", "ArticleComment/AgreeContentDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this
+								.UserId +
+								'","Flag":"' + 2 + '"}', "123456")
+						}
+					}
+					if (num == 2) {
+						await ajax("post", "ArticleComment/AgreeContentDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this.UserId +
+							'","Flag":"' + 2 + '"}', "123456")
+						if (agree && !disagree) {
+							await ajax("post", "ArticleComment/AgreeContentDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this
+								.UserId +
+								'","Flag":"' + 1 + '"}', "123456")
+						}
+					}
+					var result = await getAjax("get", "Articles/DetailDo", '{"Id":"' + this.ArticleId + '","UserId":"' + this.UserId +
+						'"}')
+					this.detalisData = result.data
+				},
+
+				// 点赞评论
+				async bear(CommentId, agree, disagree, num) {
+					if(!this.goLogin()){
+						return
+					} 
+					if (num == 1) {
+						await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+							'","Flag":"' + 1 + '"}', "123456")
+						if (!agree && disagree) {
+							await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+								'","Flag":"' + 2 + '"}', "123456")
+						}
+					}
+					if (num == 2) {
+						await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+							'","Flag":"' + 2 + '"}', "123456")
+						if (agree && !disagree) {
+							await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+								'","Flag":"' + 1 + '"}', "123456")
+						}
+					}
+
+
+
+					var result = await getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' +
+						this.ArticleId +
+						'","UserId":"' + this.UserId + '"}')
+					this.replyList = result.data.map(item => {
+						return {
+							...item,
+							isShow: false,
+							replyContent: ''
+						}
+					}).reverse()
+				},
+				// 点击展开回复列表
+				replyComment(item) {
+					if(!this.goLogin()){
+						return
+					} 
+					item.isShow = !item.isShow
+				},
+				// 回复评论
+				async replyCom(item) {
+					if (!item.replyContent.trim()) {
+						return this.$message({
+							message: "请输入回复内容~",
+							type: 'warning',
+							offset: 250
+						})
+					}
+					await ajax("post", "ArticleComment/ReplyDo", '{"ArticleId":"' + this.ArticleId + '","UserId":"' + this.UserId +
+						'","Contents":"' + item.replyContent + '","ParentId":"' + item.Id + '"}', "123456")
+					// 回复后刷新评价
+					var result = await getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.ArticleId +
+						'","UserId":"' + this.UserId + '"}')
+
+					this.replyList = result.data.map(it => {
+						if (it.Id == item.Id) {
+							return {
+								...it,
+								isShow: true,
+								replyContent: ''
+							}
+						} else {
+							return {
+								...it,
+								isShow: false,
+								replyContent: ''
+							}
+						}
+
+
+					}).reverse()
+
+
+
+					//console.log(item)
+				}
+			}
+		})
+	</script>
+</html>

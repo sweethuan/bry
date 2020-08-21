@@ -1,0 +1,292 @@
+body {
+    background: #059fbf !important;
+    width: 100%;
+    height: 100%;
+}
+
+.bry_container {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+/* 标题及退出登录 */
+.bry_title_logout {
+    line-height: 30px;
+    padding-top: 35px;
+    padding-bottom: 18px;
+}
+
+.bry_title_logout>p:nth-of-type(1) {
+    font-size: 20px;
+    font-family: "Source Han Sans CN", "微软雅黑";
+    color: #efefef;
+    box-sizing: border-box;;
+    padding-left: 48px;
+    background: url('../../assets/icon/lecturer/lectu_head.png') no-repeat left 7px center;
+    background-size: 33px 25px;
+}
+.bry_title_logout>p:nth-of-type(2) {
+    font-size: 14px;
+    color: white;
+    padding-right: 50px;
+}
+.bry_title_logout>p:nth-of-type(2)>a {
+    color: #ffd132;
+    margin-left: 6px;
+}
+
+/* 内容区 */
+.bry_inner {
+    width: 100%;
+    min-height: 1098px;
+    box-sizing: border-box;
+    /* margin-bottom: 54px; */
+    background: #efefef;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+
+/* 头像及侧导航 */
+.bry_head_leftnav {
+    width: 190px;
+	padding-left: 22px;
+	padding-top: 35px;
+	box-sizing: content-box;
+}
+
+/* 头像 */
+.bry_people{
+	width: 100%;
+}
+.bry_people>span{
+	padding-top: 10px;
+}
+.bry_people_pic{
+	margin-left: 40px;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	position: relative;
+}
+.bry_people_pic>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.bry_people_pic>span{
+	position: absolute;
+	display: block;
+	width: 100px;
+	text-align: center;
+	left: 5px;
+	bottom: -10px;
+	background: #059fbf;
+	color: #ffffff;
+	font-size: 18px;
+	border-radius: 4px;
+	z-index: 99;
+}
+.bry_people>span{
+	width: 100%;
+	margin-top: 10px;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+	color: #333333;
+	
+}
+.show_uploadHead{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	background-color:rgba(0,0,0,0.5) ;
+	text-align: center;
+	line-height: 110px;
+	font-size: 20px;
+	color: #ffffff;
+	cursor: pointer;
+	display: none;
+
+}
+.bry_people_pic:hover .show_uploadHead{
+	display: block;
+}
+/* 认证与充值 */
+.bry_authentication_recharge{
+	width: 100%;
+}
+.bry_authentication_recharge>span{
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+.bry_authentication_recharge>span{
+	font-size: 18px;
+	color: #059fbf;
+	margin-top: 20px;
+	margin-bottom: 18px;
+}
+.bry_authentication_recharge>a{
+	display: block;
+	cursor: pointer;
+	text-align: center;
+	width: 100%;
+	font-size: 18px;
+	background: #fd9441;
+	color: #ffffff;
+	height: 34px;
+	line-height: 34px;
+	border-radius: 10px;
+	margin-bottom: 25px;
+}
+
+/* 侧导航 */
+.bry_sidenav {
+    
+}
+
+.bry_sidenav>li {
+    width: 100%;
+    font-size: 14px;
+    background: white;
+    line-height: 26px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* padding-left: 60px; */
+
+}
+.bry_sidenav>li>a {
+	display: block;
+	width: 100%;
+    color: #333333;
+    text-align: center;
+}
+.bry_sidenav .bry_space1 {
+    margin-bottom: 4px;
+}
+.bry_sidenav .bry_space2 {
+    margin-bottom: 19px;
+}
+
+/* 侧导航选中效果 */
+.bry_sidenav_sel {
+    background: #059fbf !important;
+}
+.bry_sidenav_sel a {
+    color: white !important;
+}
+
+/* 修改头像弹出层 */
+.uploadHead_div{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 999;
+}
+.uploadhead_pic{
+	position: absolute;
+	top: 320px;
+	left: 600px;
+	width: 500px;
+	height: 540px;
+	background: #ffffff;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.uploadhead_pic>span{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+}
+
+/* 头像上传 */
+.headimg_upload{
+	width: 100%;
+}
+/* 大头像 */
+.big_headpic{
+	float: left;
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+}
+.big_headpic>img{
+	width: 100%;
+	height: 85%;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+}
+/* 小头像 */
+.small_headpic{
+	display: inline-block;
+	width: 150px;
+	height: 300px;
+	margin-left: 20px;
+	
+}
+.small_headpic>img{
+	width: 100%;
+	height: 50%;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	
+}
+.small_headpic>span{
+	font-size: 16px;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 80px;
+}
+.small_headpic>a{
+	display: block;
+	width: 150px;
+	font-size: 16px ;
+	color: #000000;
+	position: relative;
+	bottom: 0;
+	right: 0;
+}
+.small_headpic>a>span{
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: 80px;
+	background: #ffffff;
+}
+.small_headpic>a>input{
+	
+	width: 100%;
+	font-size: 13px;
+	
+}
+/* 决定部分 */
+.decide_part{
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+}
+.decide_part>button{
+	width: 80px;
+	height: 30px;
+	font-size: 15px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.decide_part>button:nth-of-type(1){
+	color: darkgray;
+}
+.decide_part>button:nth-of-type(2){
+	color: #ffffff;
+	background: #059fbf;
+}

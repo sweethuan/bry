@@ -1,0 +1,31 @@
+.bry_main {
+	width: 1080px;
+	padding: 118px 0 0 20px;
+	box-sizing: border-box;
+}
+
+.el-table--border:after,
+.el-table--group:after,
+.el-table:before {
+	background-color: #059dc2 !important;
+}
+
+.el-table--border,
+.el-table--group {
+	border-color: #059dc2 !important;
+}
+
+.el-table td,
+.el-table th.is-leaf {
+	border-bottom: 1px solid #059dc2 !important;
+}
+
+.el-table--border th,
+.el-table--border th.gutter:last-of-type {
+	border-bottom: 1px solid #059dc2 !important;
+}
+
+.el-table--border td,
+.el-table--border th {
+	border-right: 1px solid #059dc2 !important;
+}

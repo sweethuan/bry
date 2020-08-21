@@ -1,0 +1,144 @@
+.bry_inner{
+	padding: 0 18px;
+	box-sizing: border-box;
+}
+.bry_Recommend{
+	width: 100%;
+	padding: 0 0 50px 0;
+	box-sizing: border-box;
+}
+.bry_RecommendTitle>span{
+	display: block;
+	float: left;
+	padding: 40px 0;
+	box-sizing: border-box;
+	margin-left: 35px;
+	font-size: 24px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+.bry_RecommendTitle > span.active{
+	color: #02c6d5;
+}
+.bry_News2List{
+	width: 100%;
+}
+/* .listHeight{
+	height: 1410px;
+} */
+.bry_News2Li{
+	width: 605px;
+	padding: 35px 0 6px 0;
+	box-sizing: border-box;
+	border-bottom: 1px dashed #01677c;
+}
+.bry_News2Li:nth-of-type(2n+1){
+	float: left;
+}
+.bry_News2Li:nth-of-type(2n+2){
+	float: right;
+}
+.bry_News2Li>a{
+	width: 100%;
+}
+.bry_News2Li_picture{
+	float: left;
+	width: 176px;
+	height: 99px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.bry_News2Li_picture>img{
+	width: 100%;
+}
+.bry_News2Li_right{
+	float: right;
+	width: 420px;
+	height: 99px;
+	position: relative;
+}
+.txt-cut1{
+	width: 100%;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.bry_News2Li_right>span:nth-of-type(1){
+	font-size: 18px;
+	color: #FFFFFF;
+}
+.bry_News2Li_right>span:nth-of-type(2){
+	display: block;
+	margin: 15px 0;
+	font-size: 14px;
+	color: #02c6d5;
+}
+.bry_News2Li_rightDown{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+.bry_News2Li_rightDown span{
+	font-size: 12px;
+	color: #02c6d5;
+}
+.bry_News2Li_rightDown>span{
+	display: block;
+	float: left;
+}
+.bry_News2Li_rightDown_lookNum{
+	float: right;
+	margin-right: 20px;
+	width: -webkit-fit-content;
+}
+.bry_News2Li_rightDown_lookNum>img{
+	display: block;
+	float: left;
+	margin-top: 2px;
+}
+.bry_News2Li_rightDown_lookNum>span{
+	display: block;
+	float: left;
+	margin-left: 8px;
+}
+
+.bry_screen{
+	width: 100%;
+	padding: 0 19px 43px 19px;
+	box-sizing: border-box;
+}
+
+
+
+/* 跳页部分 */
+.bry_main_JumpPage{
+	display: flex;
+	margin: 55px 0 25px 0;
+	width: 100%;
+	height: 30px;
+	 justify-content: flex-end; 
+	 flex-wrap: wrap;
+}
+
+
+.bry_main_JumpPage_listType1{
+	font-size: 14px;
+	color: #02c6d5;
+	line-height: 32px;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input,
+button {
+	outline: none;
+}

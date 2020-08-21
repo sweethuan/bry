@@ -1,0 +1,16 @@
+
+.bry_encyc_article_msg {
+    margin-bottom: 24px;
+}
+.bry_encyc_article p {
+    text-indent: 0;
+    margin-top: 0px;
+}
+.bry_encyc_class .bry_encyc_fr_title {
+	background-color: #f16161;
+}
+.bry_encyc_pages li.active button,
+.bry_encyc_share > .clearfix > div.active {
+    background-color: #f16161;
+    
+}

@@ -1,0 +1,379 @@
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	/* 解决IOS默认滑动很卡的情况 */
+	-webkit-overflow-scrolling: touch;
+}
+
+body {
+	font: 12px/1.5 'Microsoft YaHei', '宋体', Tahoma, Arial, sans-serif;
+	color: #333;
+	min-width: 1320px;
+	/*background-color: #F7F7F7;*/
+}
+
+
+/* 禁止缩放表单 */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input {
+	resize: none;
+	border: none;
+}
+
+/* 取消链接高亮  */
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 设置HTML5元素为块 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+/* 图片自适应 */
+img {
+	height: auto;
+	width: auto\9;
+	/* ie8 */
+	display: block;
+	-ms-interpolation-mode: bicubic;
+	/*为了照顾ie图片缩放失真*/
+}
+
+/* 初始化 */
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+}
+
+em,
+i {
+	font-style: normal;
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+strong {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+textarea {
+	resize: none;
+	/*禁用了文本的拖拉，尤其在谷歌下*/
+}
+
+p {
+	word-wrap: break-word;
+	/* 不够的单词自动换行 而不会被截掉 */
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+	outline: none;
+}
+
+a {
+	text-decoration: none !important;
+	color: #fff;
+	font-family: 'Microsoft YaHei', Tahoma, Arial, sans-serif;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-family: 'Microsoft YaHei';
+}
+
+img {
+	border: none;
+}
+
+input {
+	font-family: 'Microsoft YaHei';
+}
+
+/*单行溢出*/
+.one-txt-cut {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/*多行溢出 手机端使用*/
+.txt-cut2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* 移动端点击a链接出现蓝色背景问题解决 */
+/* a:link,a:active,a:visited,a:hover {
+    background: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+} */
+.overflow {
+	overflow: hidden;
+}
+
+.w50 {
+	width: 50%;
+}
+
+.w25 {
+	width: 25%;
+}
+
+.w20 {
+	width: 20%;
+}
+
+.w33 {
+	width: 33.333333%;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.db {
+	display: block !important;
+}
+
+.dn {
+	display: none;
+}
+
+/*1px实现*/
+.common-hr {
+	position: relative;
+}
+
+.common-hr:after {
+	content: '';
+	position: absolute;
+	background-color: #efefef;
+	display: block;
+	z-index: 15;
+	top: auto;
+	right: auto;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	width: 100%;
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+}
+
+.no-border::after {
+	display: none !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+	.common-hr:after {
+		-webkit-transform: scaleY(0.5);
+		transform: scaleY(0.5);
+	}
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:3) {
+	.common-hr:after {
+		-webkit-transform: scaleY(0.33);
+		transform: scaleY(0.33);
+	}
+}
+
+.el-tabs__nav-wrap {
+	padding: 0 180px;
+}
+
+.el-tabs__nav-wrap::after {
+	top: 0;
+	height: 12px !important;
+	border-radius: 6px;
+	background-color: #016e85 !important;
+	box-shadow: 0 10px 10px #000000;
+}
+
+.el-tabs__active-bar {
+	top: 0;
+	height: 12px !important;
+	border-radius: 6px;
+	background-color: #f16161 !important;
+}
+
+.el-tabs__item {
+	color: #02c6d5 !important;
+	font-size: 20px !important;
+	height: 60px !important;
+	line-height: 80px !important;
+}
+
+.el-tabs__item.is-active {
+	color: #f16161 !important;
+}
+
+.el-pager li {
+	background-color: #02c6d5 !important;
+	color: #fff !important;
+	border-radius: 4px !important;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+	background-color: #f16161 !important;
+}
+
+.el-pagination__editor .el-input__inner {
+	background-color: #02c6d5 !important;
+	color: #fff !important;
+	border: none !important;
+}
+
+.el-pagination__jump {
+	color: #02c6d5 !important;
+}
+
+.el-upload__tip {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.el-upload-list {
+	width: 300px;
+}
+.bry_code .el-input{
+	width: 47%;
+}
+.bry_code .el-button{
+	width: 51%;
+}

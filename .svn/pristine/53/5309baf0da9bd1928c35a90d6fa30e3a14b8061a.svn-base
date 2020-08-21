@@ -1,0 +1,323 @@
+.bry_main {
+    width: 1088px;
+    position: relative;
+	padding-top: 54px;
+}
+.bry_inner {
+	min-height: 1500px;
+}
+
+/* 最上面的导航 */
+.bry_topnav>a {
+	font-size: 18px;
+	color: #333333;
+	margin-right: 20px;
+}
+.bry_topnav .bry_topnav_sel {
+	color: #059fbf;
+}
+
+/* 共通的部分 */
+.bry_comwid {
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 92px;
+	position: relative;
+}
+
+.bry_comtitle {
+	position: absolute;
+	right: 1002px;
+	top: 9px;
+	font-size: 14px;
+	color: #333333;
+}
+.bry_comtitle_star::before {
+	display: block;
+	position: absolute;
+	left: -10px;
+	top: 0;
+	content: "*";
+	color: red;
+}
+
+/* 视频分类 */
+.bry_classi {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 7px;
+	margin-top: 16px;
+}
+
+.bry_classi ul>li {
+	float: left;
+	padding-right: 30px;
+}
+
+.bry_classi ul>li>label {
+	vertical-align: middle;
+	margin: 0;
+	font-weight: 400;
+}
+.bry_classi ul>li input {
+	margin: 0;
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+/* 视频名称 */
+.bry_name {
+	margin-top: 20px;
+	padding-top: 4px;
+}
+
+.bry_name>input {
+	width: 490px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	padding: 0 10px;
+	outline: none;
+}
+
+/* 是否收费 */
+.bry_payno {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #333333;
+}
+
+.bry_payno>label {
+	margin: 0;
+	margin-right: 50px;
+	font-weight: 400;
+}
+.bry_payno>label>input {
+	margin: 0;
+	vertical-align: middle;
+	margin-right: 4px;
+}
+
+.bry_payno>input {
+	width: 126px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 2px;
+	text-align: center;
+}
+
+/* 封面 */
+.bry_cover {
+	margin-top: 10px;
+	position: relative;
+}
+
+.bry_cover_img {
+	width: 186px;
+	height: 110px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	background: white;
+	margin-top: 8px;
+}
+.bry_cover_img img {
+	width: 100%;
+	height: 100%;
+}
+.bry_cover_info {
+	font-size: 12px;
+	color: #666666;
+	padding-top: 10px;
+	padding-left: 16px;
+	position: relative;
+}
+
+.bry_cover_info>p {
+	padding-bottom: 3px;
+}
+
+.bry_cover_btn {
+	position: absolute;
+	bottom: -42px;
+}
+.bry_cover_btn > a{
+	position: relative;
+	display: inline-block;
+	border-radius: 4px;
+	text-align: center;
+	width: 72px;
+	height: 22px;
+	line-height: 22px;
+	background: #999999;
+	color: white;
+	margin-right: 10px;
+}
+.bry_cover_btn > a:hover {
+	color: white;
+}
+.bry_cover_btn>a>input{
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+}
+.bry_cover_btn>button {
+	width: 72px;
+	height: 22px;
+	background: #999999;
+	color: white;
+	font-size: 12px;
+	border: none;
+	border-radius: 4px;
+	margin-right: 18px;
+	outline: none;
+	cursor: pointer;
+}
+
+/* 摘要 */
+.bry_abstract {
+	margin-top: 24px;
+}
+.bry_abstract>textarea {
+	resize: none;
+	outline: none;
+	border-radius: 5px;
+	width: 596px;
+	height: 84px;
+	border: 1px solid #c1c1c1;
+	box-sizing: border-box;
+	padding: 7px;
+}
+
+/* 内容 */
+.bry_text {
+	margin-top: 20px;
+}
+
+.bry_text>div {
+	width: 906px;
+	/* height: 508px; */
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	background: white;
+}
+
+/* 标签 */
+.bry_label {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 7px;
+	margin-top: 16px;
+}
+
+.bry_label ul>li {
+	float: left;
+	padding-right: 30px;
+}
+
+.bry_label ul>li>label {
+	vertical-align: middle;
+	font-weight: 400;
+	margin: 0;
+}
+.bry_label ul>li input {
+	margin: 0;
+	margin-right: 4px;
+	vertical-align: middle;
+}
+p {
+	margin: 0 0 0 0 !important;
+}
+
+/* 上架时间 */
+.bry_upper {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 2px;
+	margin-top: 14px;
+}
+.bry_upper>select {
+	width: 186px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	outline: none;
+	padding-left: 5px;
+}
+
+/* 下架时间 */
+.bry_lower {
+	font-size: 14px;
+	color: #333333;
+	padding-top: 2px;
+	margin-top: 14px;
+}
+.bry_lower>select {
+	width: 186px;
+	height: 36px;
+	box-sizing: border-box;
+	border: 1px solid #c1c1c1;
+	border-radius: 5px;
+	outline: none;
+	padding-left: 5px;
+}
+
+/* 上传 */
+.bry_upvedio {
+	height: 85px;
+	padding-top: 2px;
+	margin-top: 14px;
+}
+.bry_upvedio>button {
+	width: 186px;
+	height: 36px;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	border: none;
+	background: #059fbf;
+	color: white;
+	font-size: 14px;
+}
+.bry_upvedio>span:nth-of-type(2) {
+	font-size: 12px;
+	color: #333333;
+	padding-left: 10px;
+}
+
+/* 保存按钮 */
+.bry_save {
+	width: 444px;
+	height: 38px;
+	border-radius: 5px;
+	border: none;
+	background: #059fbf;
+	letter-spacing: 1em;
+	text-indent: 1em;
+	font-size: 18px;
+	color: white;
+	margin-top: 6px;
+	margin-bottom: 40px;
+	margin-left: 280px;
+	outline: none;
+	cursor: pointer;
+}
+.el-upload__input {
+    display: none!important;
+}
+.mask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}

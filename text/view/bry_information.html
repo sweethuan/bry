@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>资讯</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_information.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<script type="text/javascript" charset="utf-8" src="../static/js/jquery.min.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/vue.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+		<!-- 引入封装的ajax -->
+		<script type="text/javascript" charset="utf-8" src="../static/js/public.js"></script>
+		<!-- 引入网络请求 -->
+		<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item page="bry_information"></header-item>
+			</div>
+
+			<div class="bry_main">
+				<div class="bry_inner">
+					<!-- 推荐 -->
+					<div class="bry_Recommend">
+						<div class="bry_RecommendTitle clearfix">
+							<span v-for="(item, index) in tab1" :class="{active: current == index}" @click="changeTab(index)">{{ item }}</span>
+						</div>
+						<ul class="bry_News2List clearfix">
+							<li class="bry_News2Li" v-for="(item,index) in indexData1" :key="index">
+								<a :href="'bry_information_info.html?inforId=' + item.Id" class="clearfix">
+									<div class="bry_News2Li_picture">
+										<img :src="item.ListPhoto" />
+									</div>
+									<div class="bry_News2Li_right">
+										<span class="txt-cut1">{{item.Title}}</span>
+										<span class="txt-cut1">{{item.Details}}</span>
+										<div class="bry_News2Li_rightDown clearfix">
+											<span>{{item.CreateDate.split(" ")[0]}}</span>
+											<div class="bry_News2Li_rightDown_lookNum clearfix">
+												<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png" />
+												<span>{{item.QueryCount}}</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					
+					<div class="bry_screen">
+						<!-- 筛选 -->
+						<el-tabs v-model="activeName" @tab-click="handleClick" stretch>
+							<el-tab-pane label="新闻" name="11"></el-tab-pane>
+							<el-tab-pane label="产业" name="37"></el-tab-pane>
+							<el-tab-pane label="科技" name="38"></el-tab-pane>
+							<el-tab-pane label="政策" name="39"></el-tab-pane>
+						</el-tabs>
+						
+						<ul class="bry_News2List clearfix listHeight">
+							<li class="bry_News2Li" v-for="(item,index) in indexData2" :key="index">
+								<a :href="'bry_information_info.html?inforId='+item.Id" class="clearfix">
+									<div class="bry_News2Li_picture">
+										<img :src="item.ListPhoto" />
+									</div>
+									<div class="bry_News2Li_right">
+										<span class="txt-cut1">{{item.Title}}</span>
+										<span class="txt-cut1">{{item.Details}}</span>
+										<div class="bry_News2Li_rightDown clearfix">
+											<span>{{item.CreateDate.split(" ")[0]}}</span>
+											<div class="bry_News2Li_rightDown_lookNum clearfix">
+												<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png" />
+												<span>{{item.QueryCount}}</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							
+						</ul>
+						
+						<!-- 跳页部分 -->
+						<div class="bry_main_JumpPage clearfix">
+							<span class="bry_main_JumpPage_listType1" @click="goHome">首页</span>
+							<span class="bry_main_JumpPage_listType1" @click="prevClick">上一页</span>
+							<el-pagination
+							  background
+								:page-size = "pageSize"
+								:current-page = "currentPage"
+							  layout="pager, jumper"
+								@current-change="handleCurrentChange"
+							  :total="total">
+							</el-pagination>
+							<span class="bry_main_JumpPage_listType1" @click="nextClick">下一页</span>
+							<span class="bry_main_JumpPage_listType1" @click="goEnd">尾页</span>
+						</div>
+						<!-- /跳页部分 -->
+					</div>
+				</div>
+			</div>
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="bry_information.html">资讯</a></li>
+							<li><a href="bry_Movies.html">视频</a></li>
+							<li><a href="bry_audioFrequency.html">音频</a></li>
+							<li><a href="bry_forum.html">论坛</a></li>
+							<li><a href="encyclopedias.html">百科</a></li>
+							<li><a href="book.html">电子书</a></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../assets/icon/footer/official_account.gif" />
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../assets/icon/footer/phone_code.gif" />
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>
+								重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有
+							</div>
+							<div>
+								渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png" />渝公安备 50019002501739
+							</div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					current: 0,  // 控制 第一个tab 默认选中谁
+					tab1: ["最新", "热门"],
+					activeName: '11',  // 控制 第二个tab 默认选中谁
+					currentPage: 1,    // 当前页
+					pageSize: 20,      // 每页显示个数
+					total: 1000 ,       // 总条数
+					indexData1:[] ,		//数据请求1
+					indexData2:[]  		//数据请求2
+				}
+			},
+			created() {
+				getNewestdata(6, 2).then(res => {
+					this.indexData1=res.data
+					console.log(this.indexData1)
+				}, rej => {
+					console.log(rej)
+				}),
+				getMoviesdata(this.pageSize, this.activeName,this.currentPage).then(res=>{
+					console.log(0)
+					this.indexData2=res.data
+					this.total=res.other
+					console.log(this.indexData2)
+				},err=>{
+					console.log(err)
+				})
+			},
+			watch: {
+				// 监听页码变化即发送请求
+				currentPage(){
+					getMoviesdata(20, this.activeName, this.currentPage).then(res=>{
+						console.log(res)
+						this.indexData2=res.data
+						this.total=res.other
+					},err=>{
+						console.log(err)
+					})
+				}
+			},
+			methods: {
+				// 第一个tab切换
+				changeTab(index) {
+					this.current = index
+					switch (index) {
+						case 0:
+							getNewestdata(6, 2).then(res => {
+								
+								this.indexData1=res.data
+								console.log(this.indexData1)
+							}, rej => {
+								console.log(rej)
+							})
+							break
+						case 1:
+							getHotdata(6, 53).then(res => {
+								this.indexData1=res.data
+								console.log(this.indexData1)
+							}, rej => {
+								console.log(rej)
+							})
+							break
+					}
+				},
+				// 第二个tab切换时触发
+				handleClick(tab) {
+					this.currentPage = 1
+					
+					getMoviesdata(20, tab.name).then(res=>{
+						this.indexData2=res.data
+						this.total=res.other
+						console.log(this.indexData2)
+					},err=>{
+						console.log(0)
+					})
+				},
+				// 当前页数改变时会触发
+				handleCurrentChange(page){
+					this.currentPage = page
+				},
+				// 点击上一页
+				prevClick() {
+					if(this.currentPage <= 1) {
+						this.$message({
+							message: "已经是首页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.currentPage=this.currentPage-1
+					getMoviesdata(20, this.activeName, --this.currentPage).then(res=>{
+						this.indexData2=res.data
+						this.total=res.other
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 点击下一页
+				nextClick() {
+					if(this.currentPage >= Math.ceil(this.total / this.pageSize)) {
+						this.$message({
+							message: "已经是最后一页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.currentPage=this.currentPage+1
+					getMoviesdata(2, this.activeName, this.currentPage).then(res=>{
+						this.indexData2=res.data
+						this.total=res.other
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 回首页
+				goHome() {
+					this.currentPage = 1
+					getMoviesdata(20, this.activeName, this.currentPage).then(res=>{
+						this.indexData2=res.data
+						this.total=res.other
+					},err=>{
+						console.log(err)
+					})
+				},
+				// 去尾页
+				goEnd(){
+					this.currentPage = Math.ceil(this.total / this.pageSize)
+					getMoviesdata(20, this.activeName, this.currentPage).then(res=>{
+						this.indexData2=res.data
+						this.total=res.other
+					},err=>{
+						console.log(err)
+					})
+				}
+			}
+		});
+	</script>
+</html>

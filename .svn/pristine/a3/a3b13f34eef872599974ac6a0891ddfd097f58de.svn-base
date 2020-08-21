@@ -1,0 +1,195 @@
+.bry_main {
+    width: 1078px;
+	padding:54px 28px 50px 0 ;
+	box-sizing: border-box;
+	position: relative;
+}
+
+/* 最上面的导航 */
+.bry_topnav>a {
+	font-size: 18px;
+	color: #333333;
+	margin-right: 20px;
+}
+.bry_topnav .bry_topnav_sel {
+	color: #059fbf;
+}
+
+/* 几种间距 */
+.space1 {
+    margin-bottom: 30px;
+}
+
+.vedio_space {
+    margin-right: 10px;
+}
+.audio_space {
+    margin-right: 24px;
+}
+.info_space {
+    margin-right: 80px;
+}
+.baike_space {
+    margin-bottom: 14px;
+}
+.forum_space {
+    margin-right: 146px;
+    margin-bottom: 18px;
+}
+
+/* 相同的title */
+.bry_comtitle {
+    padding-bottom: 16px;
+}
+.bry_comtitle>span {
+    font-size: 14px;
+    color: #059fbf;
+}
+.bry_comtitle>button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #059fbf;
+    padding-left: 18px;
+    background: url(../../../assets/icon/mechanism/change.png) no-repeat left center;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 选项列表 */
+.bry_option_list{
+	width: 100%;
+}
+.bry_option_list>li{
+	float: left;
+	font-size: 16px;
+	margin-right: 40px;
+}
+
+/* 选中列表 */
+.bry_option_list_checked{
+	color: #059fbf;
+}
+
+/* 记录内容 */
+.bry_record_content{
+	width: 100%;
+	margin: 20px 0 0 30px;
+}
+.bry_record_content>li{
+	margin-top: 10px;
+}
+.bry_record_content_title{
+	width: 100%;
+	padding-left: 25px;
+	box-sizing: border-box;
+}
+.bry_record_content_title>li{
+	float: left;
+	border-radius: 4px;
+	margin-right: 2px;
+	background: #059fbf;
+	font-size: 14px;
+	color: #ffffff;
+	text-align: center;
+	height: 22px;
+	width: 150px;
+}
+.bry_record_content_title>li:nth-of-type(1){
+	width: 294px;
+}
+
+/* 记录内容部分 */
+.bry_record_content_part{
+	width: 100%;
+}
+.bry_record_content_part>li{
+	float: left;
+	border-radius: 4px;
+	font-size: 12px;
+	color: #666666;
+	text-align: center;
+	height: 22px;
+	width: 150px;
+	line-height: 22px;
+}
+.bry_record_content_part>li:not(:first-child){
+	background: #ffffff;
+	margin-right: 2px;
+}
+.bry_record_content_part>li:first-child{
+	width: 20px;
+	margin-right: 5px;
+}
+.bry_record_content_part>li:first-child>span{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #333333;
+	box-sizing: border-box;
+}
+.bry_record_content_part>li:nth-of-type(2){
+	width: 294px;
+	padding: 0 14px;
+	box-sizing: border-box;
+	text-align: left;
+	
+}
+.bry_record_content_part>li:nth-of-type(2)>a{
+	color: #666666;
+}
+.bry_record_content_part>li:last-child>span{
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+/* 全选和删除 */
+.bry_all_delete{
+	position: absolute;
+	left: 50px;
+	bottom: 10px;
+	height: 22px;
+}
+.bry_all_delete>li{
+	float: left;
+	height: 22px;
+	margin-right: 26px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.bry_all_delete>li>span{
+	float: left;
+	
+}
+
+.bry_all_delete>li>span:nth-of-type(2){
+	width: 12px;
+	height: 12px;
+	border: 1px solid #333333;
+	box-sizing: border-box;
+	margin: 5px 0 0 4px;
+}
+
+/* 加勾背景图 */
+.bry_add_bgpic{
+	background: url(../../../assets/icon/gou-pic1.png) no-repeat center;
+	background-size: 12px 12px;
+}
+/* 上一页下一页 */
+.bry_next_last{
+	position: absolute;
+	right: 160px;
+	bottom: 10px;
+	height: 22px;
+}
+.bry_next_last>li{
+	float: left;
+	margin-right: 10px;
+	font-size: 14px;
+	color: #333333;
+	cursor: pointer;
+}
+.bry_next_last>li>a{
+	margin-left: 40px;
+	color: #059fbf;
+}

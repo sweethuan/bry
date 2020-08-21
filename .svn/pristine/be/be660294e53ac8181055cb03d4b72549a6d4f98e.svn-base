@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>百科</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/encyclopedias.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+	<script src="../static/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/JavaScript" charset="UTF-8" src="../static/js/vue.js"></script>
+	<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+	<!-- 引入封装的ajax -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/public.js"></script>
+	<!-- 引入首页的网络请求 -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div id="header">
+			<header-item></header-item>
+		</div>
+		<!-- 焦点栏 -->
+		<div class="bry_encyclopedias_focus inner">
+			<div class="bry_encyclopedias_focus_list">
+				<div class="bry_encyclopedias_focus_list_background clearfix">
+					<!-- 海报 -->
+					<div class="bry_encyclopedias_focus_poster clearfix">
+						<!-- <button type="button" id="focus_button_left" class="bry_encyclopedias_focus_button"></button> -->
+						<div class="bry_encyclopedias_focus_poster_list">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" v-for="(item,index) in pointData"><a
+											:href="'bry_encyc_info.html?id='+item.Id"><img :src="item.ListPhoto" id="pointPic"></a>
+									</div>
+
+								</div>
+								<!-- Add Arrows -->
+								<div class="swiper-button-next focus_button picture_button"></div>
+								<div class="swiper-button-prev focus_button picture_button"></div>
+							</div>
+							<!-- <li><a href=""><img src="../assets/img/poster_list.png"></a></li> -->
+
+						</div>
+						<!-- <button type="button" id="focus_button_right" class="bry_encyclopedias_focus_button"></button> -->
+
+					</div>
+					<!-- 标题 -->
+					<ul class="bry_encyclopedias_focus_list_title">
+						<li class="focus_item one-txt-cut" :class="focus_num==index?'enlarge':''"
+							v-for="(item,index) in pointData" :key="index" @click="changeCss(item,index)">{{item.Title}}</li>
+						<!-- <li class="focus_item enlarge">《红楼梦》中的性科学微观</li>
+							<li class="focus_item">性权感念的提出和发展</li>
+							<li class="focus_item">人会与机器结婚吗？</li>
+							<li class="focus_item">男性不育症诊治误区及其防范</li> -->
+					</ul>
+					<!-- 文本 -->
+					<ul class="bry_encyclopedias_focus_list_text">
+						<li>
+							<div class="list_text_background">
+								<img src="../assets/img/list_text_background.png">
+							</div>
+							<div class="focus_list_text">
+								<div>
+									<p>{{pointCont}}
+									</p>
+								</div>
+								<!-- <div>
+									<p>《红楼梦》被誉为中国封建社会“生活的百科全书”。作为一代文学巨匠，曹雪芹在描写宝黛爱情故事的同时，对清代性科学作了全方位的记录。笔者认为，在中国传统性文化史上《红楼梦》树起了一座丰碑，书中有关性医学、性心理学、性民俗学、性隐语的描述，丰富多彩，耐人寻味，不论是在古典文学还是传统性学的青史上，都堪称经典之作。
+									</p>
+									<p>1、性医学的医案</p>
+									<p>2、性心理的描写</p>
+									<p>3、 性民俗的记载</p>
+									<p>4、性隐语拾零</p>
+								</div> -->
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 最新上传 -->
+		<div class="bry_encyclopedias_upload">
+			<div class="bry_encyclopedias_upload_text">
+				最新上传
+			</div>
+			<div class="bry_encyclopedias_upload_list_left">
+				<ul class="upload_list_ul">
+					<li class="clearfix" v-for="(item,index) in tab1Data">
+						<a :href="'bry_encyc_info.html?id='+item.Id">
+							<div>
+								{{item.Title}}
+							</div>
+							<span>2013-11-8 15:43:36</span>
+						</a>
+					</li>
+					<!-- <li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								向世界展示中华性文化
+							</div>
+							<span>2013-4-22 11:38:23</span>
+						</a>
+					</li> -->
+
+				</ul>
+				<div class="bry_encyclopedias_upload_Middle"></div>
+			</div>
+
+			<!-- <div class="bry_encyclopedias_upload_list_right">
+				<ul class="upload_list_ul">
+					<li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								中国性科学研究探源
+							</div>
+							<span>2013-11-8 15:43:36</span>
+						</a>
+					</li>
+					<li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								向世界展示中华性文化
+							</div>
+							<span>2013-4-22 11:38:23</span>
+						</a>
+					</li>
+					<li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								现代女性性爱意识的觉醒
+							</div>
+							<span>2012-6-26 14:30:12</span>
+						</a>
+					</li>
+					<li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								儒家与道家性哲学观念之比较
+							</div>
+							<span>2012-6-25 15:25:10</span>
+						</a>
+					</li>
+					<li class="clearfix">
+						<a href="bry_encyc_info.html">
+							<div>
+								古代城市中的同性恋
+							</div>
+							<span>2012-6-20 14:28:29</span>
+						</a>
+					</li>
+				</ul>
+			</div>-->
+		</div>
+		<!-- 屏幕列表 -->
+		
+		<div class="inner">
+			<el-tabs v-model="activeName" @tab-click="handleClick" stretch>
+				<el-tab-pane label="性科学史" name="26"></el-tab-pane>
+				<el-tab-pane label="性生物学" name="27"></el-tab-pane>
+				<el-tab-pane label="性心理学" name="28"></el-tab-pane>
+				<el-tab-pane label="性社会学" name="29"></el-tab-pane>
+				<el-tab-pane label="性健康教育" name="30"></el-tab-pane>
+			</el-tabs>
+		</div>
+		<!-- 内容 -->
+		<div class="content">
+			<div class="bry_encyclopedias_content clearfix">
+				<div class="bry_encyclopedias_content_left">
+					<ul>
+						<li v-for="(item,index) in tab3Data":key="index">
+							<a :href="'bry_encyc_info.html?id='+item.Id">
+								<div class="bry_encyclopedias_content_img">
+									<img :src="item.ListPhoto">
+								</div>
+								<p class="one-txt-cut">{{item.Title}}</p>
+							</a>
+						</li>
+						<!-- <li>
+							<a href="">
+								<div class="bry_encyclopedias_content_img">
+									<img src="../assets/img/content_left2.png">
+								</div>
+								<p>中国古代女性同性恋的发展历史</p>
+							</a>
+						</li> -->
+
+					</ul>
+				</div>
+				<div class="bry_encyclopedias_content_right">
+					<ul class="upload_list_ul">
+						<li class="clearfix" v-for="(item,index) in tab2Data" :key="index">
+							<a :href="'bry_encyc_info.html?id='+item.Id">
+								<div>
+									{{item.Title}}
+								</div>
+								<span>{{item.CreateDate}}</span>
+							</a>
+						</li>
+						<!-- <li class="clearfix">
+							<a href="bry_encyc_info.html">
+								<div>
+									向世界展示中华性文化
+								</div>
+								<span>2013-4-22 11:38:23</span>
+							</a>
+						</li> -->
+						
+
+					</ul>
+				</div>
+			</div>
+			<!-- 翻页 -->
+			<div class="bry_encyclopedias_page">
+				<span class="page_button page_home" @click="goHome">首页</span>
+				<span class="page_button page_upper" @click="prevClick">上一页</span>
+				<el-pagination background :page-size="pageSize" :current-page="currentPage" layout="pager, jumper"
+					@current-change="handleCurrentChange" :total="total">
+				</el-pagination>
+				<span class="page_button page_lower" @click="nextClick">下一页</span>
+				<span class="page_button page_tail" @click="goEnd">尾页</span>
+				<!-- <ul class="bry_encyclopedias_page_list">
+						<li><button type="button" class="page_button page_home">首页</button></li>
+						<li><button type="button" class="page_button page_upper">上一页</button></li>
+						<li><button type="button" class="page_button page_left_arrow"></button></li>
+						<li><button type="button" class="page-item active">1</button></li>
+						<li><button type="button" class="page-item">2</button></li>
+						<li><button type="button" class="page-item">3</button></li>
+						<li><button type="button" class="page-item">4</button></li>
+						<li><button type="button" class="page-item">5</button></li>
+						<li><button type="button" class="page-item">6</button></li>
+						<li><button type="button" class="page-item">7</button></li>
+						<li><button type="button" class="page-item">8</button></li>
+						<strong>...</strong>
+						<li>
+							<span>跳至</span>
+							<input type="number" />
+							<button type="button" class="page_button page_jump">页</button>
+						</li>
+						<li><button type="button" class="page_button page_right_arrow"></button></li>
+						<li><button type="button" class="page_button page_lower">下一页</button></li>
+						<li><button type="button" class="page_button page_tail">尾页</button></li>
+					</ul> -->
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif">
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif">
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+						<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739
+						</div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				// focus_item:[
+				// 	{intro:"中国性科学研究碳源"},	
+				// 	{intro:"《红楼梦》中的性科学微观"},
+				// 	{intro:"性权感念的提出和发展"},
+				// 	{intro:"人会与机器结婚吗？"},
+				// 	{intro:"男性不育症诊治误区及其防范"},
+				// ],//焦点列表
+				focus_num: 0,//焦点判断数据
+				current: 0, // 控制 第一个tab 默认选中谁
+				tab1: ["最新上传", "热播榜", "排行榜"],
+				activeName: "26", // 控制 第二个tab 默认选中谁
+				currentPage: 1, // 当前页
+				pageSize: 6, // 每页显示个数
+				total: 0,// 总条数 
+				pointData: [],//焦点数据
+				tab1Data: [], //第一个切换的数据  
+				tab2Data: [], //第二个切换的数据
+				tab3Data:[], //热点内容
+				pointId:"",//焦点id
+				pointCont:"",  //焦点内容
+			}
+		},
+		created() {
+			// 请求焦点数据
+			getFocusdata(5, 6).then(res => {
+				this.pointData = res.data
+				this.pointCont=res.data[0].Details
+				console.log(this.pointData)
+			}, err => {
+				console.log(err)
+			})
+			// 请求最新上传数据
+			getNewestdata(10, 6).then(res => {
+				this.tab1Data = res.data
+				console.log(this.tab1Data)
+			}, rej => {
+				console.log(rej)
+			})
+			// 请求最新上传的4条数据内容
+			getHotdata(4,6).then(res =>{
+				this.tab3Data=res.data
+				console.log(res)
+			},err =>{
+				console.log(err)
+			})
+			// 请求性科学史板块的数据
+			getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+				this.tab2Data = res.data
+				this.total = res.other
+				console.log(this.tab2Data)
+			}, err => {
+				console.log(0)
+			})
+		},
+		mounted() {
+			this.getswiper()
+		},
+		
+		methods: {
+			//改变focus_item样式
+			changeCss(item,index) {
+				this.focus_num = index
+				this.pointCont=item.Details
+			},
+			getswiper() {
+
+				setTimeout(() => {
+					var swiper = new Swiper('.bry_encyclopedias_focus_poster_list .swiper-container', {
+						loop: true,
+						autoplay: true,
+						delay: 3000,
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						},
+					});
+
+					var swiper1 = new Swiper('.recommend_video .swiper-container', {
+						slidesPerView: 5,
+						spaceBetween: 46,
+						slidesPerGroup: 1,
+						loop: true,
+						loopFillGroupWithBlank: true,
+						autoplay: {
+							autoplay: true,
+							disableOnInteraction: false,
+						},
+						delay: 3000,
+
+						pagination: {
+							el: '.swiper-pagination',
+							clickable: true,
+						},
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						},
+					});
+
+				}, 200);
+			},
+			// 第二个tab切换时触发
+			handleClick(tab) {
+				this.currentPage = 1
+				this.activeName = tab.name
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 当前页数改变时会触发
+			handleCurrentChange(page) {
+				this.currentPage = page
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 点击上一页
+			prevClick() {
+				if (this.currentPage <= 1) {
+					this.$message({
+						message: "已经是首页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage - 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 点击下一页
+			nextClick() {
+				if (this.currentPage >= Math.ceil(this.total / this.pageSize)) {
+					this.$message({
+						message: "已经是最后一页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage + 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 回首页
+			goHome() {
+				this.currentPage = 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 去尾页
+			goEnd() {
+				this.currentPage = Math.ceil(this.total / this.pageSize)
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			}
+		}
+	})
+</script>
+
+</html>

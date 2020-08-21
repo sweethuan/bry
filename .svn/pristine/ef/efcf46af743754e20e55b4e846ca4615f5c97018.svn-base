@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+		<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入封装的ajax -->
+		<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入首页的网络请求 --> 
+		<script src="../static/js/homeRequest.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app1">
+			<!-- 顶部欢迎语 -->
+			<div class="bry_index_top_color ">
+				<div class="inner">
+					嗨，欢迎来彼若鱼 全国独家专业性教育平台
+				</div>
+			</div>
+			<!-- 定位的logo区 以及轮播和主栏目-->
+			<!-- Swiper -->
+			<div class="bry_index_logo_swiper">
+				<div class="bry_index_logo">
+					<div class="bry_index_logo_box clearfix inner">
+						<div class="bry_index_logo_left fl">
+							<a href="index.html">
+								<img src="../assets/icon/logo.png" alt="">
+							</a>
+						</div>
+						<div class="bry_index_logo_right fr">
+							<div class="bry_index_logo_right_search clearfix">
+								<input type="text" class="search_input fl" v-model="seachWord" placeholder="搜索 新闻 视频" />
+								<div class="search_button fr" @click="search">搜索</div>
+							</div>
+							<figure class="bry_index_logo_pic" v-if="loginstatus">
+								<a href="login_reg_main.html">
+									<img src="../assets/icon/login.png">
+									<figcaption>请登录</figcaption>
+								</a>
+							</figure>
+							<figure class="bry_index_logo_pic" v-else>
+								<a :href="Role">
+									<img src="../assets/icon/header/login.png">
+									<figcaption>{{NickName}}</figcaption>
+								</a>
+							</figure>
+							<figure class="bry_index_logo_hot_line">
+								<img src="../assets/icon/hot_line.png"><span>公益热线</span>
+								<figcaption>400-0000000</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-container" id='swiper1'>
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" v-for="swp in swiper1"><img :src="'http://biruoyu.oss-cn-shanghai.aliyuncs.com'+swp.PicPath"></div>
+					</div>
+					<div class=" swiper-button-prev"></div>
+					<div class=" swiper-button-next"></div>
+				</div>
+				<!-- 导航条 -->
+				<div class="bry_index_nav">
+					<ul class="inner clearfix">
+						<li><a href="index.html">首页</a></li>
+						</li>
+						<li><a href="bry_information.html">资讯</a>
+
+						</li>
+						<li><a href="bry_Movies.html">视频</a>
+							<ul>
+								<li><a href="bry_Movies.html">影视</a></li>
+								<li><a href="bry_Movies_Open_class.html">公开课</a></li>
+								<li><a href="bry_Movies_special.html">专题</a></li>
+								<li><a href="bry_Movies_activity.html">活动</a></li>
+								<li><a href="bry_Movies_Lecture_Hall.html">大讲堂</a></li>
+								<li><a href="bry_Movies_photograph.html">美拍</a>
+							</ul>
+						</li>
+						<li><a href="bry_audioFrequency.html">音频</a>
+						</li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 精品推荐 -->
+			<div class="bry_index_recommend inner">
+				<div class="bry_index_title clearfix">
+					<div class="bry_index_title_left fl">
+						精品推荐
+					</div>
+					<div class="bry_index_title_right fr">
+						<span>Quality recommendation</span>
+						<!-- <a href="#">更多 ></a> -->
+					</div>
+				</div>
+				<div class="bry_index_swiper" id="bry_index_prev">
+					<div class="swiper-container" id="swiper2">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" v-for="item in swiper2"><a href="#" @click="goDetails(item.ColId,item.Id)"><img  :src="item.ListPhoto"></a></div>
+						</div> 
+					</div>
+					<div class="swiper_but2">
+						<div class=" swiper-button-prev"></div>
+						<div class=" swiper-button-next"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 视频内容展示 -->
+			<div class="bry_index_video inner">
+				<div class="bry_index_video_tit">
+					<!-- <div class="bry_video_tit_top">
+						视频
+					</div>
+					<div class="bry_video_tit_bot">
+						VIDEO AREA
+					</div> -->
+				</div>
+				<!-- 影视 -->
+				<div class="bry_index_video_movies clearfix inner">
+					<div class="bry_movies_left fl ">
+						<!-- 标题tab部分 -->
+						<div class="bry_movies_left_tit clearfix">
+							<div class="bry_movies_left_le fl">
+								<div class="bry_movies_left_le_img">
+									<img src="../assets/icon/play.png">
+								</div>
+								<div class="bry_movies_left_le_txt">
+									<span>影 视</span>
+									<span>Film and television</span>
+								</div>
+							</div>
+							<!-- tab切换 -->
+							<div class="bry_movies_left_rig fr">
+								<ul class="bry_movies_ul" id="movies">
+									<li v-for="(tab,index) in tabs" :class="{choice:num==index}" @click="table(index)">{{tab}}</li>
+								</ul>
+								<div class="bry_movies_more fr">
+									<a href="bry_Movies.html">更多></a>
+								</div>
+							</div>
+						</div>
+						<!-- 影视内容部分 -->
+						<div class="bry_movies_box">
+							<div class="bry_movies_cont clearfix">
+								<div class="bry_movies_cont_le fl">
+									<div v-for="item in moviedata.slice(0, 2)">
+										<figure>
+											<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+											<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+												<img :src="item.ListPhoto">
+												<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+											</a>
+										</figure>
+										<p class="txt-cut2">
+											故事概要：{{item.Details}}
+										</p>
+									</div>
+								</div>
+								<ul class="bry_movies_cont_rig fr overflow">
+									<li v-for="item in moviedata.slice(2)">
+										<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+										<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+											<div><img :src="item.ListPhoto" alt=""></div>
+											<div class="one-txt-cut">{{item.Title}}</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- 最新上传 -->
+					<div class="bry_movies_right_news fr">
+						<div class="bry_movies_news_tit ">
+							<span>最新上传</span>
+							<!-- <a href="#">更多></a> -->
+						</div>
+						<ul class="bry_movies_news_con">
+							<li v-for="item in Newestdata">
+								<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'" class="clearfix">
+									<div class="fl"><img :src="item.ListPhoto" alt=""></div>
+									<div class="fl"><div class="one-txt-cut">{{item.Title}}</div><div class="txt-cut2">{{item.Details}}</div></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 公开课 -->
+				<div class="bry_index_video_movies clearfix inner">
+					<div class="bry_movies_left fl ">
+						<!-- 标题tab部分 -->
+						<div class="bry_movies_left_tit clearfix">
+							<div class="bry_movies_left_le fl">
+								<div class="bry_movies_left_le_img">
+									<img src="../assets/icon/open_class.png">
+								</div>
+								<div class="bry_movies_left_le_txt open">
+									<span>公开课</span>
+									<span>Open Class</span>
+								</div>
+							</div>
+							<!-- tab切换 -->
+							<div class="bry_movies_left_rig fr">
+								<ul class="bry_movies_ul" id="open">
+									<li v-for="(tab,index) in tabs2" :class="{choice:num2==index}" @click="table2(index)">{{tab}}</li>
+								</ul>
+								<div class="bry_movies_more fr">
+									<a href="bry_Movies_Open_class.html">更多></a>
+								</div>
+							</div>
+						</div>
+						<!-- 公开课内容部分 -->
+						<div class="bry_movies_box">
+							<div class="bry_movies_cont clearfix ">
+								<div class="bry_movies_cont_le fl">
+									<div v-for="item in openClasssdata.slice(0, 2)">
+										<figure>
+											<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+											<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+												<img :src="item.ListPhoto">
+												<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+											</a>
+										</figure>
+										<p class="txt-cut2">
+											故事概要：{{item.Details}}
+										</p>
+									</div>
+								</div>
+								<ul class="bry_movies_cont_rig fr overflow">
+									<li v-for="item in openClasssdata.slice(2)">
+										<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+										<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+											<div><img :src="item.ListPhoto" alt=""></div>
+											<div class="one-txt-cut">{{item.Title}}</div>
+										</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- 热播榜-->
+					<div class="bry_movies_right_news fr">
+						<div class="bry_movies_news_tit hot">
+							<span>热播榜</span>
+							<!-- <a href="#">更多></a> -->
+						</div>
+						<ul class="bry_movies_news_con">
+							<li v-for="item in hotMoviedata"><a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'" class="clearfix">
+									<div class="fl"><img :src="item.ListPhoto" alt=""></div>
+									<div class="fl"><div class="one-txt-cut">{{item.Title}}</div><div class="one-txt-cut">{{item.Title}}</div><div>{{item.QueryCount}}</div></div>
+								</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 专题 -->
+			<div class="bry_index_special inner">
+				<!-- 标题tab部分 -->
+				<div class="bry_index_special_tit clearfix">
+					<div class="bry_special_tit_le fl">
+						<div><img src="../assets/icon/special.png"></div>
+						<div class="letter">专题</div>
+					</div>
+					<div class="bry_special_tit_rig clearfix fr">
+						<span class="fl">Special</span>
+						<a href="bry_Movies_special.html" class="fr">更多></a>
+					</div>
+				</div>
+				<!-- 专题内容 -->
+				<div class="bry_index_special_con clearfix">
+					<div class="special_con_top fl" v-for="item in specialdata.slice(0, 1)">
+						<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+							<figure>
+								<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+								<img :src="item.ListPhoto">
+								<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+							</figure>
+							<div class="special_con_text txt-cut2">{{item.Details}}</div>
+						</a>
+					</div>
+					<ul class="special_con_ul fl">
+						<li v-for="item in specialdata.slice(1)">
+							<div :class="item.IsPay?'bry_Pay1 db':'bry_Pay1 dn'"></div>
+							<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'"><img :src="item.ListPhoto"><div class="one-txt-cut">{{item.Title}}</div></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 讲堂 -->
+			<div class="bry_index_special inner">
+				<!-- 标题tab部分 -->
+				<div class="bry_index_special_tit clearfix">
+					<div class="bry_special_tit_le fl">
+						<div><img src="../assets/icon/lecture_hall.png"></div>
+						<div class="letter2">大讲堂</div>
+					</div>
+					<div class="bry_special_tit_rig clearfix fr">
+						<span class="fl">Lecture Hall</span>
+						<a href="bry_Movies_Lecture_Hall.html" class="fr">更多></a>
+					</div>
+				</div>
+				<!-- 大讲堂内容 -->
+				<div class="bry_index_special_con clearfix">
+					<div class="special_con_top fl" v-for="item in bigRoomdata.slice(0,1)"><a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+							<figure>
+								<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+								<img :src="item.ListPhoto">
+								<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+							</figure>
+							<div class="special_con_text txt-cut2">{{item.Details}}</div>
+						</a></div>
+					<ul class="special_con_ul fl">
+						<li v-for="item in bigRoomdata.slice(1)">
+							<div :class="item.IsPay?'bry_Pay1 db':'bry_Pay1 dn'"></div>
+							<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'"><img :src="item.ListPhoto"><div class="one-txt-cut">{{item.Title}}</div></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 活动 -->
+			<div class="bry_index_acti inner clearfix">
+				<div class="bry_index_acti_le fl">
+					<!-- 标题tab部分 -->
+					<div class="bry_index_special_tit clearfix">
+						<div class="bry_special_tit_le fl">
+							<div><img src="../assets/icon/activity.png"></div>
+							<div class="letter2">活动</div>
+						</div>
+						<div class="bry_acti_tit_rig clearfix fr">
+							<span class="fl">Activity</span>
+							<a href="bry_Movies_activity.html" class="fr">更多></a>
+						</div>
+					</div>
+					<!-- 活动内容 -->
+					<div class="bry_index_special_con clearfix">
+						<div class="special_con_top fl" v-for="item in activitydata.slice(0,1)"><a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+								<figure>
+									<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+									<img :src="item.ListPhoto">
+									<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+								</figure>
+								<div class="special_con_text txt-cut2">{{item.Details}}</div>
+							</a></div>
+						<ul class="active_con_ul fl ">
+							<li v-for="item in activitydata.slice(1)">
+								<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+								<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'"><img :src="item.ListPhoto"><div class="one-txt-cut">{{item.Title}}</div></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="bry_index_acti_rig fr">
+					<div class="bry_acti_rig_tit">
+						<div>综合区</div>
+					</div>
+					<ul class="bry_acti_rig_con">
+						<li class="clearfix">
+							<div class="bry_acti_rig_pic fl">
+								<div><img src="../assets/icon/audio.png" alt=""></div>
+								<div>音频</div>
+							</div>
+							<div class="bry_acti_rig_text fl">
+								<a :href="'bry_audio_info.html?id='+item.Id+'&&pageId=0'" v-for="item in audiodata"><p class="one-txt-cut">{{item.Title}}</p></a>
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="bry_acti_rig_pic fl">
+								<div><img src="../assets/icon/book.png" alt=""></div>
+								<div>电子书</div>
+							</div>
+							<div class="bry_acti_rig_text fl">
+								<a :href="'bry_book_info.html?id='+item.Id" v-for="item in ebookdata"><p class="one-txt-cut">{{item.Title}}</p></a>
+							</div>
+						</li>
+
+						<li class="clearfix">
+							<div class="bry_acti_rig_pic fl">
+								<div><img src="../assets/icon/luntan.png" alt=""></div>
+								<div>论坛</div>
+							</div>
+							<div class="bry_acti_rig_text fl">
+								<a :href="'bry_forum_info.html?id='+item.Id" v-for="item in forumdata"><p class="one-txt-cut">{{item.Title}}</p></a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 美拍 -->
+			<div class="bry_index_special inner">
+				<!-- 标题tab部分 -->
+				<div class="bry_index_special_tit clearfix">
+					<div class="bry_special_tit_le fl">
+						<div><img src="../assets/icon/mei67.png"></div>
+						<div class="letter2">美拍</div>
+					</div>
+					<div class="bry_special_tit_rig clearfix fr">
+						<span class="fl">Beautiful shooting</span>
+						<a href="bry_Movies_photograph.html" class="fr">更多></a>
+					</div>
+				</div>
+				<!-- 美拍内容 -->
+				<div class="bry_index_special_con clearfix">
+					<div class="special_con_top fl" v-for="item in shootdata.slice(0,1)"><a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+							<figure>
+								<div :class="item.IsPay?'bry_Pay db':'bry_Pay dn'"></div>
+								<img :src="item.ListPhoto">
+								<figcaption class="one-txt-cut">{{item.Title}}</figcaption>
+							</figure>
+							<div class="special_con_text txt-cut2">{{item.Details}}</div>
+						</a></div>
+					<ul class="special_con_ul fl">
+						<li v-for="item in shootdata.slice(1)">
+							<div :class="item.IsPay?'bry_Pay1 db':'bry_Pay1 dn'"></div>
+							<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'"><img :src="item.ListPhoto"><div class="one-txt-cut">{{item.Title}}</div></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 合作单位 -->
+			<div class="bry_parter inner clearfix">
+				<div class="bry_parter_text fl">
+					<span>合作单位</span>
+					<span>Cooperation Unit</span>
+				</div>
+				<div class="parter fl">
+					<a href="#">
+						<div class="jijin"><img src="../assets/icon/jijin.png"></div>
+						<div>重庆儿童救助基金会</div>
+					</a>
+				</div>
+				<div class="parter fl">
+					<a href="#">
+						<div class="doudou"><img src="../assets/icon/doudou.png"></div>
+						<div>保护豆豆</div>
+					</a>
+				</div>
+				<div class="parter fl">
+					<a href="#">
+						<div class="hf"><img src="../assets/icon/hf.png"></div>
+						<div>重医附一院海扶医院</div>
+					</a>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="bry_footer">
+					<div class="inner">
+						<div class="bry_footer_nav ">
+							<ul class="clearfix">
+								<li><a href="index.html">首页</a></li>
+								<li><a href="bry_information.html">资讯</a></li>
+								<li><a href="bry_Movies.html">视频</a></li>
+								<li><a href="bry_audioFrequency.html">音频</a></li>
+								<li><a href="bry_forum.html">论坛</a></li>
+								<li><a href="encyclopedias.html">百科</a></li>
+								<li><a href="book.html">电子书</a></li>
+								<li><a href="bry_about.html">关于我们</a></li>
+							</ul>
+						</div>
+						<div class="bry_copy_msg clearfix">
+							<div class="fl msg">
+								<img src="../assets/icon/footer/official_account.gif">
+								<div class="tc">关注公众号</div>
+							</div>
+							<div class="fl msg">
+								<img src="../assets/icon/footer/phone_code.gif">
+								<div class="tc">手机网站</div>
+							</div>
+							<div class="bry_copyright fl">
+								<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+								<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+								<div>All Rights Reserved, Copyright 2019-2020</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 返回顶部 -->
+			<transition>
+				<div class="gotop" @click="backTop" v-show="btnFlag">
+					<figure>
+						<img src="../assets/icon/gotop.png">
+						<figure>Top</figure>
+					</figure>
+				</div>
+			</transition>
+		</div>
+	</body>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var app1 = new Vue({
+			el: '#app1',
+			data() {
+				return {
+					swiper1: [], // banner图
+					swiper2: [], // 精品推荐的数据
+					tabs: ['动画', '电影', '记录片'], // 影视的tab
+					num: 0, // 控制影视tab切换
+					movieColId: 14, // 影视的tab的id
+					moviedata: [], // 影视的数据
+					Newestdata: [], // 影视最新上传的数据
+					tabs2: ['儿童', '中学', '大学', '成人'], // 公开课的tab
+					num2: 0, // 控制公开课tab切换
+					openClasssId: 15, // 公开课的tab的id
+					openClasssdata: [], // 公开课的数据
+					hotMoviedata: [], // 热播榜数据
+					specialdata: [], // 专题数据
+					bigRoomdata: [], // 大讲堂数据
+					activitydata: [], // 活动数据
+					audiodata: [], // 音频数据
+					ebookdata: [], // 电子书数据
+					forumdata: [], // 论坛数据
+					shootdata: [], // 美拍数据
+					loginstatus: '', // 登录状态
+					btnFlag: false, // 回到顶部是否显示
+					NickName: '',   // 昵称
+					Role: '../view/consultation/con_basic_data.html', // 路径
+					seachWord: ''    // 搜索关键字
+				}
+			},
+			created() {
+				// 请求昵称
+				getAjax("get", "Users/DetailDo", '{"UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}').then(res => {
+					this.NickName = res.data.NickName.slice(0,8)
+				})
+				
+				// 判断用户登录状态
+				foowwLocalStorage.getLocal("urseId") ? this.loginstatus = false : this.loginstatus = true,
+				// 请求banner图
+				getAjax("get", "Advertisment/ListDo", '{"PageSize":"' + 3 + '","PageNum":"' + 1 + '","ColId":"' + 50 + '"}').then(res => {
+					this.swiper1 = res.data
+					console.log("banner:",res)
+				})
+				// 获取精品推荐数据
+				getRecommend(7, 0).then(res => {
+					this.swiper2 = res.data
+					// console.log(res.data)
+				}, rej => {
+					console.log(rej)
+				})
+				// 获取影视数据
+				getMoviesdata(14, this.movieColId).then(
+					res => {
+						console.log("影视数据",res)
+						this.moviedata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取影视最新上传的数据
+				getNewestdata(5, 3).then(res => {
+					this.Newestdata = res.data
+				}, rej => {
+					console.log(rej)
+				})
+				// 获取公开课数据
+				getMoviesdata(14, this.openClasssId).then(res => {
+					this.openClasssdata = res.data
+					console.log("公开课数据",res)
+				}, rej => {
+					console.log(rej)
+				})
+				// 获取热播榜的数据
+				getHotdata(5, 3).then(res => {
+					this.hotMoviedata = res.data
+				}, rej => {
+					console.log(rej)
+				})
+				// 获取专题的数据
+				getMoviesdata(11, 19).then(
+					res => {
+						this.specialdata = res.data
+						console.log("专题数据",res)
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取大讲堂的数据
+				getMoviesdata(11, 20).then(
+					res => {
+						this.bigRoomdata = res.data
+						console.log("大讲堂数据",res)
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取活动的数据
+				getMoviesdata(9, 21).then(
+					res => {
+						this.activitydata = res.data
+						console.log("活动数据",res)
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取音频的数据
+				getMoviesdata(2, 4).then(
+					res => {
+						//console.log("获取音频",res)
+						this.audiodata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取电子书的数据
+				getMoviesdata(2, 7).then(
+					res => {
+						// console.log(" 获取电子书",res)
+						this.ebookdata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取论坛的数据
+				getMoviesdata(2, 5).then(
+					res => {
+						// console.log("获取论坛",res)
+						this.forumdata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				// 获取美拍的数据
+				getMoviesdata(11, 54).then(
+					res => {
+						this.shootdata = res.data
+						console.log("美拍数据",res)
+					}, rej => {
+						console.log(rej)
+					})
+			},
+			mounted() {
+				let _that = this;
+				_that.getswiper();
+				window.addEventListener('scroll', this.scrollToTop)
+			},
+			destroyed() {
+				window.removeEventListener('scroll', this.scrollToTop)
+			},
+			methods: {
+				// 判断文件跳转
+				goDetails(ColId, Id) {
+					switch (ColId) {
+						case 2:
+							window.location.href = "bry_information_info.html?inforId=" + Id
+							break
+						case 3:
+							window.location.href = 'bry_Movies_info.html?id=' + Id + '&&pageId=0'
+							break
+						case 4:
+							window.location.href = 'bry_audio_info.html?id=' + Id + '&&pageId=0'
+							break
+						case 5:
+							window.location.href = 'bry_forum_info.html?id=' + Id
+							break
+						case 6:
+							window.location.href = 'bry_encyc_info.html?id=' + Id
+							break
+						case 7:
+							window.location.href = 'bry_book_info.html?id=' + Id
+							break
+					}
+				},
+
+				getswiper() {
+ 					setTimeout(()=>{
+						var swiper1 = new Swiper('#swiper1', {
+							loop: true,
+							autoplay: {
+								disableOnInteraction: false,
+								delay: 2000,
+							},
+							speed: 2000,
+							navigation: {
+								nextEl: '#swiper1 .swiper-button-next',
+								prevEl: '#swiper1 .swiper-button-prev',
+							},
+						})
+						
+						var swiper2 = new Swiper('#swiper2', {
+							loop: true,
+							observer:true,//修改swiper自己或子元素时，自动初始化swiper 
+							observeParents:true,//修改swiper的父元素时，自动初始化swiper
+							autoplay: {
+								disableOnInteraction: false,
+								delay: 2200,
+							},
+							speed: 2200,
+							initialSlide :0,
+							slidesPerView: 6,
+							spaceBetween: 20,
+							navigation: {
+								nextEl: '.swiper_but2 .swiper-button-next',
+								prevEl: '.swiper_but2 .swiper-button-prev',
+							},
+						});
+					},200)
+					
+				},
+				// 影视tab切换
+				table(index) {
+					if(this.num == index) return
+					this.num = index;
+					switch (index) {
+						case 0:
+							this.movieColId = 14
+							break
+						case 1:
+							this.movieColId = 12
+							break
+						case 2:
+							this.movieColId = 13
+							break
+					}
+					getMoviesdata(14, this.movieColId).then(
+					res => {
+						this.moviedata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				},
+				// 公开课tab切换
+				table2(index) {
+					if(this.num2 == index) return
+					this.num2 = index;
+					switch (index) {
+						case 0:
+							this.openClasssId = 15
+							break
+						case 1:
+							this.openClasssId = 16
+							break
+						case 2:
+							this.openClasssId = 17
+							break
+						case 3:
+							this.openClasssId = 18
+							break
+					}
+					getMoviesdata(14, this.openClasssId).then(
+					res => {
+						console.log("公开课tab切换",res)
+						this.openClasssdata = res.data
+					}, rej => {
+						console.log(rej)
+					})
+				},
+				// 点击图片回到顶部方法，加计时器是为了过渡顺滑
+				backTop() {
+					const that = this
+					let timer = setInterval(() => {
+						let ispeed = Math.floor(-that.scrollTop / 10)
+						document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
+						if (that.scrollTop === 0) {
+							clearInterval(timer)
+						}
+					}, 16)
+				},
+				// 为了计算距离顶部的高度，当高度大于360显示回顶部图标，小于360则隐藏
+				scrollToTop() {
+					const that = this
+					let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+					that.scrollTop = scrollTop
+					if (that.scrollTop > 360) {
+						that.btnFlag = true
+					} else {
+						that.btnFlag = false
+					}
+				},
+				// 搜索
+				search(){
+					if(!this.seachWord.trim()) return
+					window.location.href = "bry_search.html?keywords=" + window.encodeURIComponent(this.seachWord)
+				}
+				
+			}
+		})
+	</script>
+</html>

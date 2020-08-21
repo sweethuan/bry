@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>我的发布</title>
+
+		<link rel="stylesheet" href="../../static/css/common.css" />
+		<link rel="stylesheet" href="../../static/css/login_common.css" />
+		<link rel="stylesheet" href="../../static/css/consultation/stu_study.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+		<script src="../../static/js/jquery.min.js"></script>
+		<script src="../../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/JavaScript" charset="UTF-8" src="../../static/js/header2.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+
+			<div class="bry_container">
+				<!-- 标题及退出登录 -->
+				<div class="bry_title_logout clearfix">
+					<p class="fl">{{comClass}}信息</p>
+				</div>
+
+				<!-- 内容区 -->
+				<div class="bry_inner clearfix">
+					<div class="bry_head_leftnav fl">
+						<!-- 头像与名字 -->
+						<div class="bry_people">
+							<div class="bry_people_pic">
+								<img src="../..//assets/img/mechanism/headicon.jpg" />
+								<span>{{comClass}}</span>
+							</div>
+							<span>{{this.username}}</span>
+						</div>
+						<!-- 认证与充值 -->
+						<div class="bry_authentication_recharge">
+							<span v-if="!isAuth">待认证</span>
+							<span v-else>已认证</span>
+							<a href="con_recharge.html">会员充值</a>
+						</div>
+						<!-- 侧导航 -->
+						<ul class="bry_sidenav">
+							<li class="bry_space1">
+								<a href="con_basic_data.html">基本资料</a>
+							</li>
+							<li class="bry_space1">
+								<a :href="RoleId == 2 ? 'stu_auth_data.html' : 'con_auth_data.html'">认证资料</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_browse.html">我的浏览</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_answer.html">我的答疑</a>
+							</li>
+							<li class="bry_space1">
+								<a href="con_comment.html">我的评论</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_forum.html">我的论坛</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_upload.html">我的发布</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_message.html">我的消息</a>
+							</li>
+							<li class="bry_space2">
+								<a href="con_account.html">我的账户</a>
+							</li>
+							<li class="bry_space2 bry_sidenav_sel" v-if="RoleId==2">
+								<a href="stu_study.html">我的学习</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bry_main fr clearfix">
+						
+
+						<!-- 记录内容 -->
+						<ul class="bry_record_content">
+							<li>
+								<ul class="bry_record_content_title clearfix">
+									<li>
+										公开课程
+									</li>
+									<li>
+										学习时段
+									</li>
+									<li>
+										学习时长(分钟)
+									</li>
+									<li>
+										购买次数
+									</li>
+									<li>
+										单价(元)
+									</li>
+									<li>
+										小计(元)
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul class="bry_record_content_part clearfix" v-for="item in studyData">
+									<li class="one-txt-cut">
+										<a href="#">{{item.Title}}</a>
+									</li>
+									<li>
+										{{item.StartDate}}——{{item.EndDate}}
+									</li>
+									<li>{{item.Times}}</li>
+									<li>1</li>
+									<li>0.00</li>
+									<li>
+										0.00
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+						<!-- 本页合计 -->
+						<div class="bry_prev_amou clearfix">
+							<div>本页合计</div>
+							<div class="bry_prev_cont_buynum">100(分钟)</div>
+							<div class="bry_prev_cont_buypers">1(次)</div>
+							<div class="bry_prev_cont_mono">1</div>
+							<div class="bry_prev_cont_uploexpe">1</div>
+					
+						</div>
+						<!-- 上一页下一页 -->
+						<ul class="bry_next_last clearfix">
+							<li @click="prevClick">上一页&gt;</li>
+							<li @click="nextClick">下一页&lt;</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/JavaScript" charset="UTF-8">
+		var vueobj = new Vue({
+			el: '#app',
+			data() {
+				return {
+					username: "",
+					userId: ""   ,
+					RoleId: '',     // 角色id
+					isAuth: '',  // 是否认证
+					studyData: []
+				}
+			},
+			created() {
+				this.userId = foowwLocalStorage.getLocal("urseId")
+				this.RoleId = foowwLocalStorage.getLocal("RoleId")
+				//ajax请求昵称
+				getAjax("get","Users/DetailDo",'{"UserId":"' + this.userId + '"}').then(res=>{
+					this.username=res.data.NickName
+					this.isAuth = res.data.IsAuth
+					console.log(res.data.NickName)
+				},err=>{
+					console.log(err)
+				})
+				getAjax("get", "UserStudyRecord/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 + '","UserId":"' + this.userId + '"}').then(res => {
+					console.log('我的学习:',res)
+					this.studyData = res.data
+				})
+				
+			},
+			computed: {
+				comClass(){
+					return this.RoleId == 1 ? "个人" : this.RoleId == 2 ? "学生" : this.RoleId == 3 ? "讲师" : this.RoleId == 4 ? "医师" : this.RoleId == 5 ? "心里资讯师" : "机构"
+				}
+			},
+			methods:{
+				// 点击上一页
+				prevClick() {
+					
+				},
+				// 点击下一页
+				nextClick() {
+					
+				},
+			}
+		});
+	</script>
+</html>

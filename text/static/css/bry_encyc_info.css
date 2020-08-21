@@ -1,0 +1,332 @@
+.bry_encyc_content {
+	background-color: #059fbf;
+	padding-bottom: 34px;
+}
+.bry_encyc_path {
+	font-size: 14px;
+	color: #fff;
+	padding: 28px 20px;
+	background: url(../../assets/icon/bry_encyc/bry_encyc_home.png) no-repeat left;
+}
+.bry_encyc_content > .inner > .fl {
+	margin-left: 24px;
+}
+.bry_encyc_article {
+	width: 966px;
+	margin-top: 20px;
+	padding: 32px 44px 41px ;
+	background-color: #efefef;
+	box-shadow: 0 0 10px rgba(0,0,0,.9) inset;
+	border-radius: 8px;
+	color: #333;
+	box-sizing: border-box;
+}
+.bry_encyc_article .bry_encyc_article_title {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 6px;
+}
+.bry_encyc_article .bry_encyc_article_msg {
+	font-size: 12px;
+	text-align: center;
+}
+.bry_encyc_article_msg span {
+	margin-left: 6px;
+}
+.bry_encyc_article .bry_encyc_sex_book {
+	text-align: center;
+	margin: 10px 0 10px;
+}
+.bry_encyc_article img {
+	display: inline-block;
+}
+.bry_encyc_article p {
+	text-indent: 2em;
+	margin-top: 24px;
+	line-height: 22px;
+}
+.bry_encyc_choice {
+	padding: 24px 48px 32px;
+	font-size: 14px;
+	color: #fff;
+}
+.bry_encyc_fs span{
+	margin: 0 6px;
+}
+.bry_encyc_fs span:not(:first-child){
+	cursor: pointer;
+}
+.bry_encyc_pages li {
+	float: left;
+	margin: 0 6px;
+	cursor: pointer;
+}
+.bry_encyc_pages li button {
+	background-color: #017289;
+	width: 22px;
+	height: 22px;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	color: #ffffff;
+	cursor: pointer;
+}
+.bry_encyc_pages li.active button {
+	background-color: #cba634;
+}
+.bry_encyc_share {
+	text-align: center;
+	font-size: 12px;
+	color: #666;
+	padding-top: 18px;
+}
+.bry_encyc_share span,
+.bry_encyc_share img {
+	cursor: pointer;
+}
+.bry_encyc_share img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 6px;
+}
+.bry_encyc_share > .clearfix > div {
+	display: inline-block;
+	width: 86px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #059fbf;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #fff;
+	margin: 12px 11px 0;
+	cursor: pointer;
+}
+.bry_encyc_share > .clearfix > div.active {
+	background-color: #fc9440;
+}
+.bry_encyc_share > .clearfix img {
+	vertical-align: text-bottom;
+	margin-right: 4px;
+}
+.bry_encyc_class {
+	width: 316px;
+}
+.bry_encyc_class ul~ul {
+	margin-top: 32px;
+}
+.bry_encyc_class .bry_encyc_fr_title {
+	background-color: #cba634;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 6px;
+	margin-bottom: 11px;
+}
+.bry_encyc_class li {
+	font-size: 12px;
+	color: #fff;
+	line-height: 30px;
+}
+
+.bry_video_comment_title,
+.bry_video_marve_title {
+	font-size: 20px;
+	color: #fff;
+	padding-top: 16px;
+}
+
+.bry_video_comment_title sub,
+.bry_video_marve_title sub {
+	font-size: 14px;
+	color: #a3abad;
+	padding-left: 18px;
+	vertical-align: baseline;
+}
+
+.bry_video_text {
+	height: 250px;
+	box-sizing: border-box;
+	margin: 10px auto 28px;
+	border-radius: 7px;
+	background-color: #efefef;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, .4) inset;
+	overflow: hidden;
+	padding-bottom: 12px;
+}
+
+.bry_video_text textarea {
+	width: 100%;
+	height: 200px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 14px;
+	color: #333;
+	vertical-align: middle;
+}
+
+.bry_video_text textarea::placeholder {
+	font-size: 14px;
+	color: #333;
+}
+
+.bry_video_text_posts {
+	padding: 0px 26px 0px 60px;
+}
+
+.bry_video_text_posts span {
+	display: inline-block;
+	transform: translateY(18px);
+	font-size: 14px;
+	color: #017289;
+}
+
+.bry_video_text_posts span:first-child {
+	padding-left: 28px;
+	padding-right: 20px;
+	background: url(../../assets/icon/bry_video_info/bry_video_expre.png) no-repeat left;
+	background-size: 19px 19px;
+}
+
+.bry_video_text_posts span:nth-child(2) {
+	padding-left: 26px;
+	background: url(../../assets/icon/bry_video_info/bry_video_window.png) no-repeat left;
+	background-size: 19px 19px;
+}
+
+.bry_video_text_posts button {
+	width: 112px;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	background-color: #017289;
+	font-size: 24px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.bry_video_marve ul {
+	padding: 0 0px 0 30px;
+}
+
+.bry_video_marveitem {
+	margin: 22px 0;
+}
+
+.bry_video_marve img.fl {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.bry_video_marveitem>div.fl {
+	width: 870px;
+}
+
+.bry_video_marve_name {
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.bry_video_marve_name span {
+	margin-right: 118px;
+}
+
+.bry_video_marve_comme {
+	line-height: 30px;
+}
+
+.bry_video_marve_comme>span {
+	font-size: 12px;
+	color: #6cf5cf;
+}
+
+.bry_video_marve_comme .fr {
+	padding-right: 40px;
+}
+
+.bry_video_marve_comme .fr span {
+	font-size: 16px;
+	color: #fff;
+	margin-left: 20px;
+	padding-left: 24px;
+	cursor: pointer;
+}
+
+.bry_video_marve_comme .fr span:first-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_msg.png) no-repeat left;
+}
+
+.bry_video_marve_comme .fr span:last-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_good.png) no-repeat left;
+}
+.bry_video_marve_comme .fr span.active {
+	background: url(../../assets/icon/bry_video_info/bry_video_goodagree.png) no-repeat left;
+	color: #ff9602;
+}
+
+.bry_video_marvereply {
+	background-color: #017289;
+	border-radius: 6px;
+	color: #02c6d5;
+	font-size: 12px;
+	margin: 8px 0;
+	padding: 16px 44px 16px 20px;
+}
+
+.bry_video_marvereply_time {
+	margin-top: 40px;
+	padding-left: 60px;
+}
+
+.bry_video_marvereply_time .fr span {
+	font-size: 16px;
+	margin-left: 20px;
+	padding-left: 24px;
+	cursor: pointer;
+}
+
+.bry_video_marvereply_time .fr span:first-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_msg1.png) no-repeat left;
+}
+
+.bry_video_marvereply_time .fr span:last-child {
+	background: url(../../assets/icon/bry_video_info/bry_video_good1.png) no-repeat left;
+}
+.bry_publish_reply {
+	position: relative;
+	height: 150px;
+	background-color: #017289;
+	border-radius: 4px;
+	padding: 10px 14px;
+	box-sizing: border-box;
+}
+.bry_publish_reply textarea {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	color: #02c6d5;
+}
+.bry_publish_reply textarea::placeholder {
+	color: #02c6d5;
+}
+.bry_publish_reply button {
+	position: absolute;
+	bottom: 15px;
+	right: 50px;
+	width: 100px;
+	height: 36px;
+	border-radius: 4px;
+	color: #02c6d5;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: #002830;
+}

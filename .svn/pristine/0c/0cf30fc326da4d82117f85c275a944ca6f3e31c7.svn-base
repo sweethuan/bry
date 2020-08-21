@@ -1,0 +1,48 @@
+body {
+	width: 100%;
+}
+.inner {
+	width: 1320px;
+	margin: 0 auto;
+}
+.bry_footer {
+	padding-top: 16px;
+	background-color: #001317;	
+}
+.bry_footer_nav {
+	padding: 0 140px;
+}
+.bry_footer_nav li {
+	float: left;
+	font-size: 18px;
+	letter-spacing: 4px;
+}
+.bry_footer_nav li a{
+	color: #b8babb;
+	padding: 0 32px;
+}
+.bry_copy_msg {
+	padding: 64px 290px 40px;
+	font-size: 16px;
+	color: #017289;
+}
+.bry_copy_msg .fl {
+	margin-left: 32px;
+}
+.bry_copy_msg .tc {
+	text-align: center;
+}
+.bry_copy_msg .fl img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 4px;
+}
+.bry_copyright {
+	font-size: 14px;
+	padding-top: 22px;
+}
+.bry_copy_msg>div:nth-of-type(-n+2) img{
+	width: 74px;
+	height: 74px;
+	padding-bottom: 4px;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_instructor_info.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css"/>
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+		
+		<header-item></header-item>
+		
+		<div class="bry_instructor_content">
+			<div class="inner">
+				<div class="bry_instructor_path">首页  >>  讲师  >>  彭晓辉</div>
+				<div class="bry_instructor_main clearfix">
+					<div class="fl">
+						<!-- 人物简介 -->
+						<div class="bry_instructor_chara_intro">
+							<div class="bry_instructor_chara_pic">
+								<img src="../assets/img/bry_instructor_info/bry_instructor_info_pxh.gif" >
+								<div>彭晓辉</div>
+							</div>
+							<div class="bry_instructor_chara_msg">
+								<div>华中师范大学生命科学院教授和硕士生导师</div>
+								<div>中国大陆著名性学家</div>
+								<div>世界华人性学家协会副秘书长</div>
+								<div>研究方向为人类性学</div>
+							</div>
+						</div>
+						<!-- 教学经历 -->
+						<div class="bry_instructor_teach">
+							<div class="bry_instructor_teach_title">教学经历</div>
+							<div>1992年，作为华中师范大学生物系讲师的彭晓辉，开出一门专业选修课《性生物学》，主讲课程为《人体组织解剖学》《动物及人体生理学》等。</div>
+							<div> 从1995年起，华中师范大学发展第一批素质教育选修课，彭晓辉将《性生物学》加入性心理学、性社会学的内容而扩展为《性科学概论》，面向全校非生物专业学生开放。</div>
+							<div>2000年，经华师生命科学学院学术委员会审核批准，彭晓辉获得了性学研究方向硕士生导师资格。截止2011年共招收研究生8名。</div>
+							<div>2002年3月参加我国和瑞典合作的“中瑞性与生殖健康教育高级培训班”学习，取得瑞典性与生殖健康教育协会和北京大学分别颁发的结业证（中外通行）</div>
+						</div>
+						<!-- 现任职务 -->
+						<div class="bry_instructor_posion">
+							<div class="bry_instructor_posion_title">现任职务</div>
+							<div>◆ 世界华人性学家协会（香港注册）副秘书长、协会期刊《华人性研究》（美国注册）主编</div>
+							<div>◆ 亚洲大洋州性学联合会（香港注册）会员</div>
+							<div>◆ 中国性学会专家委员会委员、理事、性心理学专业委员会副主任委员、青少年性健康教育专业委员会副主任委员</div>
+							<div>◆ 学会期刊《中国性科学》杂志编辑委员会委员</div>
+							<div>◆ 全国应用心理学（医学）专业教学与参考资料系列丛书审定委员会委员</div>
+							<div>◆ 德国洪堡大学赫西菲尔德性学资料库（13个语言版本中）担任中本版指导和主译</div>
+							<div>◆ 湖北省性学会常务理事、性心理与性教育专业委员会副主任委员</div>
+							<div>◆ 湖北省生育调节协会常务理事</div>
+							<div>◆ 湖北省科学技术委员会高等学校科学技术卫生学及性学评议专家</div>
+							<div>◆ 武汉市性学会副理事长</div>
+							<div>◆ 武汉市人口与计划生育协会理事</div>
+						</div>
+					</div>
+					<div class="fr">
+						<div class="bry_instructor_headpic">
+							<img src="../assets/img/bry_instructor_info/bry_instructor_info_pxhheadpic.gif" >
+						</div>
+						<div class="bry_instructor_name">彭晓辉</div>
+						<ul class="bry_instructor_data">
+							<li>观看记录<span>0</span></li>
+							<li>历史浏览<span>0</span></li>
+							<li>我的论坛<span>0</span></li>
+							<li>答疑<span>0</span></li>
+							<li>评论<span>0</span></li>
+							<li>粉丝<span>0</span></li>
+							<li>视频上传<span>0</span></li>
+							<li>音频上传<span>0</span></li>
+							<li>论文/电子书/上传<span>0</span></li>
+						</ul>
+						<div class="bry_instructor_teach_exper">教学经历</div>
+						<p>在性学研究领域完成了学术著作18部，其中独著、主编和副主编的著作是9部；翻译世界最大的人类性学网站“赫西菲尔德性学资料库”（德国洪堡大学）网络性学教程和文献资料达120多万字，并任该网站的中文版负责人；发表涉及性哲学、性心理学、性社会学、性生物学、性伦理学、性教育学等涵盖文理两个学科范畴的论文有50余篇，有的获得了中国性学会优秀论文奖。有的全国人大常务委员会副委员长、我国著名泌尿外科专家吴阶平教授的好评。</p>
+						<p>1.人的性与性的人——性学高级教程</p>
+						<p>2.性科学概论</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif" >
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif" >
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+						<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png" >渝公安备 50019002501739	</div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var vueobj = new Vue({
+			el: "#app",
+			created() {},
+		});
+	</script>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_Movies.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+		<script src="../static/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入封装的ajax -->
+		<script type="text/javascript" charset="utf-8" src="../static/js/public.js"></script>
+		<!-- 引入首页的网络请求 -->
+		<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+		<title>影视</title>
+	</head>
+	<body>
+		<div id="app">
+			
+		<div id="header">
+			<header-item></header-item>
+		</div>
+		<div class="bry_main">
+			<div class="bry_inner">
+				<!-- 播放器 -->
+				<div class="bry_vidoBox clearfix">
+					<!-- 海报图片 -->
+					<div class="bry_vidoBox_picture">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide"><a href=""><img src="../assets/icon/meipai1.png"></a></div>
+								<div class="swiper-slide"><a href=""><img src="../assets/icon/meipai1.png"></a></div>
+							</div>
+							<!-- Add Arrows -->
+							<div class="swiper-button-next focus_button picture_button"></div>
+							<div class="swiper-button-prev focus_button picture_button"></div>
+						</div>
+					</div>
+					<!-- 选集 -->
+					<ul class="bry_vidoBox_FilmList">
+						<li class="bry_vidoBox_FilmLi " v-for="(item, index) in FilmLists" @click="FilmLiClick(index)" :class="{bry_vidoBox_FilmLi_type1: FilmListCurrentn == index}">
+							<span>{{item.name}}</span>
+							<span>{{item.intro}}</span>
+						</li>
+						<!-- <li class="bry_vidoBox_FilmLi bry_vidoBox_FilmLi_type1">
+							<span>健康美丽</span>
+							<span>《美国派》</span>
+						</li>
+						<li class="bry_vidoBox_FilmLi">
+							<span>健康美丽</span>
+							<span>健康美丽健康美丽</span>
+						</li>
+						<li class="bry_vidoBox_FilmLi">
+							<span>健康美丽</span>
+							<span>健康美丽健康美丽</span>
+						</li>
+						<li class="bry_vidoBox_FilmLi">
+							<span>健康美丽</span>
+							<span>健康美丽健康美丽</span>
+						</li>
+						<li class="bry_vidoBox_FilmLi">
+							<span>健康美丽</span>
+							<span>健康美丽健康美丽</span>
+						</li> -->
+					</ul>
+					<!-- 视屏播放器 -->
+					<div class="bry_vidoBox_playsBox">
+						<img src="../assets/img/bry_vidoBox_playsBox.png">
+					</div>
+				</div>
+				<!-- 榜单推荐 -->
+				<div class="bry_RankingListBox">
+					<div class="bry_Ranking_TitleList clearfix">
+						<!-- <span>最新上传</span>
+						<span>热播榜</span>
+						<span>排行榜</span> -->
+						<span v-for="(item, index) in tab1" :class="{active: current == index}" @click="changeTab(index)">{{ item }}</span>
+					</div>
+					<!-- 视频 -->
+					<div class="recommend_video">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="bry_Movies_info.html">
+										<div class="swiper_div">
+											<img src="../assets/icon/meipai3.png">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="bry_Movies_info.html">
+										<div class="swiper_div">
+											<img src="../assets/icon/meipai4.png">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="bry_Movies_info.html">
+										<div class="swiper_div">
+											<img src="../assets/icon/meipai5.png">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="swiper_div">
+											<img src="../assets/icon/meipai3.png">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="swiper_div">
+											<img src="../assets/icon/meipai5.png">
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
+						</div>
+					</div>
+				</div>
+				<!-- 筛选 -->
+				<div class="bry_screen">
+					<!-- 横杠 -->
+					<!-- <span></span>
+					<ul class="bry_screenList clearfix">
+						<li class="bry_screenLi bry_screenLi_type1">
+							<span></span>
+							<span>电影</span>
+						</li>
+						<li class="bry_screenLi bry_screenLi_type2">
+							<span></span>
+							<span>纪录片</span>
+						</li>
+						<li class="bry_screenLi bry_screenLi_type2">
+							<span></span>
+							<span>动画</span>
+						</li>
+					</ul> -->
+					<!-- 影片集合 -->
+					<ul class="bry_screen_MoviesList clearfix">
+						<li class="bry_screen_MoviesLi"><a href="bry_Movies_info.html">
+								<div class="bry_Pay"></div>
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="bry_Movies_info.html">
+								<div class="bry_Pay"></div>
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="bry_Movies_info.html">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_Pay"></div>
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+						<li class="bry_screen_MoviesLi"><a href="">
+								<div class="bry_screen_MoviesLi_picture">
+									<img src="../assets/icon/meipai5.png">
+								</div>
+								<span class="bry_screen_MoviesLi_Name">西西里的美丽传说</span>
+								<div class="bry_screen_MoviesLi_lookNum">
+									<img src="../assets/icon/bry_screen_MoviesLi_lookNum.png">
+									<span>296</span>
+								</div>
+							</a></li>
+					</ul>
+					<!-- 跳页部分 -->
+					<div class="bry_main_JumpPage clearfix">
+						<span class="bry_main_JumpPage_listType1" @click="goHome">首页</span>
+						<span class="bry_main_JumpPage_listType1" @click="prevClick">上一页</span>
+						<el-pagination background :page-size="pageSize" :current-page="currentPage" layout="pager, jumper"
+						 @current-change="handleCurrentChange" :total="total">
+						</el-pagination>
+						<span class="bry_main_JumpPage_listType1" @click="nextClick">下一页</span>
+						<span class="bry_main_JumpPage_listType1" @click="goEnd">尾页</span>
+						<!-- <ul class="bry_main_JumpPage_list clearfix">
+							<li class="bry_main_JumpPage_listType1">首页</li>
+							<li class="bry_main_JumpPage_listType1">上一页</li>
+							<li class="bry_main_JumpPage_listType1">
+								<</li> <li class="bry_main_JumpPage_listType3">1
+							</li>
+							<li class="bry_main_JumpPage_listType2">2</li>
+							<li class="bry_main_JumpPage_listType2">3</li>
+							<li class="bry_main_JumpPage_listType2">4</li>
+							<li class="bry_main_JumpPage_listType2">5</li>
+							<li class="bry_main_JumpPage_listType2">6</li>
+							<li class="bry_main_JumpPage_listType2">7</li>
+							<li class="bry_main_JumpPage_listType2">8</li>
+							<li class="bry_main_JumpPage_listType1">...</li>
+							<li class="bry_main_JumpPage_listType1">></li>
+							<li class="bry_main_JumpPage_listType1">跳至
+								<input type="number" value="" />
+								页
+							</li>
+							<li class="bry_main_JumpPage_listType1">下一页</li>
+							<li class="bry_main_JumpPage_listType1">尾页</li>
+						</ul> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif">
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif">
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+						<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					FilmLists: [{
+						name: "二战时期意大利剧情片",
+						intro: "《巴黎野玫瑰》"
+					}, {
+						name: "美国青春期性教育片",
+						intro: "《美国派》"
+					},{
+						name: "二战时期意大利剧情片",
+						intro: "《巴黎野玫瑰》"
+					}, {
+						name: "二战时期意大利剧情片",
+						intro: "《巴黎野玫瑰》"
+					},{
+						name: "二战时期意大利剧情片",
+						intro: "《巴黎野玫瑰》"
+					},{
+						name: "二战时期意大利剧情片",
+						intro: "《巴黎野玫瑰》"
+					}],
+					FilmListCurrentn:0,// 控制 第一个FilmLists 默认选中谁
+					current: 0, // 控制 第一个tab 默认选中谁
+					tab1: ["最新上传", "热播榜", "排行榜"],
+					// activeName: "43", // 控制 第二个tab 默认选中谁
+					currentPage: 1, // 当前页
+					pageSize: 18, // 每页显示个数
+					total: 985 // 总条数   
+				}
+			},
+			created() {},
+			mounted() {
+				this.getswiper()
+			},
+			methods:{
+				// 点击切换样式
+				FilmLiClick(index) {
+					this.FilmListCurrentn = index
+				},
+				getswiper(){
+					var swiper = new Swiper('.bry_vidoBox_picture .swiper-container', {
+						loop: true,
+						autoplay: true,
+						delay: 3000,
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						},
+					});
+					
+					var swiper1 = new Swiper('.recommend_video .swiper-container', {
+						slidesPerView: 5,
+						spaceBetween: 46,
+						slidesPerGroup: 1,
+						loop: true,
+						loopFillGroupWithBlank: true,
+						autoplay: true,
+						delay: 3000,
+						pagination: {
+							el: '.swiper-pagination',
+							clickable: true,
+						},
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						},
+					});
+				},
+				// 第一个tab切换
+				changeTab(index) {
+					this.current = index
+					switch (index) {
+						case 0:
+							getNewestdata(10, 3).then(res => {
+								console.log(res)
+							}, rej => {
+								console.log(rej)
+							})
+							break
+						case 1:
+							getHotdata(10, 3).then(res => {
+								console.log(res)
+							}, rej => {
+								console.log(rej)
+							})
+							break
+						case 2:
+							getHotdata(10, 3).then(res => {
+								console.log(res)
+							}, rej => {
+								console.log(rej)
+							})
+							break
+					}
+				},
+				// 第二个tab切换时触发
+				handleClick(tab) {
+					this.currentPage = 1
+				
+					getMoviesdata(18, tab.name)
+				},
+				// 当前页数改变时会触发
+				handleCurrentChange(page) {
+					this.currentPage = page
+				},
+				// 点击上一页
+				prevClick() {
+					if (this.currentPage <= 1) {
+						this.$message({
+							message: "已经是首页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.currentPage--
+				},
+				// 点击下一页
+				nextClick() {
+					if (this.currentPage >= Math.ceil(this.total / this.pageSize)) {
+						this.$message({
+							message: "已经是最后一页了~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					this.currentPage++
+				},
+				// 回首页
+				goHome() {
+					this.currentPage = 1
+				},
+				// 去尾页
+				goEnd() {
+					this.currentPage = Math.ceil(this.total / this.pageSize)
+				}
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,33 @@
+body{
+	background-color: #002830;
+}
+.bry_babout_img img{
+	width: 100%;
+}
+
+/* 内容 */
+.bry_babout_item{
+	color: #FFFFFF;
+	width: 100%;
+	margin-top: 42px;
+	margin-bottom:25px ;
+}
+/* 左边 */
+.bry_babout_left{
+	float: left;
+}
+.bry_babout_left p{
+	font-size: 48px;
+	color: #017289;
+}
+.bry_babout_left span{
+	font-size: 18px;
+}
+/* 右边 */
+.bry_babout_right{
+	float: right;
+	width: 740px;
+	margin-top: 70px;
+	font-size: 14px;
+	text-indent: 2em;
+}

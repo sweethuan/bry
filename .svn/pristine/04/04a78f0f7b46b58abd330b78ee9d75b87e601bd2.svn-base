@@ -1,0 +1,990 @@
+html,
+body {
+	width: 100%;
+	min-width: 1320px;
+	background-color: #004857;
+	font-family: "宋体";
+}
+
+.inner {
+	width: 1320px;
+	margin: 0 auto;
+}
+
+/* 顶端颜色 */
+.bry_index_top_color {
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	font-size: 14px;
+	color: #fff;
+	background-color: #017289;
+	box-sizing: border-box;
+}
+
+/* logo区及轮播区 */
+.bry_index_logo_swiper {
+	position: relative;
+	width: 100%;
+	height: 630px;
+	z-index: 10;
+}
+
+/* logo定位 */
+.bry_index_logo {
+	width: 100%;
+	position: absolute;
+	height: 130px;
+	font-size: 18px;
+	color: #fff;
+	background: url(../../assets/icon/logo_bg.png) left top no-repeat;
+	background-size: 100% 130px;
+	z-index: 10;
+}
+
+.bry_index_logo_box {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-660px);
+	z-index: 20;
+}
+
+.bry_index_logo_left {
+	width: 160px;
+	height: 130px;
+	font-size: 0;
+	position: relative;
+}
+
+.bry_index_logo_left img {
+	width: 160px;
+	height: 80px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* logo右边 */
+.bry_index_logo_right {
+	width: 955px;
+	height: 130px;
+	padding: 30px 0;
+	box-sizing: border-box;
+}
+
+/* 搜索框 */
+.bry_index_logo_right_search {
+	display: inline-block;
+	width: 530px;
+	height: 50px;
+	border: 1px solid #017289;
+	border-radius: 25px;
+	box-sizing: border-box;
+	margin-right: 50px;
+}
+
+.search_input {
+	width: 75%;
+	height: 48px;
+	background-color: transparent;
+	padding: 10px 0 10px 20px;
+	box-sizing: border-box;
+	font-size: 24px;
+	color: #707070;
+	border: none;
+	outline: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #707070;
+	font-size: 24px;
+}
+
+/* 搜索按钮 */
+.search_button {
+	padding-left: 20px;
+	box-sizing: border-box;
+	width: 25%;
+	height: 48px;
+	line-height: 48px;
+	color: #fff;
+	background: #017289 url(../../assets/icon/loupe.png) no-repeat 80px center;
+	font-size: 24px;
+	border: none;
+	outline: none;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	cursor: pointer;
+}
+
+/* 登录及热线 */
+figure {
+	display: inline-block;
+}
+
+.bry_index_logo_pic {
+	width: 144px;
+	margin-right: 35px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.bry_index_logo_pic>a {
+	display: inline-block;
+	text-align: center;
+}
+
+.bry_index_logo_pic img {
+	width: 39px;
+	height: 36px;
+	margin: 0 auto 4px;
+	border-radius: 50%;
+}
+
+.bry_index_logo_hot_line {
+	font-size: 18px;
+}
+
+.bry_index_logo_hot_line>img {
+	display: inline-block;
+	width: 42px;
+	height: 41px;
+	vertical-align: middle;
+}
+
+.bry_index_logo_hot_line>figcaption {
+	color: #00ecff;
+	font-size: 22px;
+}
+
+.bry_index_logo_hot_line>span {
+	margin-left: 10px;
+}
+
+/* 轮播 */
+
+
+/* 对左右箭头的修改 */
+#swiper1 .swiper-button-prev {
+	color: #788081 !important;
+}
+
+#swiper1 .swiper-button-next {
+	color: #788081 !important;
+}
+
+#swiper1 img {
+	width: 100%;
+	height: 630px;
+}
+
+/* 导航条 */
+.bry_index_nav {
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 20;
+	font-size: 24px;
+	letter-spacing: 8px;
+	background: url(../../assets/icon/nav_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.bry_index_nav .inner>li {
+	position: relative;
+	float: left;
+}
+
+.bry_index_nav li a {
+	padding: 0 60px;
+}
+
+.bry_index_nav li:hover {
+	background: url(../../assets/icon/nav_select.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.bry_index_nav ul li ul {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	display: none;
+	width: 100%;
+	line-height: 40px;
+	font-size: 16px;
+	letter-spacing: 0px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .5);
+	z-index: 999;
+}
+
+.bry_index_nav .inner>li:hover ul {
+	display: block;
+}
+
+.bry_index_nav .inner>li ul li {
+	display: block;
+}
+
+.bry_index_nav .inner>li ul li:hover {
+	background-color: #003944;
+}
+
+/* 精品推荐 */
+.bry_index_recommend {
+	padding-top: 30px;
+	border-radius: 15px;
+	height: 224px;
+	margin-bottom: 30px;
+}
+
+.bry_index_title {
+	width: 100%;
+	height: 45px;
+	background: url(../../assets/icon/red_top.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.bry_index_title_left {
+	padding-left: 40px;
+	padding-top: 10px;
+	font-size: 24px;
+	color: #fff;
+}
+
+.bry_index_title_right {
+	width: 86.5%;
+	padding-top: 25px;
+	font-size: 12px;
+	color: #00cadb;
+}
+
+.bry_index_title_right>span {
+	margin-right: 83%;
+}
+
+/* 轮播展示精品推荐内容 */
+.bry_index_swiper {
+	position: relative;
+	width: 100%;
+	padding: 34px 0;
+	box-sizing: border-box;
+}
+
+#swiper2 {
+	width: 1240px;
+}
+
+#swiper2 img {
+	width: 189px;
+	height: 106px;
+	border-radius: 6px;
+	display: inline-block;
+}
+
+/* 确保下拉菜单不会被遮住 */
+#bry_index_prev {
+	z-index: 1;
+}
+
+/* 修改左右箭头 */
+#bry_index_prev .swpier-btn {
+	width: 48px;
+	height: 141px;
+	top: 38%;
+	outline: none;
+}
+
+#bry_index_prev .swiper-button-prev:after {
+	content: '' !important;
+	width: 10px;
+	height: 23px !important;
+	left: 10px;
+	background: url(../../assets/icon/left_arrow.png) no-repeat !important;
+	background-size: 10px 23px;
+}
+
+#bry_index_prev .swiper-button-next:after {
+	content: '' !important;
+	width: 10px;
+	height: 23px;
+	right: 10px;
+	background: url(../../assets/icon/right_arrow.png) no-repeat;
+	background-size: 10px 23px;
+}
+
+/* 视频区 */
+.bry_index_video_tit {
+	width: 100%;
+	height: 56px;
+	text-align: center;
+	font-size: 30px;
+	color: #02c6d5;
+}
+
+.bry_video_tit_top {
+	letter-spacing: 10px;
+}
+
+.bry_video_tit_bot {
+	font-size: 12px;
+}
+
+/* 影视 */
+.bry_index_video_movies {
+	height: 632px;
+}
+
+.bry_movies_left_tit {
+	padding: 0px 0px 0 20px;
+	box-sizing: border-box;
+	width: 1070px;
+	height: 72px;
+}
+
+.bry_movies_left_le_img,
+.bry_movies_left_le_txt {
+	display: inline-block;
+	vertical-align: middle;
+	color: #02c6d5;
+}
+
+.bry_movies_left_le_img {
+	padding-right: 20px;
+}
+
+.bry_movies_left_le_img>img {
+	width: 29px;
+	height: 29px;
+}
+
+.bry_movies_left_le_txt>span:nth-of-type(1) {
+	display: block;
+	font-size: 24px;
+	letter-spacing: 20px;
+}
+
+.open>span:nth-of-type(1) {
+	letter-spacing: 0px;
+}
+
+.bry_movies_left_le_txt>span:nth-of-type(2) {
+	display: block;
+	font-size: 10px;
+}
+
+/* tab切换 */
+.bry_movies_left_rig {
+	position: relative;
+	width: 80%;
+	height: 44px;
+	border-bottom: 2px dotted #017b94;
+	box-sizing: border-box;
+}
+
+/* 这里使用定位是为了把下面的虚线遮住,
+ 达到tab栏数目改变虚线也会相应长短.
+ */
+.bry_movies_ul {
+	position: absolute;
+	height: 42px;
+	border-bottom: 2px solid #004857;
+}
+
+.bry_movies_ul>li {
+	display: inline-block;
+	text-align: center;
+	width: 100px;
+	float: left;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 24px;
+	background-color: #707070;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.bry_movies_more {
+	display: inline-block;
+	padding-top: 20px;
+}
+
+.bry_movies_more>a {
+	font-size: 14px;
+	color: #02c6d5;
+}
+
+/* 影视内容部分 */
+.bry_movies_cont {
+	padding-top: 23px;
+	box-sizing: border-box;
+	width: 1070px;
+	height: 560px;
+}
+
+.bry_open_cont {
+	padding-top: 23px;
+	box-sizing: border-box;
+	width: 1070px;
+	height: 520px;
+}
+
+
+.bry_movies_cont_le {
+	width: 23%;
+	height: 100%;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+}
+.bry_movies_cont_le figure{
+	position: relative;
+}
+.bry_movies_cont_rig>li{
+	position: relative;
+}
+.bry_movies_cont_le figcaption,
+.bry_movies_cont_le figure,
+.special_con_top figure{
+	width: 100%;
+}
+
+.special_con_top figure{
+	position: relative;
+}
+.bry_open_cont_le {
+	
+	padding-left: 20px;
+	width: 100%;
+	height: 520px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+}
+
+.bry_movies_cont_le figcaption {
+	padding-top: 10px;
+}
+
+.bry_movies_cont_le p {
+	width: 230px;
+	height: 44px;
+	color: #02c6d5;
+	margin-bottom: 30px;
+	text-align: left;
+}
+.bry_movies_cont_le img {
+	width: 246px;
+	height: 138px;
+	border-radius: 5px;
+}
+
+/* 影片 */
+.bry_movies_cont_rig {
+	width: 76%;
+	height: 100%;
+	display: inline-block;
+}
+.bry_movies_cont_rig img{
+	width: 192px;
+	height: 108px;
+	border-radius: 4px;
+}
+
+.bry_movies_cont_rig>li {
+	width: 25%;
+	height: 32%;
+	float: left;
+	text-align: center;
+	color: #02C6D5;
+	cursor: pointer;
+}
+
+.bry_movies_cont_rig>li div {
+	padding-bottom: 10px;
+}
+
+.bry_movies_cont_rig a {
+	color: #02C6D5;
+}
+
+.bry_open_cont_le a {
+	color: #02C6D5;
+}
+
+.bry_open_cont_le>li {
+	width: 18%;
+	height: 26%;
+	float: left;
+	text-align: center;
+	color: #02C6D5;
+	margin-bottom: 30px;
+	margin-left: 10px;
+}
+
+.bry_open_cont_le>li:nth-of-type(1) {
+	width: 189px;
+	height: 275px;
+}
+
+/* tab切换样式 */
+.choice {
+	background: #02a0c0 !important;
+}
+
+.bry_movies_box .show {
+	display: block;
+}
+
+.bry_open_box .show {
+	display: block;
+}
+
+/* 最新上传 */
+.bry_Pay{
+	width: 49px;
+	height: 28px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../../assets/icon/bry_Pay.png) no-repeat;
+}
+
+.bry_movies_right_news {
+	width: 230px;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.bry_movies_news_tit {
+	padding: 20px;
+	box-sizing: border-box;
+	height: 72px;
+	background: url(../../assets/icon/title_color.png) no-repeat;
+	background-size: 100% 100%;
+	color: #fff;
+	font-size: 14px;
+}
+
+.bry_movies_news_tit>span:nth-child(1) {
+	font-size: 24px;
+}
+
+.bry_movies_news_tit>a {
+	padding-left: 40px;
+}
+
+.hot>a {
+	padding-left: 60px;
+}
+
+.bry_movies_news_con {
+	padding: 20px 0 0 8px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+
+.bry_movies_news_con img {
+	width: 118px;
+	height: 71px;
+	border-radius: 6px;
+}
+
+.bry_movies_news_con>li {
+	padding-bottom: 26px;
+}
+
+.bry_movies_news_con .fl:first-child {
+	margin-right: 10px;
+}
+
+.bry_movies_news_con .fl:last-child {
+	width: 84px;
+}
+
+.bry_movies_news_con .fl:last-child div:nth-of-type(1) {
+	display: block;
+	color: #fff;
+}
+
+.bry_movies_news_con .fl:last-child div:nth-of-type(2) {
+	color: #02C6D5;
+}
+
+.bry_movies_news_con .fl:last-child div:nth-of-type(3) {
+	display: block;
+	padding-left: 20px;
+	background: url(../../assets/icon/watch.png) no-repeat left center;
+	color: #02C6D5;
+}
+
+.text {
+	height: 500px;
+}
+
+/* 专题 */
+.bry_index_special {
+	height: 360px;
+	padding-bottom: 50px;
+}
+
+.bry_index_special_tit {
+	padding: 0px 30px 0 24px;
+	box-sizing: border-box;
+	height: 50px;
+}
+
+.bry_special_tit_le {
+	display: inline-block;
+	width: 190px;
+	height: 40px;
+}
+
+.bry_special_tit_le>img {
+	display: inline-block;
+}
+
+.bry_special_tit_rig {
+	display: inline-block;
+	width: 84%;
+	height: 38px;
+	border-bottom: 2px dotted #02C6D5;
+}
+
+.bry_special_tit_rig .fl {
+	padding-top: 16px;
+	font-size: 14px;
+	color: #02c6d5;
+}
+
+.bry_special_tit_rig .fr {
+	padding-top: 16px;
+	font-size: 14px;
+	color: #02c6d5;
+}
+
+.bry_special_tit_le>div {
+	display: inline-block;
+	vertical-align: middle;
+	color: #02c6d5;
+	font-size: 24px;
+}
+
+.letter {
+	letter-spacing: 20px;
+}
+
+.letter2 {
+	letter-spacing: 10px;
+}
+
+.bry_special_tit_le>div:nth-of-type(1) {
+	padding-right: 20px;
+}
+
+/* 专题内容 */
+
+.bry_index_special_con {
+	height: 310px;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+
+.special_con_top {
+	width: 248px;
+	height: 254px;
+	padding-top: 30px;
+}
+.special_con_top img{
+	width: 246px;
+	height: 138px;
+	border-radius: 5px;
+}
+
+.special_con_top figcaption {
+	padding-top: 10px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+}
+
+.special_con_text {
+	color: #02c6d5;
+}
+
+.special_con_ul {
+	width: 79%;
+	height: 284px;
+}
+.special_con_ul div{
+	width: 192px;
+}
+
+.special_con_ul>li {
+	float: left;
+	position: relative;
+	padding-left: 16px;
+	text-align: center;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.bry_Pay1{
+	width: 49px;
+	height: 28px;
+	position: absolute;
+	top: 0;
+	left: 16px;
+	background: url(../../assets/icon/bry_Pay.png) no-repeat;
+}
+/* .special_con_ul>li:nth-child(6n), 
+.special_con_ul>li:first-child {
+	padding-left: 10px;
+} */
+.special_con_ul>li>a {
+	color: #02c6d5;
+}
+
+.special_con_ul img {
+	width: 192px;
+	height: 108px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+/* 活动 */
+
+.bry_index_acti_le {
+	width: 80%;
+	height: 410px;
+}
+
+.active_con_ul {
+	width: 75%;
+	height: 284px;
+	padding-left: 10px;
+	overflow: hidden;
+}
+
+.active_con_ul>li {
+	float: left;
+	width: 25%;
+	height: 48%;
+	text-align: center;
+	font-size: 12px;
+	margin-bottom: 6px;
+	position: relative;
+}
+
+.active_con_ul img {
+	width: 192px;
+	height: 108px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+.active_con_ul>li>a {
+	color: #02c6d5;
+}
+
+.bry_index_acti_con>li:nth-child(n+2) {
+	padding-top: 20px;
+}
+
+.bry_index_acti_con span {
+	margin-top: 10px;
+}
+
+
+.bry_acti_tit_rig {
+	display: inline-block;
+	width: 80%;
+	height: 38px;
+	border-bottom: 2px dotted #02C6D5;
+}
+
+.bry_acti_tit_rig .fl {
+	padding-top: 16px;
+	font-size: 14px;
+	color: #02c6d5;
+}
+
+.bry_acti_tit_rig .fr {
+	padding-top: 16px;
+	font-size: 14px;
+	color: #02c6d5;
+}
+
+.bry_index_acti_rig {
+	width: 240px;
+	height: 410px;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+.bry_acti_rig_tit {
+	height: 64px;
+	background: url(../../assets/icon/title_color.png) no-repeat;
+	font-size: 28px;
+	color: #fff;
+}
+
+.bry_acti_rig_tit>div {
+	padding-left: 16px;
+	padding-top: 12px;
+}
+
+.bry_acti_rig_con li {
+	padding: 10px 0 0px 14px;
+	box-sizing: border-box;
+	border-bottom: 1px dotted #02c6d5;
+}
+
+.bry_acti_rig_pic {
+	width: 60px;
+	height: 34px;
+	font-size: 16px;
+	color: #02c6d5;
+}
+
+
+.bry_acti_rig_pic>div:nth-child(1) {
+	padding-bottom: 10px;
+}
+
+.bry_acti_rig_text {
+	font-size: 12px;
+	color: #02c6d5;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+.bry_acti_rig_text p {
+	width: 120px;
+	padding-bottom: 16px;
+}
+.bry_acti_rig_text a{
+	color: #02c6d5;
+}
+.bry_acti_rig_con>li:nth-last-of-type(1) {
+	border: none;
+}
+
+.posit {
+	padding-top: 10px;
+	padding-left: 50px;
+}
+
+#swiper3 {
+	width: 1214px;
+	text-align: center;
+	font-size: 14px;
+}
+
+#swiper3 p {
+	font-size: 12px;
+	color: #02C6D5;
+	text-align: start;
+}
+
+/* 优秀讲师 */
+.bry_lecturer_con {
+	height: 284px;
+	padding: 20px 30px;
+	box-sizing: border-box;
+}
+
+.bry_lecturer_con>li {
+	float: left;
+	text-align: center;
+	font-size: 14px;
+	margin-right: 18px;
+}
+
+.bry_lecturer_con p {
+	text-align: start;
+	font-size: 12px;
+	color: #02C6D5;
+}
+
+/* 合作单位 */
+.bry_parter {
+	height: 160px;
+	padding: 44px 0 0px 0px;
+	box-sizing: border-box;
+	color: #02C6D5;
+}
+
+.bry_parter_text {
+	font-size: 24px;
+	padding-right: 190px;
+	padding-top: 25px;
+}
+
+.bry_parter_text>span {
+	display: block;
+}
+
+.bry_parter_text>span:nth-of-type(2) {
+	font-size: 12px;
+}
+
+.parter {
+	margin-right: 92px;
+}
+
+.parter a {
+	color: #02C6D5;
+}
+
+.jijin {
+	padding-left: 20px;
+}
+
+.jijin>img {
+	width: 60px;
+	height: 60px;
+}
+
+.doudou {
+	padding-left: 0px;
+}
+
+.doudou>img {
+	width: 60px;
+	height: 60px;
+}
+
+.hf>img {
+	width: 120px;
+	height: 60px;
+}
+
+/* 返回顶部 */
+.gotop {
+	width: 38px;
+	position: fixed;
+	right: 40px;
+	bottom: 200px;
+	text-align: center;
+	font-size: 22px;
+	color: #fff;
+	cursor: pointer;
+	z-index: 99;
+}
+
+.v-enter,
+.v-leave-to {
+	opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: all 0.8s ease;
+}

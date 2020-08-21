@@ -1,0 +1,42 @@
+.bry_main {
+	width: 1080px;
+	padding: 30px 0 0 30px;
+	box-sizing: border-box;
+}
+.bry_option_list{
+	width: 100%;
+}
+.bry_option_list>li{
+	float: left;
+	font-size: 16px;
+	margin-right: 40px;
+	cursor: pointer;
+}
+.bry_option_list_checked{
+	color: #059fbf;
+}
+
+.bry_content {
+	background-color: #fff;
+	margin-top: 20px;
+	padding: 0 100px 0 20px;
+	font-size: 16px;
+	border-radius: 4px;
+}
+.bry_content_item {
+	padding: 8px 0;
+}
+.bry_content_item span:nth-child(1) {
+	color: #059fbf;
+}
+
+.bry_next_last{
+	margin: 10px 30px 0 0;
+}
+.bry_next_last>li{
+	float: left;
+	margin-left: 16px;
+	font-size: 14px;
+    color: #666666;
+    cursor: pointer;
+}

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>电子书</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/book.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/JavaScript" charset="UTF-8" src="../static/js/vue.js"></script>
+	<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+
+	<!-- 引入封装的ajax -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/public.js"></script>
+	<!-- 引入首页的网络请求 -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div id="header">
+			<header-item></header-item>
+		</div>
+		<!-- 焦点 -->
+		<div class="bry_book_focus inner">
+			<div class="focus_content overflow">
+				<div class="bry_book_focus_background">
+					<!-- 焦点列表 -->
+					<ul class="focus_list">
+						<li class="focus_list_item " :class="focus_num==index?'orange_gradation':''"
+							@click="changeCss(index,item)" v-for="(item,index) in pointData" :key="index">
+							<p>
+								<span>{{item.Title}}</span>
+								<span>{{item.Details}}</span>
+							</p>
+							<span></span>
+						</li>
+						<!-- <li class="focus_list_item orange_gradation">
+								<p>
+									<span>《成长与性》</span>
+									<span>帮助父母回答孩子“尴尬”问题的书</span>
+								</p>
+								<span></span>
+							</li>
+							<li class="focus_list_item">
+								<p>
+									<span>《乳房的故事》</span>
+									<span>中国儿童性教育专家胡萍审订推荐</span>
+								</p>
+								<span></span>
+							</li>
+							<li class="focus_list_item">
+								<p>
+									<span>《我们的身体》</span>
+									<span>中国儿童性教育专家胡萍审订推荐</span>
+								</p>
+								<span></span>
+							</li> -->
+					</ul>
+					<!-- 电子书焦点内容 -->
+					<ul class="bry_book_focus_information">
+						<li>
+							<div class="bry_book_focus_information_text">
+								<div class="information_text">
+									<p>
+										{{this.pointCont}}
+									</p>
+
+								</div>
+							</div>
+							<div class="information_img">
+								<img :src="this.imgCont" />
+							</div>
+							<!-- 翻页图 -->
+							<div class="information_page_item">
+								<div class="information_page_img">
+									<a :href="'bry_book_info.html?id=' + pointArticleId">
+										<img :src="this.imgCont" />
+									</a>
+									
+								</div>
+							<!-- 	<div class="information_page_button">
+									<button type="button" id="share"></button>
+									<button type="button" id="upper_page" @click="changeImgUp(focus_num)">
+										&lt;上一页 </button>
+									<button type="button" id="lower_page" @click="changeImgDown(focus_num)">
+										下一页&gt;
+									</button>
+									<button type="button" id="screen"></button>
+								</div> -->
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bry_inners inner">
+			<!-- 推荐 -->
+			<div class="bry_book_recommend">
+				<!-- <ul class="recommend_list clearfix">
+						<li class="recommend_list_item color_orange">
+							最新上传
+						</li>
+						<li class="recommend_list_item">
+							人气榜
+						</li>
+					</ul> -->
+				<div class="bry_Ranking_TitleList clearfix">
+					<span v-for="(item, index) in tab1" :class="{active: current == index}"
+						@click="changeTab(index)">{{ item }}</span>
+				</div>
+				<div class="recommend_book">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" v-for="item in tab1Data">
+								<a :href="'bry_book_info.html?id=' + item.Id">
+									<div>
+										<img id="img1" :src="item.ListPhoto" />
+									</div>
+									<p>{{item.Title}}</p>
+								</a>
+							</div>
+
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 屏幕列表 -->
+			<!-- 筛选 -->
+			<el-tabs v-model="activeName" @tab-click="handleClick" stretch>
+				<el-tab-pane label="精选书籍" name="47"></el-tab-pane>
+				<el-tab-pane label="大咖专辑" name="48"></el-tab-pane>
+				<el-tab-pane label="大学" name="35"></el-tab-pane>
+			</el-tabs>
+
+			<!-- 精选书籍 -->
+			<div class="bry_book_selected">
+				<ul class="bry_book_selected_list clearfix">
+					<li class="bry_book_selected_item" v-for="item in tab2Data" :key="item.Id">
+						<a :href="'bry_book_info.html?id=' + item.Id">
+							<div>
+								<img :src="item.ListPhoto" />
+							</div>
+							<ul class="selected_item_text">
+								<li>{{item.Title}}</li>
+								<li><span>{{item.Details}}</span></li>
+								<li>
+									<span class="selected_item_spot">{{item.QueryCount}}</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+				</ul>
+
+				<!-- 跳页部分 -->
+				<div class="bry_main_JumpPage clearfix">
+					<span class="bry_main_JumpPage_listType1" @click="goHome">首页</span>
+					<span class="bry_main_JumpPage_listType1" @click="prevClick">上一页</span>
+					<el-pagination background :page-size="pageSize" :current-page="currentPage" layout="pager, jumper"
+						@current-change="handleCurrentChange" :total="total">
+					</el-pagination>
+					<span class="bry_main_JumpPage_listType1" @click="nextClick">下一页</span>
+					<span class="bry_main_JumpPage_listType1" @click="goEnd">尾页</span>
+				</div>
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif" />
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif" />
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>
+							重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有
+						</div>
+						<div>
+							渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png" />渝公安备 50019002501739
+						</div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../static/js/book.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vueobj = new Vue({
+		el: "#app",
+		data() {
+			return {
+				current: 0, // 控制 第一个tab 默认选中谁
+
+				focus_list: [
+					{ name: "《成长与性》", intro: "小鸡鸡的故事绘本" },
+					{ name: "《小鸡鸡的故事》", intro: "小鸡鸡的故事绘本" },
+					{ name: "《乳房的故事》", intro: "中国儿童性教育专家胡萍审订推荐" },
+					{ name: "《我们的身体》", intro: "中国儿童性教育专家胡萍审订推荐" }
+				],//焦点列表
+				focus_num: 0,//当前焦点下标
+				tab1: ["最新上传", "热播榜", "排行榜"],
+				activeName: "47", // 控制 第二个tab 默认选中谁
+				currentPage: 1,   // 当前页
+				pageSize: 7,     // 每页显示个数
+				total: 0,       // 总条数
+				pointData: [],   //焦点数据
+				pointCont: "",    //默认焦点内容
+				imgCont: "",      //默认焦点图片
+				tab1Data: [],     // 第一个tab下的数据
+				tab2Data: [],     // 第二个tab下的数据
+				pointArticleId:"" , //文章id
+
+
+			}
+		},
+		created() {
+			// 请求焦点数据
+			getFocusdata(4, 7).then(res => {
+				this.pointData = res.data
+				this.pointCont = res.data[0].Details
+				this.imgCont = res.data[0].ListPhoto
+				this.pointArticleId=res.data[0].Id
+				console.log(this.pointData)
+			}, err => {
+				console.log(err)
+			})
+			// 获取最新上传数据
+			getNewestdata(10, 7).then(res => {
+				console.log("tab1:", res)
+				this.tab1Data = res.data
+			}, rej => {
+				console.log(rej)
+			})
+			// 获取精选书籍板块数据
+			getMoviesdata(this.pageSize, this.activeName).then(res => {
+				this.total = res.other
+				this.tab2Data = res.data
+			})
+
+		},
+		watch: {
+			currentPage() {
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.total = res.other
+					this.tab2Data = res.data
+				})
+			}
+		},
+		mounted() {
+			this.getswiper()
+		},
+		methods: {
+			// 轮播
+			getswiper() {
+				setTimeout(() => {
+					var swiper1 = new Swiper('.recommend_book .swiper-container', {
+						slidesPerView: 6,
+						spaceBetween: 46,
+						slidesPerGroup: 1,
+						loop: true,
+						loopFillGroupWithBlank: true,
+						autoplay: true,
+						delay: 3000,
+						pagination: {
+							el: '.swiper-pagination',
+							clickable: true,
+						},
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev',
+						},
+					})
+				}, 300)
+			},
+			// 上一页
+			changeImgUp(focus_num) {
+				if (focus_num == 0) {
+					console.log(this.focus_num)
+					this.focus_num = 3
+					
+				}
+				else {
+					this.focus_num = this.focus_num - 1
+				}
+				getFocusdata(4, 7).then(res => {
+					this.pointData = res.data
+					this.pointCont = res.data[this.focus_num].Details
+					this.imgCont = res.data[this.focus_num].ListPhoto
+					console.log(res)
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 下一页
+			changeImgDown(focus_num) {
+				if (focus_num == 3) {
+					console.log(focus_num)
+					this.focus_num =0
+					
+				}
+				else {
+					
+					
+					this.focus_num = this.focus_num + 1
+				}
+				getFocusdata(4, 7).then(res => {
+					console.log(this.focus_num)
+					this.pointData = res.data
+					this.pointCont = res.data[this.focus_num].Details
+					this.imgCont = res.data[this.focus_num].ListPhoto
+					console.log(this.pointData)
+				}, err => {
+					console.log(err)
+				})
+			},
+			//点击改变focus_list_item样式
+			changeCss(index, item) {
+				this.focus_num = index
+				this.pointCont = item.Details
+				this.imgCont = item.ListPhoto
+				this.pointArticleId=item.Id
+			},
+			// 第一个tab切换
+			changeTab(index) {
+				if (this.current == index) return
+				this.current = index
+				switch (index) {
+					case 0:
+						getNewestdata(10, 7).then(res => {
+							console.log(res)
+							this.tab1Data = res.data
+						}, rej => {
+							console.log(rej)
+						})
+						break
+					case 1:
+						getHotdata(10, 7).then(res => {
+							console.log(res)
+							this.tab1Data = res.data
+						}, rej => {
+							console.log(rej)
+						})
+						break
+					case 2:
+						getHotdata(10, 7).then(res => {
+							console.log(res)
+							this.tab1Data = res.data
+						}, rej => {
+							console.log(rej)
+						})
+						break
+				}
+			},
+			// 第二个tab切换时触发
+			handleClick(tab) {
+				this.currentPage = 1
+				this.activeName = tab.name
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 当前页数改变时会触发
+			handleCurrentChange(page) {
+				this.currentPage = page
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 点击上一页
+			prevClick() {
+				if (this.currentPage <= 1) {
+					this.$message({
+						message: "已经是首页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage - 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 点击下一页
+			nextClick() {
+				if (this.currentPage >= Math.ceil(this.total / this.pageSize)) {
+					this.$message({
+						message: "已经是最后一页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage + 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 回首页
+			goHome() {
+				this.currentPage = 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			},
+			// 去尾页
+			goEnd() {
+				this.currentPage = Math.ceil(this.total / this.pageSize)
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					this.tab2Data = res.data
+					this.total = res.other
+					console.log(res)
+				}, err => {
+					console.log(0)
+				})
+			}
+		},
+	});
+</script>
+
+</html>

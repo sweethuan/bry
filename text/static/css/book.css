@@ -1,0 +1,461 @@
+/* 背景颜色 */
+body {
+	width: 100%;
+	background: #002830;
+}
+
+/* 焦点 */
+.bry_book_focus {
+	height: 360px;
+	background: #059fbf;
+}
+
+.focus_content {
+	width: 100%;
+	height: 100%;
+	padding: 12px 18px 14px 18px;
+	box-sizing: border-box;
+}
+
+.bry_book_focus_background {
+	width: 100%;
+	height: 100%;
+	background: #002830;
+	overflow: hidden;
+}
+
+/* 焦点列表 */
+.focus_list {
+	width: 230px;
+	height: 100%;
+	float: left;
+	background: #002830;
+}
+
+.focus_list_item {
+	width: 100%;
+	height: 82px;
+	background: #017289;
+	margin-bottom: 3px;
+	text-align: center;
+	font-size: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.focus_list_item p {
+	width: 234px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+	padding-top: 20px;
+}
+
+.focus_list_item>p>span {
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.focus_list_item>span {
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.orange_gradation {
+	background: url(../../assets/icon/orange_gradation.png) no-repeat;
+	background-size: 100%;
+}
+
+/* 电子书焦点内容 */
+.bry_book_focus_information {
+	width: 1050px;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+
+.bry_book_focus_information>li {
+	width: 100%;
+	height: 100%;
+}
+
+.bry_book_focus_information_text {
+	width: 290px;
+	height: 100%;
+	background: #714308;
+	float: left;
+}
+
+.information_text {
+	width: 152px;
+	padding: 58px 0 0 16px;
+	color: #FFFFFF;
+}
+
+.information_img {
+	position: absolute;
+	left: 174px;
+	bottom: 20px;
+	width: 213px;
+	height: 277px;
+}
+.information_img img{
+	
+	width: 100%;
+	height: 100%;
+}
+
+/* 翻页图 */
+.information_page_item {
+	width: 760px;
+	height: 100%;
+	float: left;
+}
+
+.information_page_img {
+	width: 100%;
+	height: 334px;
+	overflow: hidden;
+}
+
+.information_page_img>a{
+	width: 100%;
+	height: 100%;
+}
+
+.information_page_img>a>img {
+	width: 100%;
+	height: 100%;
+}
+
+.information_page_button {
+	width: 388px;
+	height: 34px;
+	margin: auto;
+}
+
+/* 翻页按钮 */
+.information_page_button button {
+	height: 100%;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+#share {
+	width: 22px;
+	float: left;
+	/* background: url(../../assets/icon/share.png) no-repeat center; */
+}
+
+#upper_page {
+	color: #00e1f2;
+	float: left;
+	margin-left: 112px;
+}
+
+#lower_page {
+	color: #00e1f2;
+	float: left;
+	margin-left: 62px;
+}
+
+#screen {
+	width: 22px;
+	float: right;
+	/* background: url(../../assets/icon/screen.png) no-repeat center; */
+}
+
+/* inner */
+.bry_inners {
+	padding: 30px 18px 70px 18px;
+	box-sizing: border-box;
+}
+
+/* 推荐 */
+.bry_book_recommend {
+	width: 100%;
+}
+
+.recommend_list_item {
+	font-size: 24px;
+	float: left;
+	padding-right: 34px;
+	color: #02c6d5;
+	cursor: pointer;
+}
+
+.color_orange {
+	color: #e3741b;
+}
+.bry_Ranking_TitleList{
+	width: calc(100% - 50px);
+}
+.bry_Ranking_TitleList>span{
+	display: block;
+	float: left;
+	margin-left: 50px;
+	font-size: 20px;
+	color: #fff;
+	cursor: pointer;
+}
+.bry_Ranking_TitleList > span.active{
+	color: #02a0c0;
+}
+.recommend_book {
+	width: 100%;
+	height: 244px;
+	padding: 54px 0;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	padding: 0 36px;
+	box-sizing: border-box;
+}
+#img1 {
+	width: 152px;
+	height: 206px;
+	border-radius: 5px;
+}
+.recommend_book p{
+	width: 152px;
+	padding-top: 10px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.book_item img {
+	width: 152px;
+}
+
+.book_item p {
+	font-size: 12px;
+	padding-top: 18px;
+}
+
+.swiper-button-next {
+	color: #FFFFFF;
+	position: absolute;
+	right: 0;
+}
+
+.swiper-button-prev {
+	color: #FFFFFF;
+	position: absolute;
+	left: 0;
+}
+
+/* 屏幕列表 */
+.stripe{
+	width: 1284px;
+	margin: 0 auto;
+	display: block;
+	height: 12px;
+	border-radius: 6px;
+	background: #016e85;
+	box-shadow: 0 10px 10px #000000;
+}
+.bry_screenList{
+	width: 780px;
+	margin: 0 auto;
+}
+.bry_screenLi{
+	float: left;
+	width: 115px;
+	height: 50px;
+	margin-top: -12px;
+}
+.bry_screenLi:nth-of-type(n+2){
+	margin-left: 217px;
+}
+.bry_screenLi>span:nth-of-type(1){
+	display: block;
+	width: 100%;
+	height: 12px;
+	border-radius: 6px;
+}
+.bry_screenLi>span:nth-of-type(2){
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 20px;
+}
+.bry_screenLi_type1>span{
+	color:#e5741a;
+}
+.bry_screenLi_type1>span:nth-of-type(1){
+	background: #e5741a;
+}
+.bry_screenLi_type2>span{
+	color:#02c6d5;
+}
+.bry_screenLi_type2>span:nth-of-type(1){
+	background: #02c6d5;
+}
+
+/* 精选书籍 */
+.bry_book_selected {
+	padding-top: 40px;
+}
+
+.bry_book_selected_item {
+	width: 152px;
+	float: left;
+	margin: 0 36px 40px 0;
+}
+
+.bry_book_selected_item>a>div {
+	width: 152px;
+	height: 206px;
+	overflow: hidden;
+}
+
+.bry_book_selected_item>a>div>img {
+	width: 152px;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.selected_item_text li {
+	width: 152px;
+	padding-top: 5px;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.selected_item_text span {
+	color: #02c6d5;
+}
+
+.selected_item_spot {
+	padding-left: 14px;
+	background: url(../../assets/icon/spot.png) no-repeat left;
+}
+.bry_book_selected_item:nth-of-type(7n){
+	margin-right: 0;
+}
+
+/* 翻页 */
+/* .bry_encyclopedias_page {
+	width: 1280px;
+	height: 24px;
+	margin: 0 auto;
+}
+
+.bry_encyclopedias_page_list {
+	float: right;
+}
+
+.bry_encyclopedias_page_list li,
+strong {
+	height: 24px;
+	float: left;
+	color: #02c6d5;
+	font-size: 14px;
+	margin-left: 16px;
+}
+
+.page_button {
+	height: 24px;
+	color: #02c6d5;
+	background: transparent;
+	border: none;
+}
+
+.page_left_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_left_arrow.png) no-repeat center;
+}
+
+.page_right_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_right_arrow.png) no-repeat center;
+}
+
+.page-item {
+	width: 22px;
+	height: 24px;
+	color: #FFFFFF;
+	background: #017289;
+	border: none;
+	border-radius: 5px;
+}
+
+.page-item.active {
+	background: #c0831a;
+}
+
+.bry_encyclopedias_page_list input {
+	width: 24px;
+	height: 24px;
+	background: #02c6d5;
+	border-radius: 5px;
+	text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+    
+input,
+button {
+	outline: none;
+} */
+
+/* 跳页部分 */
+.bry_main_JumpPage{
+	/* margin: 55px 0 25px 0; */
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.bry_main_JumpPage_listType1{
+	font-size: 14px;
+	color: #02c6d5;
+	line-height: 32px;
+	cursor: pointer;
+	margin: 0 4px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input,
+button {
+	outline: none;
+}

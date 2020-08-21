@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>论坛</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/bry_forum.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入封装的ajax -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/public.js"></script>
+	<!-- 引入网络请求 -->
+	<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div id="header">
+			<header-item></header-item>
+		</div>
+		<!-- 主题内容 -->
+		<div class="bry_main">
+			<div class="bry_inner clearfix">
+				<!-- 左部分 -->
+				<div class="bry_mainLeft">
+					<!-- 最新热帖/论坛推荐 -->
+					<div class="bry_mainLeft_Up">
+						<div class="bry_mainLeft_UpTitle">
+							<span class="bry_mainLeft_UpTitleType2" v-for="(item, index) in tab1"
+								:class="{bry_mainLeft_UpTitleType1: current==index}" @click="changeTab(index)">
+								{{ item }}</span>
+						</div>
+						<ul class="bry_mainLeft_UpNewsList clearfix" v-loading="datas1.length == 0"
+							element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading"
+							element-loading-background="rgba(0, 40, 48, 0.8)">
+							<li class="bry_mainLeft_UpNewsLi" v-for="(item, index) in datas1.slice(0,6)" :key="index"
+								@click="goDetails(item.Id)">
+								<div class="bry_mainLeft_UpNewsLi_top clearfix">
+									<div class="bry_mainLeft_UpNewsLi_picture">
+										<a :href="'bry_forum_info.html?id='+item.Id">
+											<img :src="item.ListPhoto" >
+										</a>
+									</div>
+									<div class="bry_mainLeft_UpNewsLi_topText">
+										<a>
+											<p class="one-txt-cut">{{ item.Title }}</p>
+											<span class="txt-cut2">{{ item.Details }}</span>
+											<div class="bry_mainLeft_UpNewsLi_duwn">
+												<span>作者:</span>
+												<span>{{ item.Author }}</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="bry_mainLeft_UpButton">
+							<a href="bry_forum_post.html">发 帖</a>
+						</div>
+					</div>
+					<div class="bry_mainLeft_down ">
+						<el-tabs v-model="activeName" @tab-click="handleClick" stretch>
+							<el-tab-pane label="专家答疑" name="40"></el-tab-pane>
+							<el-tab-pane label="性教育" name="41"></el-tab-pane>
+							<el-tab-pane label="性健康" name="42"></el-tab-pane>
+						</el-tabs>
+						<!-- 具体留言 -->
+						<ul class="bry_mainLeft_downList2 clearfix">
+							<li class="bry_mainLeft_downLi2 clearfix" v-for="(item,index) in tab2Data" :key="index">
+								<!-- 图片 -->
+								<a href="">
+									<img :src="item.ListPhoto" id="tab1DataPic">
+								</a>
+								<div class="bry_mainLeft_downLi2_right">
+									<!-- 标题 -->
+									<a :href="'bry_forum_info.html?id='+item.Id">
+										<span class="txt-cut1">{{item.Title}}</span>
+										<!-- 作者，时间 -->
+										<div class="bry_mainLeft_downLi2_rightDown clearfix">
+											<div class="bry_mainLeft_downLi2_rightDown_author">
+												<span>作者：</span>
+												<span>{{item.Author}}</span>
+											</div>
+											<span>{{item.CreateDate}}</span>
+										</div>
+									</a>
+								</div>
+							</li>
+							<!-- <li class="bry_mainLeft_downLi2 clearfix">
+									
+									<a href="">
+										<img src="../assets/img/bry_mainLeft_UpNewsLi_picture.gif">
+									</a>
+									<div class="bry_mainLeft_downLi2_right">
+										
+										<a href="bry_forum_info.html">
+											<span class="txt-cut1">【求解】为什么羞耻感会带来快感？</span>
+											
+											<div class="bry_mainLeft_downLi2_rightDown clearfix">
+												<div class="bry_mainLeft_downLi2_rightDown_author">
+													<span>作者：</span>
+													<span>hrerejjhnj</span>
+												</div>
+												<span>2019-8-29 10:50</span>
+											</div>
+										</a>
+									</div>
+								</li> -->
+
+
+						</ul>
+						<!-- 跳页部分 -->
+						<div class="bry_main_JumpPage">
+							<span class="bry_main_JumpPage_listType1" @click="goHome">首页</span>
+							<span class="bry_main_JumpPage_listType1" @click="prevClick">上一页</span>
+							<el-pagination background :page-size="pageSize" :current-page="currentPage"
+								layout="pager, jumper" @current-change="handleCurrentChange" :total="total">
+							</el-pagination>
+							<span class="bry_main_JumpPage_listType1" @click="nextClick">下一页</span>
+							<span class="bry_main_JumpPage_listType1" @click="goEnd">尾页</span>
+						</div>
+					</div>
+				</div>
+				<!-- 右部分 -->
+				<div class="bry_mainRight">
+					<ul class="bry_mainRight_news1List">
+						<li class="bry_mainRight_news1Li" v-for="(item,index) in recommendData.slice(0,2)" :key="index">
+							<a :href="'bry_forum_info.html?id='+item.Id">
+								<div class="bry_mainRight_news1Li_picture">
+									<img :src="item.ListPhoto">
+								</div>
+								<span class="bry_mainRight_news1Li_title txt-cut1"> {{item.Title}}</span>
+								<span class="bry_mainRight_news1Li_text txt-cut2">{{item.Details}}</span>
+							</a>
+						</li>
+						<!-- <li class="bry_mainRight_news1Li">
+							<a href="">
+								<div class="bry_mainRight_news1Li_picture">
+									<img src="../assets/img/bry_mainRight_news1Li_picture1.png">
+								</div>
+								<span class="bry_mainRight_news1Li_title txt-cut1">印度神奇“性”寺庙外景曝光 如此开放大胆</span>
+								<span class="bry_mainRight_news1Li_text txt-cut2">中国生育性别选择行为在很早的时代就已经开始了。
+									从文献来看，在公元前2000多年的帝尧</span>
+							</a>
+						</li> -->
+					</ul>
+					<div class="bry_mainRight_title">今日</div>
+					<ul class="bry_mainRight_news2List">
+						<li class="bry_mainRight_news2Li clearfix" v-for="(item,index) in datas1.slice(0,2)" :key="index">
+							<a :href="'bry_forum_info.html?id='+item.Id">
+								<img :src="item.ListPhoto">
+							</a>
+							<div class="bry_mainRight_news2Li_text">
+								<a :href="'bry_forum_info.html?id='+item.Id">
+									<span class="txt-cut1"> {{item.Title}}</span>
+									<span class="txt-cut1">{{item.Details}}</span>
+									<div class="bry_mainRight_news2Li_textAuthor">
+										<span>作者：</span>
+										<span>{{item.Author}}</span>
+									</div>
+								</a>
+							</div>
+						</li>
+						<!-- <li class="bry_mainRight_news2Li clearfix">
+							<a href="">
+								<img src="../assets/img/bry_mainLeft_UpNewsLi_picture.gif">
+							</a>
+							<div class="bry_mainRight_news2Li_text">
+								<a href="">
+									<span class="txt-cut1">印度神奇“性”寺庙外景曝光 如此开放大胆</span>
+									<span class="txt-cut1">中国生育性别选择行为在很早的时代就已经开始了中国生育性别选择行为在很早的时代就已经开始了</span>
+									<div class="bry_mainRight_news2Li_textAuthor">
+										<span>作者：</span>
+										<span>Hanna</span>
+									</div>
+								</a>
+							</div>
+						</li> -->
+					</ul>
+					<ul class="bry_mainRight_usersList clearfix">
+						<li class="bry_mainRight_usersLi"  v-for="(item,index) in datas1.slice(2,10)" :key="index" ><a :href="'bry_forum_info.html?id='+item.Id">
+								<div class="bry_mainRight_usersList_pictureBox">
+									<img :src="item.ListPhoto">
+								</div>
+								<span class="bry_mainRight_usersLi_name">{{item.Author}}</span>
+							</a></li>
+						<!-- <li class="bry_mainRight_usersLi"><a href="">
+								<div class="bry_mainRight_usersList_pictureBox">
+									<img src="../assets/img/bry_mainLeft_UpNewsLi_picture.gif">
+								</div>
+								<span class="bry_mainRight_usersLi_name">英子</span>
+							</a></li> -->
+						
+
+					</ul>
+					<!-- <div class="bry_mainRight_title">婚姻状态调查</div> -->
+					<!-- <ul class="bry_mainRight_checkbox1">
+						<li class="bry_mainRight_checkbox1Li">
+							<input type="checkbox" name="" id="" value="" />
+							<span>沟通不畅</span>
+						</li>
+						<li class="bry_mainRight_checkbox1Li">
+							<input type="checkbox" name="" id="" value="" />
+							<span>无性生活</span>
+						</li>
+						<li class="bry_mainRight_checkbox1Li">
+							<input type="checkbox" name="" id="" value="" />
+							<span>交通支出</span>
+						</li>
+						<li class="bry_mainRight_checkbox1Li">
+							<input type="checkbox" name="" id="" value="" />
+							<span>难耐孤独</span>
+						</li>
+						<li class="bry_mainRight_checkbox1Li">
+							<input type="checkbox" name="" id="" value="" />
+							<span>其他</span>
+						</li>
+						<li class="bry_mainRight_checkbox1Li">
+							<button type="button">投 票</button>
+						</li>
+					</ul> -->
+					<!-- <div class="bry_mainRight_title">VS 你认为婚姻能长久吗？</div> -->
+					<!-- 投票 -->
+					<!-- <div class="bry_mainRight_choose">
+						<span class="bry_mainRight_chooseSpan1 txt-cut2">生活存在的现实问题1、无法排遣的孤
+							独感。即使网速再快，像素再高，电话费再便宜</span>
+						<div class="bry_mainRight_chooseChart clearfix">
+							<div class="">2</div>
+							<span>VS</span>
+							<div class="">1</div>
+						</div>
+						<span>正方: 能，一直保持的新鲜感，婚姻永不变质，新一辈
+							人活出新一辈人的方法</span>
+						<span>反方: 不能，结婚后还要忍受孤独，太痛苦，让对方无</span>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="bry_footer">
+			<div class="inner">
+				<div class="bry_footer_nav">
+					<ul class="clearfix">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="bry_information.html">资讯</a></li>
+						<li><a href="bry_Movies.html">视频</a></li>
+						<li><a href="bry_audioFrequency.html">音频</a></li>
+						<li><a href="bry_forum.html">论坛</a></li>
+						<li><a href="encyclopedias.html">百科</a></li>
+						<li><a href="book.html">电子书</a></li>
+						<li><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+				<div class="bry_copy_msg clearfix">
+					<div class="fl">
+						<img src="../assets/icon/footer/official_account.gif">
+						<div class="tc">关注公众号</div>
+					</div>
+					<div class="fl">
+						<img src="../assets/icon/footer/phone_code.gif">
+						<div class="tc">手机网站</div>
+					</div>
+					<div class="bry_copyright fl">
+						<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+						<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739
+						</div>
+						<div>All Rights Reserved, Copyright 2019-2020</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var vueobj = new Vue({
+		el: "#app",
+		data() {
+			return {
+				current: 0, // 控制 第一个tab 默认选中谁
+				tab1: ["最新热帖", "论坛推荐"],
+				activeName: "40",
+				currentPage: 1, // 当前页
+				pageSize: 4, // 每页显示个数
+				total: 0, // 总条数   
+				datas1: [],// 热帖和推荐下的数据
+				tab2Data: [],  //切换2数据
+				todayData: [], //今日数据
+				recommendData: [], //推荐数据
+			}
+		},
+		created() {
+			// 获取热点数据或推荐数据
+			getHotdata(10, 5).then(res => {
+				console.log(res)
+				this.datas1 = res.data
+				this.todayData = res.data
+
+			}).catch(err => {
+				console.log(err)
+				/* this.$message({
+					message: "请求失败~"
+				}) */
+			})
+			// 获取推荐数据
+			getRecommend(6, 5).then(res => {
+				this.recommendData = res.data
+				console.log(res)
+			},err=>{
+				console.log(err)
+			})
+			// 获取专家答疑板块数据
+			getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+				console.log(res)
+				this.total = res.other
+				this.tab2Data = res.data
+			}, err => {
+				console.log(err)
+			})
+		},
+		methods: {
+			// 第一个tab切换
+			changeTab(i) {
+				this.current = i
+				switch (i) {
+					case 0:
+						getHotdata(6, 5).then(res => {
+							this.datas1 = res.data
+						})
+						break
+					case 1:
+						getRecommend(6, 5).then(res => {
+							this.datas1 = res.data
+							console.log(res)
+						})
+						break
+				}
+			},
+			goDetails(id) {
+				window.location.href = "bry_forum_info.html?id=" + id
+			},
+			// 第二个tab切换时触发
+			handleClick(tab) {
+				this.currentPage = 1
+				this.activeName = tab.name
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 当前页数改变时会触发
+			handleCurrentChange(page) {
+				this.currentPage = page
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 点击上一页
+			prevClick() {
+				if (this.currentPage <= 1) {
+					this.$message({
+						message: "已经是首页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage - 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 点击下一页
+			nextClick() {
+				if (this.currentPage >= Math.ceil(this.total / this.pageSize)) {
+					this.$message({
+						message: "已经是最后一页了~",
+						type: 'warning',
+						offset: 250
+					})
+					return
+				}
+				this.currentPage = this.currentPage + 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 回首页
+			goHome() {
+				this.currentPage = 1
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			},
+			// 去尾页
+			goEnd() {
+				this.currentPage = Math.ceil(this.total / this.pageSize)
+				getMoviesdata(this.pageSize, this.activeName, this.currentPage).then(res => {
+					console.log(res)
+					this.total = res.other
+					this.tab2Data = res.data
+				}, err => {
+					console.log(err)
+				})
+			}
+		}
+	});
+</script>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>论坛发帖</title>
+
+		<link rel="stylesheet" href="../static/css/common.css" />
+		<link rel="stylesheet" href="../static/css/login_common.css" />
+		<link rel="stylesheet" href="../static/css/bry_forum_post.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+
+		<!-- 导入富文本编辑器相关 -->
+		<link rel="stylesheet" href="../static/other/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../static/other/summernote-0.8.16-dist/summernote.min.css" />
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/summernote-0.8.16-dist/summernote.min.js"></script>
+		<script type="text/JavaScript" charset="UTF-8" src="../static/other/summernote-0.8.16-dist/lang/summernote-zh-CN.min.js"></script>
+
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/JavaScript" charset="UTF-8" src="../static/js/header.js"></script>
+		<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+
+			<div class="bry_container">
+				<!-- 标题及退出登录 -->
+				<div class="bry_forum_path"><a href="index.html">首页</a> >> 论坛</div>
+
+				<!-- 内容区 -->
+				<div class="bry_inner clearfix">
+					<div class="bry_head_leftnav fl">
+						<!-- 头像与名字 -->
+						<div class="bry_people">
+							<div class="bry_people_pic">
+								<img src="../assets/img/mechanism/headicon.jpg" />
+								<span>{{ValueId}}</span>
+							</div>
+							<span>{{NickName}}</span>
+						</div>
+						<!-- 认证与充值 -->
+						<!-- <div class="bry_authentication_recharge">
+							<span>待认证</span>
+						</div> -->
+					</div>
+
+					<div class="bry_main fl">
+						<!-- 标题 -->
+						<div class="bry_title">
+							<span>*标题：</span>
+							<input type="text" v-model="Title" placeholder="请输入标题" />
+						</div>
+						<div class="bry_title">
+							<span>*简介：</span>
+							<input type="text" v-model="Detiles" placeholder="请输入简介" />
+						</div>
+						<!-- 内容 -->
+						<div class="bry_content">
+							<span>内容：</span>
+							<div id="summernote">
+							</div>
+						</div>
+
+						<!-- 发帖按钮 -->
+						<button type="button" class="bry_send" @click="release">发帖</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="bry_lecturer.html">讲师</a></li>
+							<li><a href="bry_information.html">资讯</a></li>
+							<li><a href="bry_Movies.html">视频</a></li>
+							<li><a href="bry_audioFrequency.html">音频</a></li>
+							<li><a href="bry_forum.html">论坛</a></li>
+							<li><a href="encyclopedias.html">百科</a></li>
+							<li><a href="book.html">电子书</a></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../assets/icon/footer/official_account.gif" />
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../assets/icon/footer/phone_code.gif" />
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>
+								重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有
+							</div>
+							<div>
+								渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png" />渝公安备 50019002501739
+							</div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var vueobj = new Vue({
+			el: "#app",
+			data() {
+				return {
+					Contents: "", //文章内容
+					Title: "", //标题
+					NickName: "", //昵称
+					Detiles: "", //简介
+					urseId: null,
+					img:null,
+				}
+			},
+			mounted() {
+				// this.nextTick(){
+				$("#summernote").summernote({
+					lang: "zh-CN",
+					placeholder: "请输入内容",
+					height: 670,
+					disableDragAndDrop: true,
+					shortcuts: false,
+					tabDisable: false,
+					value: 1,
+					toolbar: [
+						[
+							"font",
+							[
+								"bold",
+								"underline",
+								"strikethrough",
+								"superscript",
+								"subscript",
+								"clear",
+							],
+						],
+						["fontname", ["fontsize"]],
+						["color", ["forecolor", "backcolor"]],
+						["hr"],
+						
+						// 图片"picture",表格["table"],
+						["link", [ "link", "video"]],
+						["misc", ["undo", "redo", "help"]],
+					],
+				});
+				// }
+			},
+			created() {
+				$("#header").load("header.html");
+				this.value = foowwLocalStorage.getLocal("RoleId") //获取角色id
+				this.urseId = foowwLocalStorage.getLocal("urseId") //获取用户id
+				getAjax("get", "Users/DetailDo", '{"UserId":"' + foowwLocalStorage.getLocal("urseId") + '"}').then(res => {
+					this.NickName = res.data.NickName.slice(0, 8)
+				})
+
+			},
+			computed: {
+				ValueId() {
+					return this.value == 1 ? "个人" : (this.value == 2 ? "学生" : (this.value == 3 ? "教师" : (this.value == 4 ? "医生" : (
+						this.value == 5 ? "心理资讯师" : "机构"))))
+				}
+			},
+			methods: {
+				// 编码
+				htmlEncode(str) {
+					var s = "";
+					if (str.length == 0) return "";
+					s = str.replace(/&/g, "&amp;");
+					s = s.replace(/</g, "&lt;");
+					s = s.replace(/>/g, "&gt;");
+					s = s.replace(/ /g, "&nbsp;");
+					s = s.replace(/\'/g, "&#39;");
+					s = s.replace(/\"/g, "&quot;");
+					return s;
+				},
+				// 解码
+				htmlDecode(str) {
+					var s = "";
+					if (str.length == 0) return "";
+					s = str.replace(/&amp;/g, "&");
+					s = s.replace(/&lt;/g, "<");
+					s = s.replace(/&gt;/g, ">");
+					s = s.replace(/&nbsp;/g, " ");
+					s = s.replace(/&#39;/g, "\'");
+					s = s.replace(/&quot;/g, "\"");
+					return s;
+				},
+				// 点击发帖
+				async release() {
+					//将富文本标签中的内容传递给Contents
+					this.Contents = this.htmlEncode($('#summernote').summernote('code'))
+					//当没写标题时提示请输入标题~
+					if (this.Title.trim() == "" || this.Detiles.trim() == '') {
+						this.$message({
+							message: "请输入标题和简介~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+					//当没有内容时提示请输入内容~
+					if (!$($('#summernote').summernote('code')).text().trim()) {
+						this.$message({
+							message: "请输入内容~",
+							type: 'warning',
+							offset: 250
+						})
+						return
+					}
+
+					// 发帖请求
+					var result = await ajax("post", "Articles/AddDo", '{"Contents":"' + this.Contents + '","Title":"' + this.Title +
+						'","Details":"' + this.Detiles + '","UserId":"' + this.urseId +
+						'"}', "123456")
+					console.log(result)
+					this.$message({
+						message: '发帖成功！',
+						type: 'success'
+					});
+					$('#summernote').summernote('code', '')
+					setTimeout(() => {
+						window.location.href = "bry_forum.html"
+					}, 1500)
+				},
+
+			}
+		});
+	</script>
+</html>

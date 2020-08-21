@@ -1,0 +1,116 @@
+.bry_encyc_content {
+	background-color: #059fbf;
+	padding-bottom: 34px;
+}
+.bry_encyc_path {
+	font-size: 14px;
+	color: #fff;
+	padding: 28px 20px;
+	background: url(../../assets/icon/bry_encyc/bry_encyc_home.png) no-repeat left;
+}
+.bry_encyc_content > .inner > .fl {
+	margin-left: 24px;
+}
+.bry_encyc_article,
+.bry_encyc_share{
+	width: 966px;
+	padding: 32px 44px 41px ;
+	background-color: #efefef;
+	box-shadow: 0 0 10px rgba(0,0,0,.9) inset;
+	border-radius: 8px;
+	color: #333;
+	box-sizing: border-box;
+}
+.bry_encyc_article .bry_encyc_article_title {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 6px;
+}
+.bry_encyc_article .bry_encyc_article_msg {
+	font-size: 12px;
+	text-align: center;
+}
+.bry_encyc_article .bry_encyc_sex_book {
+	text-align: center;
+	margin: 10px 0 -20px;
+}
+.bry_encyc_article img {
+	display: inline-block;
+}
+.bry_encyc_article p {
+	text-indent: 2em;
+	margin-top: 24px;
+	line-height: 22px;
+}
+.bry_encyc_choice {
+	padding: 24px 48px 32px;
+	font-size: 14px;
+	color: #fff;
+}
+.bry_encyc_fs span{
+	margin: 0 6px;
+}
+.bry_encyc_pages li {
+	float: left;
+	margin: 0 6px;
+}
+.bry_encyc_pages li button {
+	background-color: #017289;
+	width: 22px;
+	height: 22px;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	color: #ffffff;
+}
+.bry_encyc_pages li.active button {
+	background-color: #cba634;
+}
+.bry_encyc_share {
+	text-align: center;
+	font-size: 12px;
+	color: #666;
+}
+.bry_encyc_share img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 6px;
+}
+.bry_encyc_share > .clearfix > div {
+	display: inline-block;
+	width: 86px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #059fbf;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #fff;
+	margin: 12px 11px 0;
+}
+.bry_encyc_share > .clearfix > div.active {
+	background-color: #fc9440;
+}
+.bry_encyc_share > .clearfix img {
+	vertical-align: text-bottom;
+	margin-right: 4px;
+}
+.bry_encyc_class {
+	width: 316px;
+}
+.bry_encyc_class ul~ul {
+	margin-top: 32px;
+}
+.bry_encyc_class .bry_encyc_fr_title {
+	background-color: #cba634;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 6px;
+	margin-bottom: 11px;
+}
+.bry_encyc_class li {
+	font-size: 12px;
+	color: #fff;
+	line-height: 30px;
+}

@@ -1,0 +1,395 @@
+/* 背景颜色 */
+body {
+	width: 100%;
+	background: #002830;
+}
+
+/* 焦点栏 */
+.bry_encyclopedias_focus {
+	height: 360px;
+	background: #cba634;
+}
+
+.bry_encyclopedias_focus_list {
+	width: 100%;
+	height: 100%;
+	padding: 12px 18px 14px 18px;
+	box-sizing: border-box;
+}
+
+.bry_encyclopedias_focus_list_background {
+	width: 100%;
+	height: 100%;
+	background: #002830;
+}
+
+/* 海报 */
+.bry_encyclopedias_focus_poster {
+	width: 300px;
+	height: 100%;
+	float: left;
+}
+/* 焦点轮播图大小 */
+#pointPic{
+	width: 100%;
+	height: 334px;
+	
+}
+.bry_encyclopedias_focus_button {
+	width: 32px;
+	height: 100%;
+	border: none;
+	cursor: pointer;
+}
+
+#focus_button_left {
+	float: left;
+	background: url(../../assets/icon/focus_button_left.png) no-repeat center;
+}
+
+#focus_button_right {
+	float: right;
+	background: url(../../assets/icon/focus_button_right.png) no-repeat center;
+}
+
+.bry_encyclopedias_focus_poster_list {
+	width: 300px;
+	float: left;
+	
+	overflow: hidden;
+}
+.bry_encyclopedias_focus_poster_list .swiper-container{
+	margin-right: 12px;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.bry_encyclopedias_focus_poster_list img {
+	width: 100%;
+}
+
+/* 标题 */
+.bry_encyclopedias_focus_list_title {
+	width: 302px;
+	height: 100%;
+	float: left;
+	padding-top: 5px;
+}
+
+.focus_item {
+	width: 100%;
+	height: 64px;
+	margin-top: 1px;
+	background: #017289;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 64px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.enlarge {
+	position: relative;
+	z-index: 10;
+	transform: scale(1.06);
+	-ms-transform: scale(1.06);
+	-moz-transform: scale(1.06);
+	-webkit-transform: scale(1.06);
+	-o-transform: scale(1.06);
+	background: url(../../assets/icon/enlarge.png) center;
+	background-size: 100%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+/* 文本 */
+.bry_encyclopedias_focus_list_text {
+	width: 670px;
+	height: 100%;
+	float: right;
+	padding: 4px 5px 0 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.list_text_background {
+	width: 670px;
+	height: 100%;
+	overflow: hidden;
+}
+
+.list_text_background {
+	width: 100%;
+}
+
+.focus_list_text {
+	width: 590px;
+	position: absolute;
+	top: 44px;
+	left: 38px;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+.focus_list_text div {
+	padding-bottom: 24px;
+}
+
+.focus_list_text p {
+	text-indent: 2em;
+}
+
+/* 最新上传 */
+.bry_encyclopedias_upload {
+	width: 1200px;
+	height: 418px;
+	margin: 0 auto;
+	position: relative;
+
+}
+/* 分割线定位 */
+
+.bry_encyclopedias_upload_Middle {
+	position: absolute;
+	height: 260px;
+	width: 1px;
+	background-color: #02c6d5;
+	float: left;
+	margin-left: 600px;
+}
+
+.bry_encyclopedias_upload_text {
+	color: #b99933;
+	font-size: 24px;
+	margin: 42px 0;
+}
+
+/* 上传左 */
+.bry_encyclopedias_upload_list_left {
+	width: 100%;
+	float: left;
+}
+
+.upload_list_ul {
+	list-style-image: url(../../assets/img/poster_li.png);
+}
+
+.upload_list_ul li {
+	width: 556px;
+	margin-bottom: 34px;
+	border-bottom: dotted #017289;
+	font-size: 12px;
+}
+.upload_list_ul li:nth-of-type(2n+1){
+	float: left;
+}
+.upload_list_ul li:nth-of-type(2n){
+	float: right;
+}
+
+.upload_list_ul div {
+	width: 70%;
+	float: left;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.upload_list_ul span {
+	float: right;
+}
+
+
+
+/* 上传右 */
+/* .bry_encyclopedias_upload_list_right {
+	width: 556px;
+	float: right;
+} */
+
+
+/* 屏幕列表 */
+.stripe{
+	display: block;
+	height: 12px;
+	border-radius: 6px;
+	background: #016e85;
+	box-shadow: 0 10px 10px #000000;
+}
+.bry_screenList{
+	width: 1020px;
+	margin: 0 auto;
+}
+.bry_screenLi{
+	float: left;
+	width: 115px;
+	height: 50px;
+	margin-top: -12px;
+}
+.bry_screenLi:nth-of-type(n+2){
+	margin-left: 111px;
+}
+.bry_screenLi>span:nth-of-type(1){
+	display: block;
+	width: 100%;
+	height: 12px;
+	border-radius: 6px;
+}
+.bry_screenLi>span:nth-of-type(2){
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 20px;
+}
+.bry_screenLi_type1>span{
+	color:#cba634;
+}
+.bry_screenLi_type1>span:nth-of-type(1){
+	background: #cba634;
+}
+.bry_screenLi_type2>span{
+	color:#02c6d5;
+}
+.bry_screenLi_type2>span:nth-of-type(1){
+	background: #02c6d5;
+}
+/* 内容 */
+.content{
+	padding: 80px 0;
+	box-sizing: border-box;
+}
+.bry_encyclopedias_content {
+	width: 1190px;
+	margin: 0 auto;
+}
+
+.bry_encyclopedias_content_left {
+	width: 180px;
+	float: left;
+}
+.bry_encyclopedias_content_left p{
+	text-align: center;
+}
+.bry_encyclopedias_content_img {
+	width: 125px;
+	height: 125px;
+	border: solid 8px #017289;
+	margin: 0 auto;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+.bry_encyclopedias_content_img img{
+	width: 100%;
+}
+.bry_encyclopedias_content p {
+	width: 180px;
+	font-size: 10px;
+	color: #02c6d5;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.bry_encyclopedias_content_left li {
+	margin-bottom: 45px;
+}
+
+.bry_encyclopedias_content_right {
+	float: right;
+	width: 960px;
+}
+.bry_encyclopedias_content_right ul li{
+	width: 100%;
+}
+/* 翻页 */
+.bry_encyclopedias_page {
+	width: 1280px;
+	height: 24px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+	line-height: 32px;
+}
+
+.bry_encyclopedias_page_list {
+	float: right;
+}
+
+.bry_encyclopedias_page_list li,
+strong {
+	height: 24px;
+	float: left;
+	color: #02c6d5;
+	font-size: 14px;
+	margin-left: 16px;
+}
+
+.page_button {
+	height: 24px;
+	color: #02c6d5;
+	background: transparent;
+	border: none;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+.page_left_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_left_arrow.png) no-repeat center;
+}
+
+.page_right_arrow {
+	width: 18px;
+	height: 24px;
+	background: url(../../assets/icon/page_right_arrow.png) no-repeat center;
+}
+
+.page-item {
+	width: 22px;
+	height: 24px;
+	color: #FFFFFF;
+	background: #017289;
+	border: none;
+	border-radius: 5px;
+}
+
+.page-item.active {
+	background: #c0831a;
+}
+
+.bry_encyclopedias_page_list input {
+	width: 24px;
+	height: 24px;
+	background: #02c6d5;
+	border-radius: 5px;
+	text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input,
+button {
+	outline: none;
+}

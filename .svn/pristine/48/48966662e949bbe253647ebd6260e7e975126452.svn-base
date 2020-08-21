@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/css/bry_video_info.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+
+		<script src="../static/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.2/skins/default/aliplayer-min.css" />
+		<script charset="utf-8" type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.8.2/aliplayer-min.js"></script>
+		<script src="../static/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8" src="../static/js/homeRequest.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="header">
+				<header-item></header-item>
+			</div>
+			<div class="bry_video_content">
+				<div class="inner">
+					<div class="bry_video_list clearfix">
+						<div class="fl">
+							<div class="bry_video_play video-tem">
+								<div id="J_prismPlayer" class="prism-player"></div>
+								<!-- 弹出层 -->
+								<div class="bry_video_playmask" v-if="isMaskShow">
+									<div>本片需付费，请购买后再观看!</div>
+									<div>请确认视频类型及信息无误后再支付，非质量问题无法退款。</div>
+									<div>扫码支付: <b>{{this.vidioData[this.pageId].Price}}</b> 元</div>
+									<div class="bry_video_pay clearfix">
+										<div class="fl">
+											<img class="imgs" :src="eqUrl">
+											<div class="txt">支付后刷新页面观看</div>
+										</div>
+										<div class="bry_video_payclass fl">
+											<div class="bry_video_payitem clearfix" @click="balanPay">
+												<div class="fl"><img src="../assets/icon/bry_video_info/bry_video_alipay.png"></div>
+												<div class="fl">
+													<div style="font-size: 24px;">余额支付</div>
+													<div style="font-size: 16px;">支持余额支付</div>
+												</div>
+											</div>
+											<div class="bry_video_payitem clearfix">
+												<div class="fl"><img src="../assets/icon/bry_video_info/bry_video_wechatpay.png"></div>
+												<div class="fl">
+													<div style="font-size: 24px;">微信支付</div>
+													<div style="font-size: 16px;">支持微信扫码支付</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /弹出层 -->
+							</div>
+							<div class="bry_video_antho">
+								<button v-for="(item,i) in vidioData" @click="changePage(item,i)">{{i + 1}}</button>
+							</div>
+							<div class="bry_video_drama_name">{{vidioInfo.Title}}</div>
+							<div class="bry_video_lable">
+								<span>播放量 {{vidioInfo.QueryCount}}</span>
+								<span>内容介绍</span>
+								<div v-if="vidioInfo.Tags">
+									<button v-for="item in vidioInfo.Tags">{{item}}</button>
+								</div>
+							</div>
+							<div class="bry_video_intro">
+								简介：{{vidioInfo.Details}}</div>
+						</div>
+						<div class="fr bry_video_recomlist">
+							<div class="bry_video_name">《{{vidioInfo.Title}}》</div>
+							<div class="bry_video_total">全{{total}}集</div>
+							<ul>
+								<li v-for="(item,index) in vidioData" @click="changePage(item,index)">
+									<img class="fl" :src="item.MediaBackground">
+									<div>
+										<div class="bry_video_choice_name">《{{vidioInfo.Title}}》</div>
+										<div class="bry_video_choice_total">第{{index+1}}集</div>
+										<div class="bry_video_lable">
+											<span>播放量 {{item.QueryCount}}</span>
+										</div>
+									</div>
+								</li>
+								
+							</ul>
+							<div class="bry_video_hotplay">精彩热播</div>
+							<ul>
+								<li v-for="item in hotData" :key="item.Id">
+									<a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'">
+										<img class="fl" :src="item.ListPhoto">
+										<div>
+											<div class="bry_video_choice_name">《{{item.Title}}》</div>
+											<div class="bry_video_choice_total">全{{item.FileCount}}集</div>
+											<div class="bry_video_lable">
+												<span>播放量 {{item.QueryCount}}</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="bry_video_recom">
+						<div>猜你喜欢</div>
+						<div class="bry_video_swiper1">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" v-for="item in swiperData" :key="item.Id"><a :href="'bry_Movies_info.html?id='+item.Id+'&&pageId=0'"><img
+											 :src="item.ListPhoto"></a></div>
+								</div>
+							</div>
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						</div>
+					</div>
+					<!-- 评论区 -->
+					<div class="bry_video_comment">
+						<div class="bry_video_comment_title">
+							评论
+						</div>
+						<div class="bry_video_text">
+							<textarea placeholder="发表评论" v-model="contents"></textarea>
+							<div class="bry_video_text_posts clearfix">
+								<button class="fr" @click="release">发布</button>
+							</div>
+						</div>
+					</div>
+					<!-- 精彩评论区 -->
+					<div class="bry_video_marve" v-show="commentList.length">
+						<div class="bry_video_marve_title">
+							精彩评论<sub>({{commentList.length}})</sub>
+						</div>
+						<ul>
+							<li class="bry_video_marveitem clearfix" v-for="item,index in commentList">
+								<img class="fl" src="../assets/img/bry_video_info/bry_video_headpic.gif">
+								<div class="fl">
+									<div class="bry_video_marve_name">
+										<span>{{item.NickName}}</span>
+										<span>{{item.CreateDate}}</span>
+									</div>
+									<div class="bry_video_marve_comme">
+										<span>{{item.Contents}}</span>
+										<div class="fr">
+											<span @click="replyComment(item,index)">评论</span>
+											<span :class="{active:item.IsAgree}" @click="agreeComment(item.Id)">点赞</span>
+										</div>
+									</div>
+
+									<div v-if="item.Reply.length">
+										<div class="bry_video_marvereply" v-for="it in item.Reply">
+											<div>{{it.NickName}}: {{it.Contents}}</div>
+											<div class="bry_video_marvereply_time">
+												<span>{{it.CreateDate}}</span>
+												<!-- <div class="fr">
+													<span>评论</span>
+													<span>点赞</span>
+												</div> -->
+											</div>
+										</div>
+									</div>
+									<div class="bry_publish_reply" v-show="item.isShow">
+										<textarea placeholder="请输入回复内容" v-model="item.replyContent"></textarea>
+										<button type="button" @click="replyCom(item)">回复</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!-- <div class="bry_video_mero">查看更多<img src="../assets/icon/bry_video_info/bry_video_morelower.png"></div> -->
+					</div>
+				</div>
+			</div>
+			<div class="bry_footer">
+				<div class="inner">
+					<div class="bry_footer_nav">
+						<ul class="clearfix">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="bry_information.html">资讯</a></li>
+							<li><a href="bry_Movies.html">视频</a></li>
+							<li><a href="bry_audioFrequency.html">音频</a></li>
+							<li><a href="bry_forum.html">论坛</a></li>
+							<li><a href="encyclopedias.html">百科</a></li>
+							<li><a href="book.html">电子书</a></li>
+							<li><a href="about.html">关于我们</a></li>
+						</ul>
+					</div>
+					<div class="bry_copy_msg clearfix">
+						<div class="fl">
+							<img src="../assets/icon/footer/official_account.gif">
+							<div class="tc">关注公众号</div>
+						</div>
+						<div class="fl">
+							<img src="../assets/icon/footer/phone_code.gif">
+							<div class="tc">手机网站</div>
+						</div>
+						<div class="bry_copyright fl">
+							<div>重庆思无邪网络科技有限公司 &nbsp;&nbsp;版权所有</div>
+							<div>渝ICP备005665656号<img src="../assets/icon/footer/keep_on_record.png">渝公安备 50019002501739 </div>
+							<div>All Rights Reserved, Copyright 2019-2020</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../static/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//Vue.use(VueVideoPlayer)
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					vidioId: '', // 视频Id
+					isMaskShow: false, // 收费的遮罩层
+					contents: '', // 评论内容
+					UserId: '', //  用户id
+					commentList: [], //  评论列表
+					vidioInfo: {},   // 视频详情
+					player: '',
+					vidioData: [],
+					swiperData: [], // 轮播数据
+					hotData: [], // 精彩热播
+					timer: null, // 获取时间的定时器
+					eqUrl: '',     // 二维码路径
+					pageId: 0,  // 当前集数
+					total: 0,  // 总集数
+					UserAccount: 0
+				}
+			},
+			created() {
+				this.UserId = foowwLocalStorage.getLocal("urseId")
+				this.vidioId = window.location.href.split("?id=")[1].split("&&")[0]
+				this.pageId = window.location.href.split("&&pageId=")[1]
+				 getAjax("get", "Users/DetailDo", '{"UserId":"' + this.UserId + '"}').then(res=>{
+					 this.UserAccount = res.data.UserAccount
+				 })
+				 getAjax("get", "Articles/DetailDo", '{"Id":"' + this.vidioId + '","UserId":"' + this.UserId + '"}').then(res => {
+					//console.log("视频信息:",res)
+					this.vidioInfo = res.data
+				}) 
+				// 获取评论
+				getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+					'","ArticleId":"' + this.vidioId +
+					'","UserId":"' + this.UserId + '"}').then(res => {
+					//console.log("评价", res)
+					this.commentList = res.data.map(item => {
+						return {
+							...item,
+							isShow: false,
+							replyContent: ''
+						}
+					})
+				})
+				// 精彩热播
+				getHotdata(5, 56).then(res => {
+					//console.log("精彩热播", res)
+					this.hotData = res.data
+				}, rej => {
+					console.log(rej)
+				})
+				// 猜你喜欢
+				getAjax("get", "Articles/LikeDo", '{"PageSize":"' + 5 + '","PageNum":"' + 1 + '","Id":"' + this.vidioId + '"}').then(
+					res => {
+						//console.log("猜你喜欢", res)
+						this.swiperData = res.data
+					})
+			},
+			async mounted() {
+
+				// 获取视频
+				let res = await getAjax("get", "ArticlesOther/ListDo", '{"PageSize":"' + 102 + '","PageNum":"' + 1 +
+					'","UserId":"' + this.UserId + '","ArticleId":"' + this.vidioId +
+					'"}')
+				//console.log("获取视频:",res.data[0].Id)
+				//this.ideovSource = res.data.reverse()[this.pageId].MediaFileUrl
+				//this.isPay = res.data.reverse()[this.pageId].IsPay
+				//this.price = res.data.reverse()[this.pageId].Price
+				//this.userPay = res.data.reverse()[this.pageId].UserPay
+				this.total = res.other
+				this.vidioData = res.data.reverse()
+			
+				this.getswiper()
+				console.log("获取视频:",this.vidioData)
+
+
+				// 初始化播放器
+				this.player = new Aliplayer({
+					id: "J_prismPlayer", // 容器id
+					source: this.vidioData[this.pageId].MediaFileUrl, //视频地址
+					// cover: "http://cdn.img.mtedu.com/images/assignment/day_3.jpg",  //播放器封面图
+					autoplay: true, // 是否自动播放
+					width: "100%", // 播放器宽度
+					height: "100%", // 播放器高度
+					playsinline: true,
+					"skinLayout": [{
+							"name": "bigPlayButton",
+							"align": "cc",
+						},
+						{
+							"name": "H5Loading",
+							"align": "cc"
+						},
+						{
+							"name": "errorDisplay",
+							"align": "tlabs",
+							"x": 0,
+							"y": 0
+						},
+						{
+							"name": "infoDisplay"
+						},
+						{
+							"name": "tooltip",
+							"align": "blabs",
+							"x": 0,
+							"y": 56
+						},
+						{
+							"name": "thumbnail"
+						},
+						{
+							"name": "controlBar",
+							"align": "blabs",
+							"x": 0,
+							"y": 0,
+							"children": [{
+									"name": "progress",
+									"align": "blabs",
+									"x": 0,
+									"y": 44
+								},
+								{
+									"name": "playButton",
+									"align": "tl",
+									"x": 15,
+									"y": 12
+								},
+								{
+									"name": "timeDisplay",
+									"align": "tl",
+									"x": 10,
+									"y": 7
+								},
+								{
+									"name": "fullScreenButton",
+									"align": "tr",
+									"x": 10,
+									"y": 12
+								},
+								{
+									"name": "volume",
+									"align": "tr",
+									"x": 5,
+									"y": 10
+								}
+							]
+						}
+					],
+
+				}, player => {
+					//console.log("------", player.getCurrentTime())
+				})
+				//console.log("",this.player.getCurrentTime())
+				//console.log("总时间:",this.player.getDuration())
+
+				this.player.on('ready', (e) => {
+					
+					
+				})
+				this.player.on('playing', e => {
+					this.getTime()
+				})
+				this.player.on('ended', e => {
+					this.clearTimer()
+				})
+				this.player.on('pause', e => {
+					this.clearTimer()
+				})
+				this.player.on('error', e => {
+					this.clearTimer()
+				})
+				this.player.on('completeSeek', e => {
+					this.clearTimer()
+				})
+			},
+			
+			computed: {
+
+			},
+			methods: {
+				// 去登陆
+				goLogin() {
+					if (window.location.href.indexOf("_reg") == -1 && !foowwLocalStorage.getLocal("urseId")) {
+						this.$message({
+							message: '您还没有登录,请先登录~',
+							type: 'warning',
+							offset: 250
+						})
+						setTimeout(_ => {
+							window.location.href = "./login_reg_main.html"
+						}, 1000)
+						return false
+					}
+					return true
+				},
+				// 获取当前时间
+				getTime() {
+					this.currentTime = this.player.getCurrentTime();
+					
+					if (this.vidioData[this.pageId].IsPay && this.vidioData[this.pageId].Price>0 && !this.vidioData[this.pageId].UserPay && this.currentTime > 5) {
+						this.player.pause()
+						if (window.location.href.indexOf("_reg") == -1 && !foowwLocalStorage.getLocal("urseId")) {
+							this.$message({
+								message: '该视频为付费视频,您还没有登录,请先登录~',
+								type: 'warning',
+								offset: 250
+							})
+							setTimeout(_ => {
+								window.location.href = "./login_reg_main.html"
+							}, 2000)
+							return
+						}
+						this.isMaskShow = true
+						ajax("post", "Users/WeChatPayDo", '{"ArticleId":"' + this.vidioId + '","CourseId":"' + this.pageId + '","UserId":"' + this.UserId + '","PayMode":"' + 1 + '"}', "").then(res => {
+							console.log("订单号:",res)
+							this.eqUrl = res.data.PayPath
+							var timer2 = setInterval(() => {
+								getAjax("get", "Orders/PayResultDo", '{"OrderNo":"' + res.data.OrderNo + '"}').then(res2 => {
+									if (res2.data.Status == 1) {
+										console.log("付款成功:",res2)
+										clearInterval(timer2)
+										 setTimeout(()=>{
+											window.location.reload()
+										},2000) 
+										return this.$message({
+												message: '支付成功',
+												type: 'success',
+												offset: 250
+											})
+									}else {
+										//clearInterval(timer2)
+										
+									}
+								})
+							}, 1000)
+						})
+					}else {
+						this.isMaskShow = false
+					}
+
+					this.timer = setTimeout(this.getTime, 1000);
+				},
+				// 清除定时器
+				clearTimer() {
+					if (this.timer) {
+						clearTimeout(this.timer);
+						this.timer = null;
+					}
+				},
+
+				getswiper() {
+					setTimeout(() => {
+						var swiper1 = new Swiper('.bry_video_swiper1 .swiper-container', {
+							loop: true,
+							autoplay: true,
+							autoplay: {
+								disableOnInteraction: false
+							},
+							speed: 1500,
+							slidesPerView: 5,
+							observer: true, //修改swiper自己或子元素时，自动初始化swiper
+							observeParents: true, //修改swiper的父元素时，自动初始化swiper
+							// spaceBetween: 0,
+							navigation: {
+								nextEl: '.swiper-button-next',
+								prevEl: '.swiper-button-prev',
+							},
+						})
+					}, 3000)
+				},
+				// 发表评价
+				async release() {
+					if(!this.goLogin()){
+						return
+					}
+					if (!this.contents.trim()) return
+					await ajax("post", "ArticleComment/PublishDo", '{"ArticleId":"' + this.vidioId + '","UserId":"' + this.UserId +
+						'","Contents":"' + this.contents + '"}', "123456")
+					this.contents = ''
+					// 获取评论
+					getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.vidioId +
+						'","UserId":"' + this.UserId + '"}').then(res => {
+						console.log("评价", res)
+						this.commentList = res.data.map(item => {
+							return {
+								...item,
+								isShow: false,
+								replyContent: ''
+							}
+						})
+					})
+				},
+				// 点击展开回复列表
+				replyComment(item, index) {
+					if(!this.goLogin()){
+						return
+					}
+					item.isShow = !item.isShow
+					this.$nextTick(() => {
+						$('html,body').animate({
+							scrollTop: $(".bry_publish_reply").eq(index).offset().top - 100
+						}, 500)
+						$(".bry_publish_reply").eq(index).children(":first").focus()
+					})
+				},
+				// 回复评价
+				async replyCom(item) {
+
+					if (!item.replyContent.trim()) {
+						return this.$message({
+							message: "请输入回复内容~",
+							type: 'warning',
+							offset: 250
+						})
+					}
+					// 回复评价的请求
+					await ajax("post", "ArticleComment/ReplyDo", '{"ArticleId":"' + this.vidioId + '","UserId":"' + this.UserId +
+						'","Contents":"' + item.replyContent + '","ParentId":"' + item.Id + '"}', "123456")
+
+					// 回复后刷新评价
+					var result = await getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.vidioId +
+						'","UserId":"' + this.UserId + '"}')
+
+					this.commentList = result.data.map(it => {
+						return {
+							...it,
+							isShow: false,
+							replyContent: ''
+						}
+					})
+				},
+				// 点赞评论
+				async agreeComment(CommentId) {
+					if(!this.goLogin()){
+						return
+					}
+					await ajax("post", "ArticleComment/AgreeDo", '{"UserId":"' + this.UserId + '","CommentId":"' + CommentId +
+						'","Flag":"' + 1 + '"}', "123456")
+					// 重新请求评价列表
+					getAjax("get", "ArticleComment/ListDo", '{"PageSize":"' + 100 + '","PageNum":"' + 1 +
+						'","ArticleId":"' + this.vidioId +
+						'","UserId":"' + this.UserId + '"}').then(res => {
+						console.log("评价", res)
+						this.commentList = res.data.map(item => {
+							return {
+								...item,
+								isShow: false,
+								replyContent: ''
+							}
+						})
+					})
+				},
+				// 切换视频
+				changePage(item, index){
+					if(this.pageId == index) return
+					window.location.href="bry_Movies_info.html?id="+item.ArticleId+"&&pageId="+index+""
+				},
+				// 余额支付
+				balanPay() {
+					const h = this.$createElement;
+					this.$msgbox({
+						title: '当前余额:¥' + this.UserAccount,
+						message: h('p', null, [
+							h('span', null, '确认余额支付吗? '),
+							h('i', { style: 'color: teal' })
+						]),
+						showCancelButton: true,
+						confirmButtonText: '确定',
+						cancelButtonText: '取消',
+						beforeClose: (action, instance, done) => {
+							if (action === 'confirm') {
+								instance.confirmButtonLoading = true
+								instance.confirmButtonText = '支付中...'
+								// 此处发送请求:
+								ajax("post", "Users/WeChatPayDo", '{"ArticleId":"' + this.vidioId + '","CourseId":"' + this.pageId + '","UserId":"' + this.UserId + '","PayMode":"' + 2 + '"}', "").then(res => {
+									console.log(res)
+									if(res.status != 1) {
+										this.$message({
+											type: 'warning',
+											message: res.info +"!或选择扫码支付"
+										})
+										setTimeout(()=>{
+											instance.confirmButtonLoading = false;
+											done();
+										},2000) 
+									}else {
+										instance.confirmButtonLoading = false;
+										done();
+										setTimeout(()=>{
+											window.location.reload()
+										},2000) 
+										return this.$message({
+												message: '支付成功',
+												type: 'success',
+												offset: 250
+										})
+									}
+								})
+							} else {
+								instance.confirmButtonLoading = false
+								done()
+							}
+						}
+					}).then(action => {
+						
+					}).catch(e => e)
+					
+				}
+			}
+		})
+	</script>
+</html>
